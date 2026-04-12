@@ -29,6 +29,7 @@ import uvicorn
 
 from asr_engine import VoiceNode
 import direction_engine
+import emotion_detector
 
 LOGGER = logging.getLogger("server")
 
@@ -163,10 +164,19 @@ async def transcribe_audio(
     out_path = in_path.replace(".webm", ".wav")
     transcript = ""
 
+    emotion_result = emotion_detector.EmotionResult(distress_score=0.0, emotion="neutral")
+
     try:
         audio = AudioSegment.from_file(in_path)
         audio = audio.set_frame_rate(16000).set_channels(1)
         audio.export(out_path, format="wav")
+
+        # Analyze emotion from raw audio BEFORE transcription — catches what words miss
+        emotion_result = emotion_detector.analyze(out_path)
+        if emotion_result.is_distressed:
+            print(f"Emotion: {emotion_result.emotion} (score={emotion_result.distress_score:.2f}) "
+                  f"markers={emotion_result.markers}")
+
         transcript = voice_node.transcribe_wav(out_path)
     finally:
         if os.path.exists(in_path):  os.remove(in_path)
@@ -174,8 +184,10 @@ async def transcribe_audio(
 
     print(f"Transcript: {transcript}")
 
-    # Run direction engine — categorize and summarize
-    result = await direction_engine.process(transcript, session_id=session_id)
+    # Run direction engine — categorize and summarize, informed by vocal emotion
+    result = await direction_engine.process(
+        transcript, session_id=session_id, emotion=emotion_result
+    )
 
     print(f"Direction: decision={result.decision.value} | "
           f"categories={[c.value for c in result.categories]} | "
@@ -248,6 +260,13 @@ async def transcribe_audio(
             "code":       detected_lang,
             "ratio":      round(ratio, 2),
             "translated": translated,
+        },
+        "emotion": {
+            "emotion":        emotion_result.emotion,
+            "distress_score": round(emotion_result.distress_score, 2),
+            "markers":        emotion_result.markers,
+            "arousal":        round(emotion_result.arousal, 2),
+            "is_crisis":      emotion_result.is_crisis,
         },
     }
 

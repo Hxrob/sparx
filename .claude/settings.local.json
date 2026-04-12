@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//c/Users/aleja/NVIDIASparkHacks/Nvidia_DGX-SparX/cityclaw_nyc/**)"
+    ]
+  }
+}
