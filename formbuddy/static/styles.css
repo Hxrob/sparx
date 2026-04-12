@@ -218,6 +218,85 @@ body {
     to { transform: rotate(360deg); }
 }
 
+/* Debug panel */
+.debug-panel {
+    font-size: 0.8rem;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    background: #fafafa;
+    display: none;
+}
+
+.debug-panel.visible {
+    display: block;
+}
+
+.debug-panel summary {
+    cursor: pointer;
+    padding: 0.5rem 0.75rem;
+    font-weight: 600;
+    color: #666;
+    user-select: none;
+}
+
+.debug-panel summary:hover {
+    color: #333;
+}
+
+.debug-content {
+    padding: 0.5rem 0.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.debug-metric {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.2rem 0;
+    border-bottom: 1px solid #eee;
+}
+
+.debug-metric .label {
+    color: #888;
+}
+
+.debug-metric .value {
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+}
+
+.debug-metric .value.warn {
+    color: #e67e22;
+}
+
+.debug-metric .value.error {
+    color: #e74c3c;
+}
+
+.debug-raw {
+    margin-top: 0.25rem;
+}
+
+.debug-raw summary {
+    padding: 0.25rem 0;
+    font-size: 0.75rem;
+    color: #999;
+}
+
+.debug-raw pre {
+    background: #1e1e1e;
+    color: #d4d4d4;
+    border-radius: 6px;
+    padding: 0.5rem;
+    overflow-x: auto;
+    max-height: 30vh;
+    font-size: 0.75rem;
+    line-height: 1.4;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
 /* Desktop: side panel */
 @media (min-width: 768px) {
     .buddy-app {

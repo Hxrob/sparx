@@ -7,7 +7,7 @@ from fastapi.staticfiles import StaticFiles
 
 from config import ALLOWED_PROXY_HOST
 from llm_client import chat_completion
-from models import SuggestRequest
+from models import SuggestDebugResponse, SuggestRequest
 from proxy import proxy_prefix, proxy_request
 from session_store import create_session, get_session
 
@@ -97,7 +97,7 @@ Fill in the fields based on the transcript and known facts. Return JSON only."""
 
     session.messages.append({"role": "user", "content": user_content})
 
-    result = await chat_completion(session.messages)
+    result, debug = await chat_completion(session.messages)
 
     # Update session state
     session.messages.append(
@@ -106,7 +106,7 @@ Fill in the fields based on the transcript and known facts. Return JSON only."""
     session.known_facts.update(result.known_facts)
     session.last_suggestion = result.model_dump()
 
-    return result
+    return SuggestDebugResponse(**result.model_dump(), debug=debug)
 
 
 # --- Proxy route ---

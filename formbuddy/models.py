@@ -39,3 +39,19 @@ class SuggestResponse(BaseModel):
     known_facts: dict[str, str] = {}
     fills: list[FillItem] = []
     needs_user_input: list[str] = []
+
+
+class LLMDebugInfo(BaseModel):
+    request_messages: list[dict] = []
+    raw_response: str = ""
+    parsed_ok: bool = True
+    retried: bool = False
+    retry_raw_response: str = ""
+    duration_ms: float = 0.0
+    prompt_tokens: int = 0
+    completion_tokens: int = 0
+    total_tokens: int = 0
+
+
+class SuggestDebugResponse(SuggestResponse):
+    debug: LLMDebugInfo = LLMDebugInfo()

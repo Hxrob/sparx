@@ -11,6 +11,8 @@
     const toggleBtn = document.getElementById("buddy-toggle");
     const panel = document.getElementById("buddy-panel");
     const header = document.getElementById("buddy-header");
+    const debugPanel = document.getElementById("debug-panel");
+    const debugContent = document.getElementById("debug-content");
 
     let lastSuggestion = null;
 
@@ -185,6 +187,10 @@
             previewEl.textContent = msg;
             previewEl.classList.add("visible");
             fillBtn.disabled = false;
+
+            if (lastSuggestion.debug) {
+                renderDebug(lastSuggestion.debug);
+            }
         } catch (e) {
             statusEl.textContent = "❌ Error: " + e.message;
         } finally {
@@ -259,6 +265,66 @@
         statusEl.textContent =
             "✅ Filled " + filled + " of " + lastSuggestion.fills.length + " fields. Review and continue.";
     });
+
+    // --- Render debug info ---
+    function renderDebug(dbg) {
+        var durationSec = (dbg.duration_ms / 1000).toFixed(1);
+        var tps = dbg.completion_tokens && dbg.duration_ms > 0
+            ? (dbg.completion_tokens / (dbg.duration_ms / 1000)).toFixed(1)
+            : "—";
+
+        var html = "";
+
+        // Metrics
+        html += metric("Duration", durationSec + "s");
+        html += metric("Prompt tokens", dbg.prompt_tokens || "—");
+        html += metric("Completion tokens", dbg.completion_tokens || "—");
+        html += metric("Total tokens", dbg.total_tokens || "—");
+        html += metric("Tokens/sec", tps);
+        html += metric("Parsed OK", dbg.parsed_ok ? "✅" : "❌", !dbg.parsed_ok ? "error" : "");
+        if (dbg.retried) {
+            html += metric("Retried", "⚠️ yes", "warn");
+        }
+
+        // Raw response
+        html += rawBlock("Raw LLM response", dbg.raw_response);
+        if (dbg.retried && dbg.retry_raw_response) {
+            html += rawBlock("Retry raw response", dbg.retry_raw_response);
+        }
+
+        // Request messages (last user message)
+        var msgs = dbg.request_messages || [];
+        if (msgs.length > 0) {
+            var lastUser = "";
+            for (var i = msgs.length - 1; i >= 0; i--) {
+                if (msgs[i].role === "user") { lastUser = msgs[i].content; break; }
+            }
+            if (lastUser) html += rawBlock("Last user prompt", lastUser);
+            html += rawBlock("Full message history (" + msgs.length + " msgs)",
+                JSON.stringify(msgs, null, 2));
+        }
+
+        debugContent.innerHTML = html;
+        debugPanel.classList.add("visible");
+    }
+
+    function metric(label, value, cls) {
+        return '<div class="debug-metric">' +
+            '<span class="label">' + label + '</span>' +
+            '<span class="value' + (cls ? " " + cls : "") + '">' + value + '</span>' +
+            '</div>';
+    }
+
+    function rawBlock(title, text) {
+        return '<details class="debug-raw"><summary>' + title + '</summary>' +
+            '<pre>' + escHtml(text || "(empty)") + '</pre></details>';
+    }
+
+    function escHtml(s) {
+        var d = document.createElement("div");
+        d.appendChild(document.createTextNode(s));
+        return d.innerHTML;
+    }
 
     // --- Init ---
     init();
