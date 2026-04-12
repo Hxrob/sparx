@@ -16,6 +16,7 @@ class Session:
         self.http_client = httpx.AsyncClient(
             follow_redirects=False,
             timeout=30.0,
+            cookies=httpx.Cookies(),
         )
 
     def proxy_path(self) -> str:

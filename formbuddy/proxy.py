@@ -1,4 +1,6 @@
+import posixpath
 import re
+from http.cookies import SimpleCookie
 from urllib.parse import urlparse
 
 from starlette.requests import Request
@@ -56,8 +58,12 @@ def _is_external_url(url: str) -> bool:
     return False
 
 
-def rewrite_url_in_content(content: str, session_id: str) -> str:
-    """Rewrite URLs in HTML/CSS content to go through the proxy."""
+def rewrite_url_in_content(content: str, session_id: str, css_base_path: str | None = None) -> str:
+    """Rewrite URLs in HTML/CSS content to go through the proxy.
+
+    css_base_path: the directory path of the CSS file on the target server
+    (e.g. "/" for "/site.min.css"), used to resolve relative url() references.
+    """
     prefix = proxy_prefix(session_id)
 
     # Protect protocol-relative external URLs BEFORE blanket host replacement.
@@ -106,11 +112,15 @@ def rewrite_url_in_content(content: str, session_id: str) -> str:
 
     # Rewrite CSS url() references with absolute paths
     def rewrite_css_url(m: re.Match) -> str:
-        path = m.group(1)
-        if path.startswith(prefix) or path.startswith("data:") or path.startswith("http"):
+        raw = m.group(1).strip().strip("'\"")
+        if raw.startswith(prefix) or raw.startswith("data:") or raw.startswith("http") or raw.startswith("#"):
             return m.group(0)
-        if path.startswith("/"):
-            return f"url({prefix}{path})"
+        if raw.startswith("/"):
+            return f"url({prefix}{raw})"
+        # Relative path — resolve against the CSS file's directory
+        if css_base_path:
+            resolved = posixpath.normpath(posixpath.join(css_base_path, raw))
+            return f"url({prefix}{resolved})"
         return m.group(0)
 
     content = re.sub(r"url\(([^)]+)\)", rewrite_css_url, content)
@@ -201,8 +211,35 @@ def make_intercept_script(session_id: str) -> str:
             if (rh !== h) a.setAttribute('href', rh);
         }}
     }}, true);
+    // Intercept dynamically created script/link elements (e.g. webpack chunk loading)
+    var _ce = document.createElement.bind(document);
+    document.createElement = function(tag) {{
+        var el = _ce.apply(document, arguments);
+        if (tag.toLowerCase() === 'script') {{
+            var desc = Object.getOwnPropertyDescriptor(HTMLScriptElement.prototype, 'src');
+            if (desc && desc.set) {{
+                Object.defineProperty(el, 'src', {{
+                    get: function() {{ return desc.get.call(this); }},
+                    set: function(v) {{ desc.set.call(this, rw(v)); }},
+                    configurable: true
+                }});
+            }}
+        }}
+        return el;
+    }};
 }})();
 </script>"""
+
+
+def _rewrite_set_cookie(header: str) -> str:
+    """Strip Domain and SameSite from Set-Cookie so the browser accepts it on localhost."""
+    # Remove Domain=...; attribute
+    header = re.sub(r'\s*Domain=[^;]+;?\s*', ' ', header, flags=re.IGNORECASE)
+    # Replace SameSite=None with SameSite=Lax (None requires Secure which localhost lacks)
+    header = re.sub(r'SameSite=None', 'SameSite=Lax', header, flags=re.IGNORECASE)
+    # Remove Secure flag (not applicable on http://localhost)
+    header = re.sub(r'\s*;\s*Secure\b', '', header, flags=re.IGNORECASE)
+    return header.strip()
 
 
 async def proxy_request(
@@ -235,13 +272,17 @@ async def proxy_request(
     )
 
     # Build response headers
-    response_headers = {}
+    response_headers: dict[str, str] = {}
+    set_cookie_headers: list[str] = []
     for key, value in resp.headers.multi_items():
         if key.lower() in STRIP_RESPONSE_HEADERS:
             continue
         if key.lower() == "location":
             value = rewrite_redirect(value, session.id)
         if key.lower() in ("transfer-encoding", "content-encoding", "content-length"):
+            continue
+        if key.lower() == "set-cookie":
+            set_cookie_headers.append(_rewrite_set_cookie(value))
             continue
         response_headers[key] = value
 
@@ -250,21 +291,30 @@ async def proxy_request(
 
     if "text/html" in content_type:
         text = body_bytes.decode("utf-8", errors="replace")
-        text = rewrite_url_in_content(text, session.id)
-        script = make_intercept_script(session.id)
-        # Inject intercept script as early as possible in <head>
-        head_pattern = re.compile(r"(<head[^>]*>)", re.IGNORECASE)
-        m = head_pattern.search(text)
-        if m:
-            text = text[: m.end()] + script + text[m.end() :]
-        else:
-            text = script + text
+        # Only inject intercept script and rewrite URLs in actual HTML documents,
+        # not API responses that happen to have text/html content-type
+        is_html_doc = bool(re.search(r"<(!DOCTYPE|html|head)\b", text[:1024], re.IGNORECASE))
+        if is_html_doc:
+            text = rewrite_url_in_content(text, session.id)
+            script = make_intercept_script(session.id)
+            head_pattern = re.compile(r"(<head[^>]*>)", re.IGNORECASE)
+            m = head_pattern.search(text)
+            if m:
+                text = text[: m.end()] + script + text[m.end() :]
+            else:
+                text = script + text
         body_bytes = text.encode("utf-8")
     elif "text/css" in content_type:
         text = body_bytes.decode("utf-8", errors="replace")
-        text = rewrite_url_in_content(text, session.id)
+        # Compute the directory of the CSS file so relative url() refs resolve correctly
+        css_dir = posixpath.dirname(f"/{path}")
+        if not css_dir.endswith("/"):
+            css_dir += "/"
+        text = rewrite_url_in_content(text, session.id, css_base_path=css_dir)
         body_bytes = text.encode("utf-8")
-    elif "javascript" in content_type or "application/x-javascript" in content_type:
+    elif "javascript" in content_type or "application/x-javascript" in content_type or (
+        "octet-stream" in content_type and path.rstrip("?").split("?")[0].endswith(".js")
+    ):
         # Rewrite JS string literals containing the target host or ~/ paths
         text = body_bytes.decode("utf-8", errors="replace")
         prefix = proxy_prefix(session.id)
@@ -272,14 +322,24 @@ async def proxy_request(
         text = text.replace(f"http://{ALLOWED_PROXY_HOST}", prefix)
         # Rewrite ~/ patterns in JS string contexts
         text = re.sub(r'(["\'])~/', lambda m: f"{m.group(1)}{prefix}/", text)
+        # Rewrite webpack __webpack_public_path__ (e.g. s.p="/servicerequest-create/")
+        # so dynamic chunk loading goes through the proxy
+        text = re.sub(
+            r'\.p\s*=\s*"(/[^"]+)"',
+            lambda m: f'.p="{prefix}{m.group(1)}"',
+            text,
+        )
         body_bytes = text.encode("utf-8")
 
-    return Response(
+    response = Response(
         content=body_bytes,
         status_code=resp.status_code,
         headers=response_headers,
         media_type=content_type.split(";")[0].strip() if content_type else None,
     )
+    for sc in set_cookie_headers:
+        response.headers.append("set-cookie", sc)
+    return response
 
 
 def rewrite_redirect(location: str, session_id: str) -> str:
