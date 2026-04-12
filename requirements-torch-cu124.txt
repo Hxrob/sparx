@@ -1,0 +1,8 @@
+# Paired CUDA 12.4 wheels — install BEFORE requirements.txt so torch and torchaudio match.
+# Pick a different file (cu118/cu121) if your driver needs it: https://pytorch.org/get-started/locally/
+#
+#   pip install -r requirements-torch-cu124.txt
+
+--extra-index-url https://download.pytorch.org/whl/cu124
+torch
+torchaudio

@@ -1,0 +1,3341 @@
+{
+  "source_url": "https://portal.311.nyc.gov/report-problems/",
+  "count": 667,
+  "items": [
+    {
+      "name": "Abandoned Vehicle",
+      "description": "Report an abandoned vehicle on public property or request the removal of an abandoned vehicle with no license plates on private property.",
+      "ka_number": "KA-02130"
+    },
+    {
+      "name": "Access City Agencies as a Person with a Disability",
+      "description": "Learn how people with disabilities can get help with accessing City programs and services.",
+      "ka_number": "KA-02321"
+    },
+    {
+      "name": "Access-A-Ride",
+      "description": "Get information or make a complaint about paratransit transportation for people with disabilities.",
+      "ka_number": "KA-02352"
+    },
+    {
+      "name": "Accident with Injury",
+      "description": "Call 911 to report an accident in progress.",
+      "ka_number": "KA-01513"
+    },
+    {
+      "name": "Adult Day Care",
+      "description": "Learn about social and medical adult day care services for older adults. Report a problem with an adult day care facility or service.",
+      "ka_number": "KA-02547"
+    },
+    {
+      "name": "Adult Establishment Zoning Complaint",
+      "description": "Report an adult establishment that does not follow zoning regulations.",
+      "ka_number": "KA-01902"
+    },
+    {
+      "name": "Adult Protective Services",
+      "description": "Get help for an adult age 18 or older who has mental or physical disabilities or make a complaint about the Adult Protective Services program.",
+      "ka_number": "KA-03113"
+    },
+    {
+      "name": "Advertising Sign Complaint",
+      "description": "Report a billboard, poster, or flexible fabric sign that does not follow permit regulations.",
+      "ka_number": "KA-01903"
+    },
+    {
+      "name": "Affordable Housing Fee Fraud",
+      "description": "Report being charged a fee to apply for housing sponsored by the Department of Housing Preservation and Development.",
+      "ka_number": "KA-01113"
+    },
+    {
+      "name": "After School Program",
+      "description": "Find an after school program for an elementary, middle, or high school student. Report a problem with an after school program.",
+      "ka_number": "KA-02550"
+    },
+    {
+      "name": "Agency Charges Collected by the Department of Finance",
+      "description": "Learn about the City and State agency charges, fees, and fines that appear on your property tax bill.",
+      "ka_number": "KA-02246"
+    },
+    {
+      "name": "Air Conditioner in Danger of Falling",
+      "description": "Report a window air conditioner that is in danger of falling.",
+      "ka_number": "KA-01908"
+    },
+    {
+      "name": "Airline Complaint",
+      "description": "Report an airline safety or scale problem.",
+      "ka_number": "KA-01114"
+    },
+    {
+      "name": "Alcohol Drinking Complaint",
+      "description": "Report drinking outside or in an unlicensed establishment or social club.",
+      "ka_number": "KA-01979"
+    },
+    {
+      "name": "Alcohol License Check",
+      "description": "Find out if a business is licensed to sell alcohol.",
+      "ka_number": "KA-02556"
+    },
+    {
+      "name": "Alcohol Sale Complaint",
+      "description": "Report the sale of alcohol to minors/intoxicated people, at more than half-off, to-go without food, outside of approved hours, or in unlicensed businesses.",
+      "ka_number": "KA-02223"
+    },
+    {
+      "name": "Ambulance Complaint",
+      "description": "Report a problem with an ambulance.",
+      "ka_number": "KA-02558"
+    },
+    {
+      "name": "Amtrak Trains",
+      "description": "Make a reservation, get travel information, or make a complaint about Amtrak trains.",
+      "ka_number": "KA-01118"
+    },
+    {
+      "name": "Animal Abuse",
+      "description": "Report abuse or neglect of an animal.",
+      "ka_number": "KA-02224"
+    },
+    {
+      "name": "Animal Bite",
+      "description": "Report an animal that bit a person.",
+      "ka_number": "KA-01109"
+    },
+    {
+      "name": "Animal Facility Complaint",
+      "description": "Report an unsanitary or unpermitted animal shelter, kennel, groomer, horse stable, boarding facility, petting zoo, or other animal facility.",
+      "ka_number": "KA-02225"
+    },
+    {
+      "name": "Animal Odor",
+      "description": "Report animal odor from a residence.",
+      "ka_number": "KA-01945"
+    },
+    {
+      "name": "Anti-Smoking Advertising Complaint",
+      "description": "Report an upsetting anti-smoking advertisement.",
+      "ka_number": "KA-02560"
+    },
+    {
+      "name": "Apartment Maintenance Complaint",
+      "description": "Report a maintenance problem in an apartment, public area, or entire building of a privately-owned residential rental building.",
+      "ka_number": "KA-01074"
+    },
+    {
+      "name": "Arcade Complaint",
+      "description": "Report a problem with an amusement arcade.",
+      "ka_number": "KA-01994"
+    },
+    {
+      "name": "Architect or Engineer Complaint",
+      "description": "Report a problem with a registered architect or a professional engineer.",
+      "ka_number": "KA-01119"
+    },
+    {
+      "name": "Arson Tips",
+      "description": "Report that a fire may have been set deliberately.",
+      "ka_number": "KA-01120"
+    },
+    {
+      "name": "Asbestos Complaint",
+      "description": "Report asbestos that is exposed or illegally removed.",
+      "ka_number": "KA-02197"
+    },
+    {
+      "name": "Assault",
+      "description": "Call 911 to report any type of assault.",
+      "ka_number": "KA-01515"
+    },
+    {
+      "name": "Assisted Living Facility or Adult Home Complaint",
+      "description": "Report a problem with an assisted living facility or adult home.",
+      "ka_number": "KA-01125"
+    },
+    {
+      "name": "ATM Complaint",
+      "description": "Report a problem with an automated teller machine (ATM).",
+      "ka_number": "KA-01126"
+    },
+    {
+      "name": "Auto Repair Complaint",
+      "description": "Report a problem with a car repair or inspection.",
+      "ka_number": "KA-01128"
+    },
+    {
+      "name": "Automated Employment Decision Tools",
+      "description": "Learn about the law for automated tools that help with employment decisions.",
+      "ka_number": "KA-03552"
+    },
+    {
+      "name": "Automatic Public Toilets",
+      "description": "Get information or make a complaint about automatic public toilets.",
+      "ka_number": "KA-02226"
+    },
+    {
+      "name": "Automobile Spray Paint Odor",
+      "description": "Report spray paint odor or fumes from an automobile business or repair shop.",
+      "ka_number": "KA-01928"
+    },
+    {
+      "name": "Awning, Canopy, Marquee, or Storm Enclosure Complaint",
+      "description": "Make a complaint about an awning, canopy, marquee, or storm enclosure.",
+      "ka_number": "KA-02227"
+    },
+    {
+      "name": "Bail Bond Agent Complaint",
+      "description": "Report illegal business practices by a bail bond agent.",
+      "ka_number": "KA-01130"
+    },
+    {
+      "name": "Bank Complaint",
+      "description": "Report a problem with a bank, credit union, lending institution, or safe deposit company.",
+      "ka_number": "KA-01131"
+    },
+    {
+      "name": "Bar or Club Complaint",
+      "description": "Report a bar or club that's selling alcohol to minors, overcrowded, or open after hours.",
+      "ka_number": "KA-01993"
+    },
+    {
+      "name": "Barbecuing",
+      "description": "Learn about the rules for commercial and residential barbecuing, find a place to barbecue in a park, or report barbecuing where it is not allowed.",
+      "ka_number": "KA-02228"
+    },
+    {
+      "name": "Barber Shop or Salon Complaint",
+      "description": "Report a problem with a barber shop, beauty salon, or nail salon.",
+      "ka_number": "KA-03535"
+    },
+    {
+      "name": "Battery Recycling",
+      "description": "Learn about how to dispose of batteries. Report a business selling rechargeable batteries that doesn't accept them for recycling.",
+      "ka_number": "KA-02078"
+    },
+    {
+      "name": "Beach Complaint",
+      "description": "Report a problem with beach maintenance, water quality, or safety equipment.",
+      "ka_number": "KA-02229"
+    },
+    {
+      "name": "Bed Bug Complaint",
+      "description": "Report bed bugs.",
+      "ka_number": "KA-01236"
+    },
+    {
+      "name": "Bees or Wasps Complaint",
+      "description": "Make a complaint about bees or wasps.",
+      "ka_number": "KA-02230"
+    },
+    {
+      "name": "Bike Rack Complaint",
+      "description": "Report a bike rack issue or a usable abandoned bike chained to a bike rack. Learn how to retrieve a bike that has been removed from a city-owned bike rack.",
+      "ka_number": "KA-01072"
+    },
+    {
+      "name": "Bikes in Office Buildings",
+      "description": "Learn about the Bike Access to Office Buildings Law which allows bikes in commercial office buildings. Report office buildings not following with the law.",
+      "ka_number": "KA-02231"
+    },
+    {
+      "name": "Biking, Rollerblading, or Skating Complaint",
+      "description": "Report a problem caused by people biking, riding motorized scooters, rollerblading, skating, or using or storing ATVs.",
+      "ka_number": "KA-02232"
+    },
+    {
+      "name": "Birth Certificate Change",
+      "description": "Correct or update a birth certificate.",
+      "ka_number": "KA-01013"
+    },
+    {
+      "name": "Blocked Building Exit or Fire Escape",
+      "description": "Report partially or fully blocked building exits or fire escapes.",
+      "ka_number": "KA-02233"
+    },
+    {
+      "name": "Blocked Driveway",
+      "description": "Report a vehicle that is blocking your driveway.",
+      "ka_number": "KA-01062"
+    },
+    {
+      "name": "Blocked or Clogged Culvert",
+      "description": "Report a drain underneath a road that is clogged or blocked.",
+      "ka_number": "KA-02199"
+    },
+    {
+      "name": "Blocked Sidewalk or Street",
+      "description": "Report a sidewalk or street blocked by an object or activity.",
+      "ka_number": "KA-01980"
+    },
+    {
+      "name": "Boiler Complaint",
+      "description": "Report a problem with a boiler.",
+      "ka_number": "KA-02047"
+    },
+    {
+      "name": "Boiler Inspection Violation",
+      "description": "Learn about the violation issued to property owners who do not file an annual boiler inspection report.",
+      "ka_number": "KA-02584"
+    },
+    {
+      "name": "Boiler Operator Engineer Complaint",
+      "description": "Make a complaint about a licensed boiler operator engineer.",
+      "ka_number": "KA-02585"
+    },
+    {
+      "name": "Booting Company Complaint",
+      "description": "Make a complaint about a business that places wheel locks on illegally parked cars.",
+      "ka_number": "KA-02194"
+    },
+    {
+      "name": "Bottle Refund",
+      "description": "Learn about the bottle and can refund law or report a store not accepting a container.",
+      "ka_number": "KA-02477"
+    },
+    {
+      "name": "Bottled Water Complaint",
+      "description": "Report a problem with plain bottled water.",
+      "ka_number": "KA-01941"
+    },
+    {
+      "name": "Breaking Park Rules",
+      "description": "Report a person or group breaking park rules.",
+      "ka_number": "KA-02234"
+    },
+    {
+      "name": "Bridges",
+      "description": "Get information about bridges, request bridge maintenance or report a bridge condition.",
+      "ka_number": "KA-01079"
+    },
+    {
+      "name": "Broken Sidewalk",
+      "description": "Report a sidewalk condition that may cause a trip hazard. Learn about how to maintain or repair the sidewalk next to your property.",
+      "ka_number": "KA-02235"
+    },
+    {
+      "name": "Broker Fees",
+      "description": "Learn more about broker fees.",
+      "ka_number": "KA-03665"
+    },
+    {
+      "name": "Building Construction Complaint",
+      "description": "Report building construction work in progress that is unsafe, done without a permit, after hours, or outside approved plans.",
+      "ka_number": "KA-01797"
+    },
+    {
+      "name": "Building Conversion or Occupancy Complaint",
+      "description": "Report past changes without DOB approval, including to a basement, room, space, apartment, or building. Report building use against occupancy or zoning.",
+      "ka_number": "KA-02025"
+    },
+    {
+      "name": "Building Demolition Complaint",
+      "description": "Report building demolition that is illegal, unsafe, or done without a permit.",
+      "ka_number": "KA-02236"
+    },
+    {
+      "name": "Building Not Registered Complaint",
+      "description": "Report an unregistered 1-2 family home that is not occupied by the owner or owner's family.",
+      "ka_number": "KA-03291"
+    },
+    {
+      "name": "Building or Public Space Accessibility Complaint",
+      "description": "Report a building or public space that does not meet local accessibility requirements for people with disabilities.",
+      "ka_number": "KA-03570"
+    },
+    {
+      "name": "Building Planting Regulations",
+      "description": "Learn about building planting regulations or report a violation.",
+      "ka_number": "KA-03663"
+    },
+    {
+      "name": "Building Sign Complaint",
+      "description": "Report a problem with a building sign.",
+      "ka_number": "KA-01981"
+    },
+    {
+      "name": "Burning Garbage",
+      "description": "Call 911 to report burning garbage either outdoors or in an illegal incinerator.",
+      "ka_number": "KA-01518"
+    },
+    {
+      "name": "Bus Arrival Sign",
+      "description": "Get information, report a problem, or suggest a location for a sign with real-time bus arrival information.",
+      "ka_number": "KA-03486"
+    },
+    {
+      "name": "Bus Lane Camera Complaint",
+      "description": "Report a damaged or defective bus lane camera.",
+      "ka_number": "KA-02342"
+    },
+    {
+      "name": "Bus Stop Shelters",
+      "description": "Request a new bus stop shelter or report an existing bus stop shelter that needs maintenance or repair.",
+      "ka_number": "KA-01071"
+    },
+    {
+      "name": "Buses and Subways",
+      "description": "Get information or make a complaint about a MetroCard or bus or subway run by the Metropolitan Transportation Authority (MTA).",
+      "ka_number": "KA-01014"
+    },
+    {
+      "name": "Business Complaint Against Another Business",
+      "description": "Report a problem with a business only if you're a business.",
+      "ka_number": "KA-01688"
+    },
+    {
+      "name": "Cable Complaint",
+      "description": "Report a problem with a cable TV, phone, or internet provider.",
+      "ka_number": "KA-01058"
+    },
+    {
+      "name": "Calorie Posting",
+      "description": "Learn about calorie posting requirements information for restaurants and mobile vendors. Report failed to display calorie information.",
+      "ka_number": "KA-02237"
+    },
+    {
+      "name": "Camp",
+      "description": "Learn about summer camps, day camps, and overnight camps. Report a problem with a camp.",
+      "ka_number": "KA-02337"
+    },
+    {
+      "name": "Cannabis Retail Sale Complaint",
+      "description": "Report a problem with a store that sells cannabis, including unlicensed businesses.",
+      "ka_number": "KA-03536"
+    },
+    {
+      "name": "Car Dealer Complaint",
+      "description": "Make a complaint about a business selling new or used cars.",
+      "ka_number": "KA-02131"
+    },
+    {
+      "name": "Car Rental Complaint",
+      "description": "Make a complaint about a car rental agency.",
+      "ka_number": "KA-02193"
+    },
+    {
+      "name": "Car Service Complaint",
+      "description": "Report a problem with a limousine, ambulette, Access-A-Ride taxi, black cab, or car service company.",
+      "ka_number": "KA-01244"
+    },
+    {
+      "name": "Car Service Lost and Found",
+      "description": "Report an item lost or found in a car service, limousine, or black car.",
+      "ka_number": "KA-01050"
+    },
+    {
+      "name": "Car Wash Complaint",
+      "description": "Report a problem with a commercial car wash.",
+      "ka_number": "KA-01921"
+    },
+    {
+      "name": "Carbon Monoxide",
+      "description": "Call 911 to report carbon monoxide emission or poisoning. Learn about carbon monoxide detector requirements.",
+      "ka_number": "KA-02608"
+    },
+    {
+      "name": "Carpet and Flooring Business Complaint",
+      "description": "Report a problem with a carpet or flooring business.",
+      "ka_number": "KA-02192"
+    },
+    {
+      "name": "Carshare",
+      "description": "Learn about a program that gives members access to cars for short-term use.",
+      "ka_number": "KA-02610"
+    },
+    {
+      "name": "Case Assistance and Management for Older Adults",
+      "description": "Get benefit and entitlement counseling for people age 60 and older, or report a problem with a case assistance or case management agency.",
+      "ka_number": "KA-02238"
+    },
+    {
+      "name": "Cash Assistance, SNAP, or Medicaid Fraud",
+      "description": "Report an individual or business committing welfare fraud.",
+      "ka_number": "KA-01611"
+    },
+    {
+      "name": "Cash Payment Refusal",
+      "description": "Report a store that doesn't accept cash as a form of payment.",
+      "ka_number": "KA-03302"
+    },
+    {
+      "name": "Catch Basin Complaint",
+      "description": "Report a street sewer catch basin that needs cleaning or has a defect, including missing curb piece or cover. Report a lost personal item in a catch basin.",
+      "ka_number": "KA-01084"
+    },
+    {
+      "name": "Catch Basin or Sewer Odor",
+      "description": "Report a smell coming from a catch basin or sewer.",
+      "ka_number": "KA-02315"
+    },
+    {
+      "name": "Catering Establishment Complaint",
+      "description": "Make a complaint about a rented space used to serve food or drinks for events.",
+      "ka_number": "KA-02191"
+    },
+    {
+      "name": "Cell Phone Purchase Complaint",
+      "description": "Make a complaint about the purchase of a cell phone.",
+      "ka_number": "KA-02163"
+    },
+    {
+      "name": "Cemetery Complaint",
+      "description": "Report a problem with a cemetery, monument, or headstone.",
+      "ka_number": "KA-01690"
+    },
+    {
+      "name": "Certificate of Occupancy Complaint",
+      "description": "Report a building that has overcrowding, no legal Certificate of Occupancy, or an illegal change in building use that violates the Certificate.",
+      "ka_number": "KA-02024"
+    },
+    {
+      "name": "Chained Bike",
+      "description": "Report an unusable (derelict) chained bike or a bike chained to a tree on the street or in a park.",
+      "ka_number": "KA-02218"
+    },
+    {
+      "name": "Charity Background Check or Complaint",
+      "description": "Request a review of a charity organization or report a problem with one.",
+      "ka_number": "KA-01143"
+    },
+    {
+      "name": "Charity Fraud",
+      "description": "Report a problem with a charity committing fraud.",
+      "ka_number": "KA-01524"
+    },
+    {
+      "name": "Check Cashing Business Complaint",
+      "description": "Report a check cashing business.",
+      "ka_number": "KA-01526"
+    },
+    {
+      "name": "Chemical Complaint",
+      "description": "Report chemical odors or chemicals that are abandoned or not stored safely.",
+      "ka_number": "KA-01982"
+    },
+    {
+      "name": "Chemical Spill",
+      "description": "Report a spill of chemicals or other hazardous material onto a roadway, sidewalk, or indoors.",
+      "ka_number": "KA-02239"
+    },
+    {
+      "name": "Child Abuse",
+      "description": "Report possible child abuse or neglect.",
+      "ka_number": "KA-01221"
+    },
+    {
+      "name": "Child Care Complaint",
+      "description": "Make a complaint about a day care facility, child care provider, or after school program.",
+      "ka_number": "KA-02240"
+    },
+    {
+      "name": "Child Care Financial Assistance",
+      "description": "Apply for financial assistance to pay for child care, get an application status, find a child care program, or re-certify your benefits.",
+      "ka_number": "KA-03118"
+    },
+    {
+      "name": "Child Care Provider Payment",
+      "description": "Get help with child care payments for child care providers under contract with ACS.",
+      "ka_number": "KA-02619"
+    },
+    {
+      "name": "Child Health Plus Complaint",
+      "description": "Report a problem with a Child Health Plus assistant.",
+      "ka_number": "KA-01145"
+    },
+    {
+      "name": "Child Pornography",
+      "description": "Call 911 to report child pornography.",
+      "ka_number": "KA-02624"
+    },
+    {
+      "name": "Child Proof Stove Knob Covers Complaint",
+      "description": "Report that child proof stove knob covers are not provided to a tenant.",
+      "ka_number": "KA-03159"
+    },
+    {
+      "name": "Chimney or Ventilation Smoke",
+      "description": "Report dense or visible smoke from a chimney or ventilation system.",
+      "ka_number": "KA-02219"
+    },
+    {
+      "name": "Cigarette Sale Complaint",
+      "description": "Report illegal cigarette sales, cigarette tax evasion, or a problem with a cigarette vending machine.",
+      "ka_number": "KA-02627"
+    },
+    {
+      "name": "Circumcision",
+      "description": "Learn about the risks of circumcision or report any concerns.",
+      "ka_number": "KA-02629"
+    },
+    {
+      "name": "Citi Bike",
+      "description": "Learn about Citi Bike membership or report an equipment maintenance problem.",
+      "ka_number": "KA-02221"
+    },
+    {
+      "name": "City Agency Language Access Feedback",
+      "description": "Make a complaint that a City Agency did not provide translation or interpretation services or make a request for additional language services.",
+      "ka_number": "KA-02630"
+    },
+    {
+      "name": "City Agency or Worker Feedback",
+      "description": "Give a complaint, compliment, or comment on the service provided by City Agencies and their employees.",
+      "ka_number": "KA-01662"
+    },
+    {
+      "name": "City Budget Cut Feedback",
+      "description": "Give feedback on proposed New York City budget cuts for child care, after school programs, Department of Education school closures, and public libraries.",
+      "ka_number": "KA-02634"
+    },
+    {
+      "name": "City Claim",
+      "description": "Report personal injury or property damage against the City or a City contractor including damage to a vehicle from a pothole.",
+      "ka_number": "KA-01094"
+    },
+    {
+      "name": "City Claim Fraud",
+      "description": "Report a false or fraudulent claim against the city.",
+      "ka_number": "KA-01147"
+    },
+    {
+      "name": "City Comptroller Complaint",
+      "description": "Report a problem with the City Comptroller.",
+      "ka_number": "KA-01148"
+    },
+    {
+      "name": "City Contract Equal Employment Opportunity Compliance",
+      "description": "Get help with EEO compliance (E.O. 50) forms. Report discrimination or illegal denial of benefits or fair wages by a City contractor.",
+      "ka_number": "KA-02636"
+    },
+    {
+      "name": "City Council Member Complaint",
+      "description": "Report a problem with a City Council Member.",
+      "ka_number": "KA-01271"
+    },
+    {
+      "name": "City Marshal Complaint",
+      "description": "Report a problem with a city marshal.",
+      "ka_number": "KA-01154"
+    },
+    {
+      "name": "City Parking Permit for People with Disabilities",
+      "description": "Apply for, renew, or report a problem with a New York City Parking Permit for People with Disabilities.",
+      "ka_number": "KA-01243"
+    },
+    {
+      "name": "City University of New York (CUNY) Admissions Complaint",
+      "description": "Report a problem with the CUNY Admissions Processes.",
+      "ka_number": "KA-01157"
+    },
+    {
+      "name": "City Vehicle Complaint",
+      "description": "Report an issue with a City vehicle.",
+      "ka_number": "KA-01158"
+    },
+    {
+      "name": "City Worker Conflict of Interest",
+      "description": "Report a City employee's potential ethics violation.",
+      "ka_number": "KA-02417"
+    },
+    {
+      "name": "City Worker or Contractor Corruption or Criminal Misconduct",
+      "description": "Report illegal activity, assault, or suspected wrongdoing by a City employee or contractor.",
+      "ka_number": "KA-02418"
+    },
+    {
+      "name": "Citywide Performance Reporting",
+      "description": "Learn about reports and statistics related to City services.",
+      "ka_number": "KA-01276"
+    },
+    {
+      "name": "Commercial Bicycling Laws",
+      "description": "Learn about the rules for businesses that employ delivery workers who use bikes, e-bikes, or cargo bikes. Report a business not following the laws.",
+      "ka_number": "KA-02651"
+    },
+    {
+      "name": "Commercial Vehicle Parked in Residential Driveway",
+      "description": "Report a commercial vehicle parked in a residential driveway or lot.",
+      "ka_number": "KA-01920"
+    },
+    {
+      "name": "Condoms and Safer Sex Products",
+      "description": "Get free condoms and safer sex products or report an issue with NYC-brand condoms.",
+      "ka_number": "KA-01658"
+    },
+    {
+      "name": "Construction Labor Provider Complaint",
+      "description": "Make a complaint about a business that employs and supplies workers for construction sites.",
+      "ka_number": "KA-03488"
+    },
+    {
+      "name": "Construction Site No Smoking Sign Complaint",
+      "description": "Report a construction site that does not have a No Smoking sign.",
+      "ka_number": "KA-02241"
+    },
+    {
+      "name": "Cooling Tower Complaint",
+      "description": "Report a cooling tower that is unsanitary, malfunctioning, or has structural problems.",
+      "ka_number": "KA-02243"
+    },
+    {
+      "name": "Co-Op or Condo Sponsor Information Complaint",
+      "description": "Report a problem with a co-op or condo sponsor.",
+      "ka_number": "KA-01078"
+    },
+    {
+      "name": "Coronavirus (COVID-19) Testing",
+      "description": "Get a COVID-19 test.",
+      "ka_number": "KA-03322"
+    },
+    {
+      "name": "Cosmetics Complaint",
+      "description": "Report a problem with cosmetics or makeup.",
+      "ka_number": "KA-01413"
+    },
+    {
+      "name": "Counterfeit Item Sale",
+      "description": "Report stores or vendors that are selling counterfeit items.",
+      "ka_number": "KA-01414"
+    },
+    {
+      "name": "Counterfeit Money",
+      "description": "Report counterfeit United States currency.",
+      "ka_number": "KA-01168"
+    },
+    {
+      "name": "County Clerk",
+      "description": "Get information about business certificates, divorce court, notary verification, and Supreme Court document maintenance.",
+      "ka_number": "KA-01029"
+    },
+    {
+      "name": "Court",
+      "description": "Get locations and contact information for courts.",
+      "ka_number": "KA-02666"
+    },
+    {
+      "name": "Crane or Derrick Complaint",
+      "description": "Report a crane or derrick operation that is unsafe or without a permit, license, or certificate.",
+      "ka_number": "KA-02053"
+    },
+    {
+      "name": "Crash Barrier Complaint",
+      "description": "Report a defective or missing crash cushion, guard rail, or concrete barrier.",
+      "ka_number": "KA-02244"
+    },
+    {
+      "name": "Credit Card Complaint",
+      "description": "Report a problem with a credit card company.",
+      "ka_number": "KA-01415"
+    },
+    {
+      "name": "Crime Stoppers Tip",
+      "description": "Report a crime.",
+      "ka_number": "KA-02668"
+    },
+    {
+      "name": "Criminal Mischief",
+      "description": "Call 911 to report criminal mischief, vandalism, or criminal activity that has damaged property.",
+      "ka_number": "KA-01537"
+    },
+    {
+      "name": "Crisis Support for Veterans",
+      "description": "Get help for veterans in crisis.",
+      "ka_number": "KA-01172"
+    },
+    {
+      "name": "Curb or Driveway Complaint",
+      "description": "Report a curb that is damaged, painted, or illegally cut for a driveway.",
+      "ka_number": "KA-01083"
+    },
+    {
+      "name": "Damaged or Defective Goods",
+      "description": "Report the purchase or delivery of damaged or defective goods.",
+      "ka_number": "KA-02142"
+    },
+    {
+      "name": "Dangerous Animal",
+      "description": "Call 911 to report an animal causing a dangerous or hazardous condition.",
+      "ka_number": "KA-01538"
+    },
+    {
+      "name": "Dangerous Location or Situation",
+      "description": "Call 911 to report a situation that might cause danger to life or personal property.",
+      "ka_number": "KA-01033"
+    },
+    {
+      "name": "Dating Service Complaint",
+      "description": "Report a problem with a dating service.",
+      "ka_number": "KA-01700"
+    },
+    {
+      "name": "Dead Animal on Private Property",
+      "description": "Learn how to dispose of dead pets or wildlife on your property.",
+      "ka_number": "KA-03451"
+    },
+    {
+      "name": "Dead Animal on Public Property",
+      "description": "Report a dead animal in a public place, including sidewalks, highways, and parks.",
+      "ka_number": "KA-02245"
+    },
+    {
+      "name": "Dead Tree",
+      "description": "Request the removal of a standing dead or dying tree.",
+      "ka_number": "KA-02006"
+    },
+    {
+      "name": "Dealer in Products for Disabilities Complaint",
+      "description": "Make a complaint about a business that sells, rents, or repairs any product used to correct a disability.",
+      "ka_number": "KA-02190"
+    },
+    {
+      "name": "Death Certificate Order",
+      "description": "Get a copy of a death certificate.",
+      "ka_number": "KA-01028"
+    },
+    {
+      "name": "Death Investigation",
+      "description": "Investigate a death that took place in New York City.",
+      "ka_number": "KA-01540"
+    },
+    {
+      "name": "Debt Collection Agency Complaint",
+      "description": "Make a complaint about a debt collection business.",
+      "ka_number": "KA-02189"
+    },
+    {
+      "name": "Delivery App Complaint",
+      "description": "Make a complaint about a food delivery app.",
+      "ka_number": "KA-03470"
+    },
+    {
+      "name": "Dentist Complaint",
+      "description": "Report professional misconduct by a dentist.",
+      "ka_number": "KA-03292"
+    },
+    {
+      "name": "Department of Buildings Document Fraud",
+      "description": "Report someone using false information to file for a Department of Buildings (DOB) document.",
+      "ka_number": "KA-01177"
+    },
+    {
+      "name": "Department of Buildings Filing Representative Complaint",
+      "description": "Report a problem with a filing representative registered with the Department of Buildings.",
+      "ka_number": "KA-01460"
+    },
+    {
+      "name": "Department of Buildings Notice Defaced",
+      "description": "Report a Department of Buildings notice that is defaced, unreadable, or missing.",
+      "ka_number": "KA-01910"
+    },
+    {
+      "name": "Department of Citywide Administrative Services Building Security Complaint",
+      "description": "Report a security problem in a DCAS-managed building.",
+      "ka_number": "KA-02679"
+    },
+    {
+      "name": "Department of Consumer and Worker Protection License Replacement",
+      "description": "Replace a DCWP license that is lost, stolen, or damaged.",
+      "ka_number": "KA-02682"
+    },
+    {
+      "name": "Department of Consumer and Worker Protection Online Licensing",
+      "description": "Get help using the Department of Consumer and Worker Protection (DCWP) online services.",
+      "ka_number": "KA-02684"
+    },
+    {
+      "name": "Department of Design and Construction (DDC) Services and Projects",
+      "description": "Learn about general services and initiatives or report a problem or get information for a specific Department of Design and Construction project.",
+      "ka_number": "KA-01181"
+    },
+    {
+      "name": "Department of Motor Vehicles (DMV)",
+      "description": "Learn about DMV services and office locations or make a complaint.",
+      "ka_number": "KA-02056"
+    },
+    {
+      "name": "Department of Sanitation Signs and Decals",
+      "description": "Request or download Department of Sanitation materials, including decals for recycling and compost bins, brochures, flyers, and signs.",
+      "ka_number": "KA-02022"
+    },
+    {
+      "name": "Department of Sanitation Vehicle Accident",
+      "description": "Report an accident or property damage involving a garbage truck, snow plow, or other City sanitation vehicle.",
+      "ka_number": "KA-01186"
+    },
+    {
+      "name": "Department of Sanitation Worker or Vehicle Complaint",
+      "description": "Report a problem with a Department of Sanitation employee's behavior or operation of a Sanitation vehicle.",
+      "ka_number": "KA-02363"
+    },
+    {
+      "name": "Department of State (DOS) Licensed Professional or Business Complaint",
+      "description": "Report a problem with a New York State Department of State licensed professional or firm.",
+      "ka_number": "KA-01734"
+    },
+    {
+      "name": "Dirt Bikes and All-Terrain Vehicle (ATV) Storage Complaint",
+      "description": "Report the illegal storage of dirt bikes or all-terrain vehicles (ATV).",
+      "ka_number": "KA-03638"
+    },
+    {
+      "name": "Dirty Gutter",
+      "description": "Report a gutter, including 18 inches into the street, that is not clean.",
+      "ka_number": "KA-02141"
+    },
+    {
+      "name": "Dirty Sidewalk",
+      "description": "Report a sidewalk or gutter, including 18 inches into the street, that is not clean.",
+      "ka_number": "KA-01803"
+    },
+    {
+      "name": "Dirty Yard or Alley",
+      "description": "Report an unclean or untidy yard, alley, or court that is visible from the street.",
+      "ka_number": "KA-02133"
+    },
+    {
+      "name": "Disabled Vehicle",
+      "description": "Report a disabled vehicle on a City street, limited access highway, bridge, or tunnel.",
+      "ka_number": "KA-02052"
+    },
+    {
+      "name": "Discrimination",
+      "description": "Report discrimination in employment, housing, public accommodations, and by members of the public.",
+      "ka_number": "KA-01783"
+    },
+    {
+      "name": "Disorderly Person or Group",
+      "description": "Report a disorderly person or group creating a dangerous condition.",
+      "ka_number": "KA-02215"
+    },
+    {
+      "name": "Doctor Complaint",
+      "description": "Make a complaint about a doctor.",
+      "ka_number": "KA-01418"
+    },
+    {
+      "name": "Dog License",
+      "description": "Apply for, renew, update, or replace a dog license.",
+      "ka_number": "KA-01890"
+    },
+    {
+      "name": "Dog or Animal Waste",
+      "description": "Report dog or animal waste in a park or on a street, sidewalk, or private property.",
+      "ka_number": "KA-02247"
+    },
+    {
+      "name": "Domestic Violence",
+      "description": "Report domestic violence or get counseling, support, and shelter for victims.",
+      "ka_number": "KA-01217"
+    },
+    {
+      "name": "Domestic Violence Shelter Complaint",
+      "description": "Report a problem with a domestic violence shelter.",
+      "ka_number": "KA-02692"
+    },
+    {
+      "name": "Domestic Worker Employment Agency Complaint",
+      "description": "Make a complaint about an employment agency that places domestic workers.",
+      "ka_number": "KA-02188"
+    },
+    {
+      "name": "Donation Collection Bin Complaint",
+      "description": "Report an illegally-placed donation collection bin.",
+      "ka_number": "KA-02466"
+    },
+    {
+      "name": "Door-to-Door Sales Complaint",
+      "description": "Make a complaint about a door-to-door salesperson.",
+      "ka_number": "KA-02187"
+    },
+    {
+      "name": "Drag Racing",
+      "description": "Report drag racing.",
+      "ka_number": "KA-02046"
+    },
+    {
+      "name": "Drinking Water",
+      "description": "Report cold or drinking water odor, taste, discoloration, or illness caused by drinking water. Get water quality and building water tank inspection info.",
+      "ka_number": "KA-01402"
+    },
+    {
+      "name": "Drones",
+      "description": "Apply for an Unmanned Aircraft Permit, which is required to operate a drone within New York City. Report unpermitted or reckless drone use.",
+      "ka_number": "KA-01541"
+    },
+    {
+      "name": "Drug and Alcohol Services",
+      "description": "Get free, confidential help with drug or alcohol addiction, such as crisis services and treatment referrals. Make a drug/alcohol rehab facility complaint.",
+      "ka_number": "KA-02698"
+    },
+    {
+      "name": "Drug Sale",
+      "description": "Report the sale of illegal drugs.",
+      "ka_number": "KA-01983"
+    },
+    {
+      "name": "Drug Use",
+      "description": "Report illegal drug use.",
+      "ka_number": "KA-03112"
+    },
+    {
+      "name": "Dry Cleaner Complaint",
+      "description": "Make a complaint about a dry cleaner.",
+      "ka_number": "KA-02186"
+    },
+    {
+      "name": "Dry Cleaning Odor",
+      "description": "Report a smell directly outside a dry cleaning business or coming into a nearby residential building or business.",
+      "ka_number": "KA-02201"
+    },
+    {
+      "name": "Dry Weather Sewage Discharge Complaint",
+      "description": "Report water flowing through a sewer outfall pipe during dry weather.",
+      "ka_number": "KA-02128"
+    },
+    {
+      "name": "Dumping in Catch Basin",
+      "description": "Report grease, gasoline, cement, oil, sewage, chemicals, or other liquids being dumped into a street sewer grate or catch basin.",
+      "ka_number": "KA-02202"
+    },
+    {
+      "name": "Dumpster Complaint",
+      "description": "Report a dumpster that is blocking a sidewalk or street, overflowing, or uncovered.",
+      "ka_number": "KA-02139"
+    },
+    {
+      "name": "Dust Complaint",
+      "description": "Report dust from roadwork, construction, demolition, renovation, or another source.",
+      "ka_number": "KA-02248"
+    },
+    {
+      "name": "Earthquake",
+      "description": "Learn about the 3.0 magnitude earthquake that occurred in Hasbrouck Heights, New Jersey around 10:20 PM Saturday, August 2, 2025.",
+      "ka_number": "KA-03631"
+    },
+    {
+      "name": "E-Cigarette Sale Complaint",
+      "description": "Report a problem with a store that sells e-cigarettes.",
+      "ka_number": "KA-03518"
+    },
+    {
+      "name": "Elder Abuse",
+      "description": "Report suspected abuse or neglect of an older adult age 60 or older.",
+      "ka_number": "KA-02089"
+    },
+    {
+      "name": "Electric Bike, Scooter, or Storage Battery Sale Complaint",
+      "description": "Report the sale of uncertified e-bikes, scooters, and their storage batteries.",
+      "ka_number": "KA-03599"
+    },
+    {
+      "name": "Electric Company Complaint",
+      "description": "Report a problem with an electric company.",
+      "ka_number": "KA-03615"
+    },
+    {
+      "name": "Electric Space Heater Sale Complaint",
+      "description": "Report electric space heaters sold without required safety features or disclosures.",
+      "ka_number": "KA-03515"
+    },
+    {
+      "name": "Electrical Complaint",
+      "description": "Report an electrical problem in a rental building, defective or exposed wiring in a building, or faulty outdoor electrical equipment.",
+      "ka_number": "KA-01048"
+    },
+    {
+      "name": "Electrician or Plumber Complaint",
+      "description": "Make a complaint about a licensed plumber or electrician.",
+      "ka_number": "KA-02328"
+    },
+    {
+      "name": "Electronics or Appliance Repair Complaint",
+      "description": "Make a complaint about a business that repairs electronic equipment or appliances.",
+      "ka_number": "KA-02185"
+    },
+    {
+      "name": "Electronics Store Complaint",
+      "description": "Make a complaint about a business that sells audio, video, photo, or computer equipment.",
+      "ka_number": "KA-02184"
+    },
+    {
+      "name": "Elevator or Escalator Complaint",
+      "description": "Report a problem with an elevator or escalator.",
+      "ka_number": "KA-02015"
+    },
+    {
+      "name": "Emergency Housing Voucher Program",
+      "description": "Learn about the 2021 American Rescue Plan Emergency Housing Voucher (EHV) Program.",
+      "ka_number": "KA-03441"
+    },
+    {
+      "name": "Emotionally Disturbed Person",
+      "description": "Report someone who appears to be emotionally disturbed.",
+      "ka_number": "KA-01542"
+    },
+    {
+      "name": "Employment Agency Complaint",
+      "description": "Make a complaint about an employment agency.",
+      "ka_number": "KA-02183"
+    },
+    {
+      "name": "Essential Service Interruption Notice Not Posted",
+      "description": "Report a residential building owner for not posting a notice before heat, water, gas, or electricity service is disrupted.",
+      "ka_number": "KA-01947"
+    },
+    {
+      "name": "Excavation Undermining Nearby Building",
+      "description": "Report building excavation that is undermining a nearby building.",
+      "ka_number": "KA-01912"
+    },
+    {
+      "name": "Exchange, Refund, or Return Complaint",
+      "description": "Report a business that refuses an exchange, refund, or return or does not post its policy.",
+      "ka_number": "KA-02203"
+    },
+    {
+      "name": "E-ZPass",
+      "description": "Learn about E-Zpass, which allows drivers to prepay tolls and get discounts, or paying Tolls by Mail.",
+      "ka_number": "KA-01450"
+    },
+    {
+      "name": "Fair Fares NYC Complaint",
+      "description": "Make a complaint about the Fair Fares NYC program or its employees.",
+      "ka_number": "KA-03182"
+    },
+    {
+      "name": "Fair Housing",
+      "description": "Learn about the City's laws against housing discrimination and get resources to resolve disputes.",
+      "ka_number": "KA-01451"
+    },
+    {
+      "name": "Fair Workweek Law",
+      "description": "Learn about the law that protects fast food, retail, and utility safety workers.",
+      "ka_number": "KA-02719"
+    },
+    {
+      "name": "Fallen Tree or Branch",
+      "description": "Request the removal of a fallen tree or branch, cracked branches in danger of falling, or a tree in poor condition.",
+      "ka_number": "KA-02138"
+    },
+    {
+      "name": "False Advertising",
+      "description": "Report misleading or deceptive advertising.",
+      "ka_number": "KA-02204"
+    },
+    {
+      "name": "Family Court",
+      "description": "Learn about Family Court, including locations and hours.",
+      "ka_number": "KA-01678"
+    },
+    {
+      "name": "Fence Complaint",
+      "description": "Report a fence that is over the height limit, missing, or not secured.",
+      "ka_number": "KA-02050"
+    },
+    {
+      "name": "Film or Television Production Complaint",
+      "description": "Report noise or other problems with a film or television production.",
+      "ka_number": "KA-01461"
+    },
+    {
+      "name": "Fire Alarm Box Complaint",
+      "description": "Report a problem with a fire alarm box.",
+      "ka_number": "KA-01465"
+    },
+    {
+      "name": "Fire Emergency",
+      "description": "Call 911 to report a fire.",
+      "ka_number": "KA-01543"
+    },
+    {
+      "name": "Fire Hazard",
+      "description": "Report a potential fire hazard.",
+      "ka_number": "KA-01466"
+    },
+    {
+      "name": "Fire Hydrant Complaint",
+      "description": "Report a fire hydrant that is leaking, running, missing, misused, or damaged (including fender post), or blocked by a vehicle.",
+      "ka_number": "KA-01034"
+    },
+    {
+      "name": "Fire Hydrant Request",
+      "description": "Request installation, removal, relocation, spray cap fitting, or fender post installation.",
+      "ka_number": "KA-01035"
+    },
+    {
+      "name": "Fire Suppression Contractor Complaint",
+      "description": "Make a complaint about a licensed fire suppression contractor.",
+      "ka_number": "KA-01472"
+    },
+    {
+      "name": "Fireworks Complaint",
+      "description": "Report the sale, use, storage, or transport of illegal fireworks.",
+      "ka_number": "KA-02249"
+    },
+    {
+      "name": "Floatable Trash in Waterway Boom or Net Containments",
+      "description": "Report trash in a waterway. Learn about reducing floatables and other trash in waterways.",
+      "ka_number": "KA-01475"
+    },
+    {
+      "name": "Foam Ban",
+      "description": "Learn about the City's foam ban and report an establishment using or selling single-use foam products.",
+      "ka_number": "KA-01373"
+    },
+    {
+      "name": "Food Poisoning",
+      "description": "Report illness caused by food.",
+      "ka_number": "KA-02051"
+    },
+    {
+      "name": "Food Safety Complaint",
+      "description": "Report an unsanitary restaurant, deli, grocery, market, cafeteria, bakery, or facility where food is made or stored.",
+      "ka_number": "KA-01111"
+    },
+    {
+      "name": "Foster Care Agency Complaint",
+      "description": "Report a problem with a foster care agency.",
+      "ka_number": "KA-01545"
+    },
+    {
+      "name": "Foul Odor from Unknown Source",
+      "description": "Call 911 to report a smell that's coming from an unknown source.",
+      "ka_number": "KA-01548"
+    },
+    {
+      "name": "Freelance Worker and Hiring Party Assistance",
+      "description": "Get help for freelance workers and those who employ them.",
+      "ka_number": "KA-02743"
+    },
+    {
+      "name": "Funeral Director Complaint",
+      "description": "Make a complaint about a funeral director.",
+      "ka_number": "KA-02746"
+    },
+    {
+      "name": "Funeral Home Complaint",
+      "description": "Report a problem with a funeral home.",
+      "ka_number": "KA-02180"
+    },
+    {
+      "name": "Furniture Store Complaint",
+      "description": "Make a complaint about a furniture or mattress store.",
+      "ka_number": "KA-02179"
+    },
+    {
+      "name": "Gambling",
+      "description": "Call 911 to report illegal gambling.",
+      "ka_number": "KA-01550"
+    },
+    {
+      "name": "Games of Chance Complaint",
+      "description": "Make a complaint about a business that hosts bingo, raffles, and other games of chance.",
+      "ka_number": "KA-02195"
+    },
+    {
+      "name": "Gaming Cafe Complaint",
+      "description": "Make a complaint about a business with three or more computers for playing games.",
+      "ka_number": "KA-02178"
+    },
+    {
+      "name": "Garbage Truck Spill",
+      "description": "Report waste leaking or spilling from a garbage truck or trash that spilled onto the ground while being loaded into a truck.",
+      "ka_number": "KA-02335"
+    },
+    {
+      "name": "Gas Company Complaint",
+      "description": "Report a problem with a gas company.",
+      "ka_number": "KA-03614"
+    },
+    {
+      "name": "Gas Leak",
+      "description": "Call 911 to report a gas leak or any gas-related emergency or dangerous condition.",
+      "ka_number": "KA-02048"
+    },
+    {
+      "name": "Gas Piping or Hookup Complaint",
+      "description": "Report an improper, illegal, defective, or unpermitted gas piping or hookup.",
+      "ka_number": "KA-01913"
+    },
+    {
+      "name": "Gas Station Complaint",
+      "description": "Make a complaint about a gas station.",
+      "ka_number": "KA-02176"
+    },
+    {
+      "name": "Gender Pricing Complaint",
+      "description": "Report a retail service establishment that charges men and women different prices for the same service.",
+      "ka_number": "KA-02207"
+    },
+    {
+      "name": "Goods or Services Delivery Complaint",
+      "description": "Report a business that fails to deliver goods or services.",
+      "ka_number": "KA-02205"
+    },
+    {
+      "name": "Gowanus Canal Construction Project",
+      "description": "Learn about Gowanus Canal Construction Project. Report excessive or after hours construction noise.",
+      "ka_number": "KA-03601"
+    },
+    {
+      "name": "Graffiti",
+      "description": "Report graffiti. Learn about what your options are when someone else reports graffiti on your building.",
+      "ka_number": "KA-02070"
+    },
+    {
+      "name": "Guard Dog Registration",
+      "description": "Register a trained guard dog or report loss, theft, or transfer of ownership.",
+      "ka_number": "KA-01556"
+    },
+    {
+      "name": "Gun Tip",
+      "description": "Report the sale or possession of an illegal gun.",
+      "ka_number": "KA-02762"
+    },
+    {
+      "name": "Gunshot",
+      "description": "Call 911 to report gunfire.",
+      "ka_number": "KA-01557"
+    },
+    {
+      "name": "Gym or Health Spa Membership Complaint",
+      "description": "Report a problem with a gym or health spa membership.",
+      "ka_number": "KA-01558"
+    },
+    {
+      "name": "Harassment",
+      "description": "Call 911 to report any type of harassment, including sexual harassment, cat calling, and voyeurism.",
+      "ka_number": "KA-01216"
+    },
+    {
+      "name": "Hate Crime",
+      "description": "Call 911 to report a hate crime.",
+      "ka_number": "KA-01561"
+    },
+    {
+      "name": "Heat Complaint in a Commercial Building",
+      "description": "Report a heat problem in a commercial or public school building.",
+      "ka_number": "KA-02122"
+    },
+    {
+      "name": "Heat or Hot Water Complaint in a Residential Building",
+      "description": "Report a problem with heat or hot water in a residential building.",
+      "ka_number": "KA-01036"
+    },
+    {
+      "name": "Heating Company Complaint",
+      "description": "Report a problem with a heating company.",
+      "ka_number": "KA-03616"
+    },
+    {
+      "name": "Higher Education Complaint",
+      "description": "Make a complaint about a school of higher education.",
+      "ka_number": "KA-02175"
+    },
+    {
+      "name": "Highway Fence Complaint",
+      "description": "Report a problem with a fence on a highway.",
+      "ka_number": "KA-01667"
+    },
+    {
+      "name": "Highway Flooding",
+      "description": "Report a large amount of water on a highway.",
+      "ka_number": "KA-02200"
+    },
+    {
+      "name": "Highway Plate Complaint",
+      "description": "Report a shifted, missing, or broken steel plate on a highway.",
+      "ka_number": "KA-01237"
+    },
+    {
+      "name": "Highway Resurfacing Request",
+      "description": "Report a segment of a New York City highway in need of paving.",
+      "ka_number": "KA-01666"
+    },
+    {
+      "name": "Highway Sign Complaint",
+      "description": "Report a highway sign is blocked, damaged, dangling, missing, or inaccurate or an overhead electronic sign that is damaged or inaccurate.",
+      "ka_number": "KA-02145"
+    },
+    {
+      "name": "Home Care Complaint",
+      "description": "Report a problem with home care services.",
+      "ka_number": "KA-02251"
+    },
+    {
+      "name": "Home Delivered Meals for Older Adults",
+      "description": "Schedule, cancel, or report a problem with home delivery of meals for people age 60 and older.",
+      "ka_number": "KA-02252"
+    },
+    {
+      "name": "Home Heating Oil Company Complaint",
+      "description": "Report a home heating oil business that imposes illegal credit terms, issues an improper contract or receipt, or shortchanges the amount of oil dispensed.",
+      "ka_number": "KA-02174"
+    },
+    {
+      "name": "Home Improvement Contractor Complaint",
+      "description": "Make a complaint about a home improvement contractor working on residential property.",
+      "ka_number": "KA-02173"
+    },
+    {
+      "name": "Homeless Encampment",
+      "description": "Report a homeless encampment.",
+      "ka_number": "KA-02253"
+    },
+    {
+      "name": "Homeless Outreach Assistance",
+      "description": "Request outreach for a homeless person living on the streets, in the subway, or in other public places.",
+      "ka_number": "KA-01037"
+    },
+    {
+      "name": "Homeless Shelter Complaint",
+      "description": "Make a complaint or comment about a homeless shelter.",
+      "ka_number": "KA-01039"
+    },
+    {
+      "name": "Homeless Shelter Resident Assistance",
+      "description": "Get help for homeless people who is currently in the shelter system, including medical concerns.",
+      "ka_number": "KA-01566"
+    },
+    {
+      "name": "Homeowner and Mortgage Relief Scams",
+      "description": "Learn about homeowner and mortgage relief scams.",
+      "ka_number": "KA-03385"
+    },
+    {
+      "name": "Homeowner Help Desk",
+      "description": "NYC homeowners can get help with issues, including mortgage fraud or scams, lien debt, repairs, and foreclosure.",
+      "ka_number": "KA-03437"
+    },
+    {
+      "name": "Horse Drawn Cab Business Complaint",
+      "description": "Make a complaint about a horse drawn carriage driver or business.",
+      "ka_number": "KA-02172"
+    },
+    {
+      "name": "Hospital or Clinic Complaint",
+      "description": "Report a problem with a hospital or clinic in New York State.",
+      "ka_number": "KA-01503"
+    },
+    {
+      "name": "Hotel Complaint",
+      "description": "Report a contract or billing issue or undisclosed service disruption at a hotel.",
+      "ka_number": "KA-02171"
+    },
+    {
+      "name": "Housing Information Guide Notice Not Posted",
+      "description": "Report a residential building owner for not posting a Housing Information Guide Notice.",
+      "ka_number": "KA-01948"
+    },
+    {
+      "name": "Housing Used for Short-Term Rental (Vacation Rentals or Illegal Home-Sharing)",
+      "description": "Report a location that is being used as a hotel, for vacation rentals, or for rentals of fewer than 30 days.",
+      "ka_number": "KA-02317"
+    },
+    {
+      "name": "Hoverboard",
+      "description": "Report the use of a hoverboard, which is a motorized self-balancing scooter.",
+      "ka_number": "KA-02802"
+    },
+    {
+      "name": "HPD Section 8 Fraud",
+      "description": "Report tenant or landlord fraud in the HPD Section 8 program.",
+      "ka_number": "KA-01494"
+    },
+    {
+      "name": "Human Trafficking",
+      "description": "Report the recruiting, transporting, selling, or buying of people to exploit them. Get support and social services for victims.",
+      "ka_number": "KA-02806"
+    },
+    {
+      "name": "Identity Theft",
+      "description": "Report identify theft or get tips for consumers and businesses about preventing it.",
+      "ka_number": "KA-02533"
+    },
+    {
+      "name": "Idling Vehicle",
+      "description": "Report a vehicle parked with its engine running for more than three minutes. Learn how to file a Citizen's Air Complaint.",
+      "ka_number": "KA-02222"
+    },
+    {
+      "name": "IDNYC Complaints, Status, and Questions",
+      "description": "Get information about IDNYC issues, status of an application, and their Mobile Enrollment Center.",
+      "ka_number": "KA-03111"
+    },
+    {
+      "name": "Illegal Animal",
+      "description": "Report a person selling or keeping a wild or illegal animal as a pet.",
+      "ka_number": "KA-02255"
+    },
+    {
+      "name": "Illegal Dumping",
+      "description": "Report past or chronic dumping on public property.",
+      "ka_number": "KA-02097"
+    },
+    {
+      "name": "Illegal Eviction or Lockout",
+      "description": "Call 911 to report an eviction that was not performed by a NYC Marshal or Sheriff.",
+      "ka_number": "KA-02518"
+    },
+    {
+      "name": "Illegal Parking",
+      "description": "Report a vehicle parked illegally on public property, a blocked hydrant, parking permit misuse, or overnight commercial parking on residential street.",
+      "ka_number": "KA-01986"
+    },
+    {
+      "name": "Immigration Fraud",
+      "description": "Report individuals or businesses that target and exploit immigrants through fraudulent schemes or scams.",
+      "ka_number": "KA-01568"
+    },
+    {
+      "name": "Immigration Service Provider Complaint",
+      "description": "Make a complaint about a business that provides immigration services.",
+      "ka_number": "KA-01923"
+    },
+    {
+      "name": "Incarcerated Person Medical Concern",
+      "description": "Get medical attention for an incarcerated person in Department of Correction custody.",
+      "ka_number": "KA-01227"
+    },
+    {
+      "name": "Indoor Air Quality",
+      "description": "Report a problem with indoor air quality and learn how to improve air quality in your home.",
+      "ka_number": "KA-01886"
+    },
+    {
+      "name": "Injured or Sick Animal",
+      "description": "Get help for an injured or sick animal.",
+      "ka_number": "KA-01789"
+    },
+    {
+      "name": "Insurance Complaint",
+      "description": "Make a complaint about a health, car, home, life, or property insurance company.",
+      "ka_number": "KA-02821"
+    },
+    {
+      "name": "Internet Service or Online Business Complaint",
+      "description": "Report a problem with an online business or online service that wasn't delivered.",
+      "ka_number": "KA-01572"
+    },
+    {
+      "name": "Invasive Plant Species",
+      "description": "Learn about and report invasive plant species.",
+      "ka_number": "KA-03169"
+    },
+    {
+      "name": "IRS Impersonation",
+      "description": "Report someone impersonating an IRS employee.",
+      "ka_number": "KA-01573"
+    },
+    {
+      "name": "Jail System Complaint",
+      "description": "Report a problem with the New York City jail system, including threats to incarcerated people.",
+      "ka_number": "KA-02384"
+    },
+    {
+      "name": "Janitor or Super Not Available",
+      "description": "Report a residential building's janitor or super who is not available.",
+      "ka_number": "KA-02256"
+    },
+    {
+      "name": "Jeweler Complaint",
+      "description": "Report a problem with a jeweler.",
+      "ka_number": "KA-01719"
+    },
+    {
+      "name": "Judge Complaint",
+      "description": "Report misconduct by a judge.",
+      "ka_number": "KA-02832"
+    },
+    {
+      "name": "Juvenile Detention",
+      "description": "Learn about or make a complaint about juvenile detention programs and centers.",
+      "ka_number": "KA-02833"
+    },
+    {
+      "name": "Labor Law",
+      "description": "Learn about the rules that apply to workers and employers and report unfair or illegal practices.",
+      "ka_number": "KA-02488"
+    },
+    {
+      "name": "Landmark Building Complaint",
+      "description": "Report the alteration of landmark buildings without permission.",
+      "ka_number": "KA-02257"
+    },
+    {
+      "name": "Laundromat Complaint",
+      "description": "Make a complaint about a self-service laundromat or a business that washes clothes.",
+      "ka_number": "KA-02169"
+    },
+    {
+      "name": "Lawyer Complaint",
+      "description": "Make a complaint about a lawyer, including an unlicensed lawyer.",
+      "ka_number": "KA-01987"
+    },
+    {
+      "name": "Layaway Complaint",
+      "description": "Report a business that does not provide the terms of a layaway plan.",
+      "ka_number": "KA-02208"
+    },
+    {
+      "name": "Lead Paint",
+      "description": "Report lead paint, peeling paint, or lead dust due to construction. The City will send an inspector where applicable.",
+      "ka_number": "KA-02134"
+    },
+    {
+      "name": "Legal Assistance",
+      "description": "Get a lawyer referral, free legal services, and answers to questions about the law and courts. Connect with Tenant Helpline for advice and assistance.",
+      "ka_number": "KA-01040"
+    },
+    {
+      "name": "Legal Assistance and Inquiries for Older Adults",
+      "description": "Learn about legal service providers that provide free legal assistance specifically for seniors.",
+      "ka_number": "KA-03171"
+    },
+    {
+      "name": "Lewd Act",
+      "description": "Call 911 to report a lewd act done in public or where others are forced to see it.",
+      "ka_number": "KA-01576"
+    },
+    {
+      "name": "Libraries",
+      "description": "Find a public library.",
+      "ka_number": "KA-01065"
+    },
+    {
+      "name": "Lifeguard Complaint",
+      "description": "Make a complaint about a lifeguard.",
+      "ka_number": "KA-02258"
+    },
+    {
+      "name": "Light from Parking Lot Complaint",
+      "description": "Report bright lights from a parking lot shining into an apartment or building. The City does not accept complaints about bright lights from residences.",
+      "ka_number": "KA-02259"
+    },
+    {
+      "name": "LinkNYC",
+      "description": "Learn about LinkNYC or report a problem with a LinkNYC kiosk.",
+      "ka_number": "KA-02260"
+    },
+    {
+      "name": "Lithium-Ion Battery Safety and Complaint",
+      "description": "Learn how to store, charge, and get rid of lithium-ion batteries safely. Report someone not following guidelines or counterfeit batteries.",
+      "ka_number": "KA-03565"
+    },
+    {
+      "name": "Litter Basket Complaint or Request",
+      "description": "Report a public trash can that is missing, overflowing, or being misused. Suggest a location for a new or replacement public litter basket.",
+      "ka_number": "KA-02143"
+    },
+    {
+      "name": "Litter on Highway",
+      "description": "Report litter, debris, or garbage alongside or on the roadway of a highway.",
+      "ka_number": "KA-01672"
+    },
+    {
+      "name": "Littering",
+      "description": "Report a location that is the target of chronic littering.",
+      "ka_number": "KA-01673"
+    },
+    {
+      "name": "LockerNYC Pilot",
+      "description": "Learn about a pilot program that allows New Yorkers to receive and send packages using secure lockers on public sidewalks.",
+      "ka_number": "KA-03633"
+    },
+    {
+      "name": "Locksmith Complaint",
+      "description": "Make a complaint about a person who repairs, installs, services, or inspects locks and similar devices.",
+      "ka_number": "KA-02168"
+    },
+    {
+      "name": "Loft Complaint",
+      "description": "Get help with resolving disputes between loft tenants and owners.",
+      "ka_number": "KA-01077"
+    },
+    {
+      "name": "Long Island Rail Road",
+      "description": "Get information or make a complaint about the Long Island Rail Road (LIRR).",
+      "ka_number": "KA-01211"
+    },
+    {
+      "name": "Loose Syringes",
+      "description": "Report loose syringes or needles on public property.",
+      "ka_number": "KA-02475"
+    },
+    {
+      "name": "Lost Item in Sidewalk Grating",
+      "description": "The City does not retrieve items that have fallen into sidewalk gratings.",
+      "ka_number": "KA-01232"
+    },
+    {
+      "name": "Lost Item in Trash",
+      "description": "Report an item lost in trash that has been collected by the Department of Sanitation.",
+      "ka_number": "KA-01197"
+    },
+    {
+      "name": "Lost or Found Pet",
+      "description": "Get help for an owner whose pet is lost or has been seized by the police or the Animal Care Centers.",
+      "ka_number": "KA-02852"
+    },
+    {
+      "name": "Lost or Found Property",
+      "description": "Report lost or found property.",
+      "ka_number": "KA-01231"
+    },
+    {
+      "name": "Manage Your Fair Fares NYC Discount",
+      "description": "Report a Fair Fares NYC OMNY card or Fair Fares NYC MetroCard that is lost, stolen, damaged, expired, or not working.",
+      "ka_number": "KA-03183"
+    },
+    {
+      "name": "Managed Care Complaint",
+      "description": "Report a problem with medical treatment received from managed care plans.",
+      "ka_number": "KA-01198"
+    },
+    {
+      "name": "Manhole Cover Complaint",
+      "description": "Report a missing, sunken, raised, damaged, noisy, or steaming manhole cover.",
+      "ka_number": "KA-01669"
+    },
+    {
+      "name": "Manhole Flooding",
+      "description": "Report a manhole that is overflowing with water or sewage.",
+      "ka_number": "KA-01235"
+    },
+    {
+      "name": "Marriage Record",
+      "description": "Get a copy of a marriage record or make a correction.",
+      "ka_number": "KA-01030"
+    },
+    {
+      "name": "Medicaid Complaint",
+      "description": "Report an issue with Medicaid benefits, staff, or case management.",
+      "ka_number": "KA-01579"
+    },
+    {
+      "name": "Medical Device Complaint",
+      "description": "Report a problem with quality or danger of medical device or machine.",
+      "ka_number": "KA-01580"
+    },
+    {
+      "name": "Medical Emergency",
+      "description": "Call 911 to report any type of medical or health related emergency.",
+      "ka_number": "KA-01581"
+    },
+    {
+      "name": "Medical Waste Disposal",
+      "description": "Learn how to get rid of medical waste, including syringes and lancets.",
+      "ka_number": "KA-02423"
+    },
+    {
+      "name": "Medicare",
+      "description": "Learn about a health insurance program for seniors age 65 and over and people with disabilities. Get assistance with enrollment, coverage, and billing.",
+      "ka_number": "KA-01674"
+    },
+    {
+      "name": "Medicare Fraud or Abuse",
+      "description": "Report possible Medicare fraud.",
+      "ka_number": "KA-01584"
+    },
+    {
+      "name": "Metro-North Railroad",
+      "description": "Get information or make a complaint about the Metro-North Railroad.",
+      "ka_number": "KA-01212"
+    },
+    {
+      "name": "Missed Trash, Recycling, or Compost Collection",
+      "description": "Report waste that was not picked up on your collection day or at a scheduled appointment.",
+      "ka_number": "KA-01788"
+    },
+    {
+      "name": "Missing Person",
+      "description": "Call 911 to report someone who may be missing, abducted, or kidnapped. Check if a missing person has been found.",
+      "ka_number": "KA-01046"
+    },
+    {
+      "name": "Mold Complaint",
+      "description": "Report mold in an apartment, loft, commercial, or abandoned building.",
+      "ka_number": "KA-02262"
+    },
+    {
+      "name": "Money Transmitter Complaint",
+      "description": "Report a problem with a licensed money transmitter business.",
+      "ka_number": "KA-01200"
+    },
+    {
+      "name": "Mortgage or Loan Company Complaint",
+      "description": "Report a problem with a mortgage or loan company.",
+      "ka_number": "KA-01201"
+    },
+    {
+      "name": "Mosquitoes",
+      "description": "Learn about spraying schedules and preventing mosquitoes by getting rid of standing water. Report an unusual number of mosquitoes during Mosquito Season.",
+      "ka_number": "KA-02263"
+    },
+    {
+      "name": "Movie Theater Complaint",
+      "description": "Report a movie theater not using open captions or other problems.",
+      "ka_number": "KA-03478"
+    },
+    {
+      "name": "Moving Company Complaint",
+      "description": "Report a problem with a moving company.",
+      "ka_number": "KA-03517"
+    },
+    {
+      "name": "MyCity Business",
+      "description": "Get online help for starting and operating a business in New York City.",
+      "ka_number": "KA-02888"
+    },
+    {
+      "name": "Nail Salon Odor",
+      "description": "Report a smell coming from a nail salon.",
+      "ka_number": "KA-01929"
+    },
+    {
+      "name": "Naturally Occurring Retirement Community (NORC) Complaints",
+      "description": "Make a complaint about social services provided in a Naturally Occurring Retirement Community (NORC).",
+      "ka_number": "KA-02265"
+    },
+    {
+      "name": "Neighbor Odor",
+      "description": "The City does not accept complaints about body or cooking odor from a residence.",
+      "ka_number": "KA-01332"
+    },
+    {
+      "name": "Neighborhood Area Maps",
+      "description": "Learn about Neighborhood Area Maps, also known as WalkNYC signs. Report a problem with a local neighborhood area map sign.",
+      "ka_number": "KA-01953"
+    },
+    {
+      "name": "New Jersey Transit",
+      "description": "Get information or make a complaint about the New Jersey Transit bus and train system.",
+      "ka_number": "KA-01213"
+    },
+    {
+      "name": "New York City Public Schools Feedback",
+      "description": "Submit a complaint or compliment about public school teachers, principals, other NYCPS staff members, or the NYCPS Chancellor.",
+      "ka_number": "KA-03109"
+    },
+    {
+      "name": "New York Waterway Ferry",
+      "description": "Learn about or report a problem with New York Waterway Ferry.",
+      "ka_number": "KA-02880"
+    },
+    {
+      "name": "Newspaper Box Complaint",
+      "description": "Report a problem with a newsrack.",
+      "ka_number": "KA-02266"
+    },
+    {
+      "name": "Newsstand Complaint",
+      "description": "Make a complaint about a booth that sells newspapers and magazines.",
+      "ka_number": "KA-02166"
+    },
+    {
+      "name": "No Water, Low Water Pressure, or Water Temperature Complaint",
+      "description": "Report no water, water pressure, or temperature problems.",
+      "ka_number": "KA-01405"
+    },
+    {
+      "name": "Noise Complaints",
+      "description": "Learn how to report noise in New York City.",
+      "ka_number": "KA-02125"
+    },
+    {
+      "name": "Noise from Air Conditioner or Ventilation Equipment",
+      "description": "Report noise from an air conditioner, ventilation equipment, exhaust device, or battery energy storage system (BESS).",
+      "ka_number": "KA-01933"
+    },
+    {
+      "name": "Noise from Airplane",
+      "description": "Report noise from an airplane.",
+      "ka_number": "KA-02884"
+    },
+    {
+      "name": "Noise from Alarm",
+      "description": "Report an alarm in progress or an alarm that goes off too often or for too long.",
+      "ka_number": "KA-01089"
+    },
+    {
+      "name": "Noise from Bar, Club, or Restaurant",
+      "description": "Report noise, including music, coming from a bar, club, or restaurant. Learn how mediation can help quality of life disputes between restaurants, bars,",
+      "ka_number": "KA-01085"
+    },
+    {
+      "name": "Noise from Boat",
+      "description": "Report noise from a boat.",
+      "ka_number": "KA-01934"
+    },
+    {
+      "name": "Noise from Business Equipment",
+      "description": "Report noise from business equipment.",
+      "ka_number": "KA-01935"
+    },
+    {
+      "name": "Noise from Construction",
+      "description": "Report noise from street or building construction, including jackhammer noise.",
+      "ka_number": "KA-01091"
+    },
+    {
+      "name": "Noise from Dog or Other Animal",
+      "description": "Report noise from a dog or other domestic animals.",
+      "ka_number": "KA-01087"
+    },
+    {
+      "name": "Noise from Garbage Truck",
+      "description": "Report noise from a City-owned garbage truck or a private carter.",
+      "ka_number": "KA-01096"
+    },
+    {
+      "name": "Noise from Helicopter",
+      "description": "Report noise from a helicopter.",
+      "ka_number": "KA-02267"
+    },
+    {
+      "name": "Noise from House of Worship",
+      "description": "Report noise from inside a house of worship.",
+      "ka_number": "KA-01086"
+    },
+    {
+      "name": "Noise from Ice Cream Truck",
+      "description": "Report music from an ice cream truck that isn't moving.",
+      "ka_number": "KA-01097"
+    },
+    {
+      "name": "Noise from Intercity or Interstate Bus",
+      "description": "Report noise from an intercity or interstate bus.",
+      "ka_number": "KA-01098"
+    },
+    {
+      "name": "Noise from Large Party or Crowd",
+      "description": "Call 911 to report a large, loud party that has potential for danger.",
+      "ka_number": "KA-01591"
+    },
+    {
+      "name": "Noise from Lawn Equipment",
+      "description": "Report noise from lawn care equipment.",
+      "ka_number": "KA-01101"
+    },
+    {
+      "name": "Noise from Neighbor",
+      "description": "Report a noisy neighbor.",
+      "ka_number": "KA-01017"
+    },
+    {
+      "name": "Noise from Park",
+      "description": "Report noise from a park.",
+      "ka_number": "KA-01088"
+    },
+    {
+      "name": "Noise from Store or Business",
+      "description": "Report noise (other than an alarm or equipment) from a store or commercial location.",
+      "ka_number": "KA-01090"
+    },
+    {
+      "name": "Noise from Street or Sidewalk",
+      "description": "Report noise from the street or sidewalk.",
+      "ka_number": "KA-01092"
+    },
+    {
+      "name": "Noise from Vehicle",
+      "description": "Report noise from a vehicle, including horn honking, engine idling, or loud music.",
+      "ka_number": "KA-01102"
+    },
+    {
+      "name": "Non-Residential Building Maintenance Complaint",
+      "description": "Report a maintenance problem in a commercial or non-residential building.",
+      "ka_number": "KA-02268"
+    },
+    {
+      "name": "Nursing Home Complaint",
+      "description": "Report a problem with a nursing home care.",
+      "ka_number": "KA-01735"
+    },
+    {
+      "name": "NYC Ferry",
+      "description": "Get information about NYC Ferry, including routes, fares, and rules. Make a complaint or report a lost item.",
+      "ka_number": "KA-02376"
+    },
+    {
+      "name": "NYC Health Department Clinic Feedback",
+      "description": "Make a complaint, give a compliment, or make a comment about a clinic run by the NYC Health Department.",
+      "ka_number": "KA-01183"
+    },
+    {
+      "name": "NYC Radio and Television",
+      "description": "Get information or make a complaint about NYC Media Group's television and radio shows.",
+      "ka_number": "KA-02894"
+    },
+    {
+      "name": "NYC311 Accounts",
+      "description": "Learn how to sign up for an online account to create and track NYC311 Service Requests. Get help with an account issue.",
+      "ka_number": "KA-03221"
+    },
+    {
+      "name": "NYC311 Feedback",
+      "description": "Give feedback on the service provided by NYC311 and its employees.",
+      "ka_number": "KA-02419"
+    },
+    {
+      "name": "NYCHA Pet Policy",
+      "description": "Learn about NYCHA's pet policy. Report a person breaking the rules.",
+      "ka_number": "KA-01052"
+    },
+    {
+      "name": "NYCHA Public Housing Maintenance Complaint",
+      "description": "Report a maintenance problem in a New York City Housing Authority apartment, building, or public space.",
+      "ka_number": "KA-01076"
+    },
+    {
+      "name": "NYCHA Public Housing Section 8 Fraud",
+      "description": "Report tenant or landlord fraud in public housing or the NYCHA Section 8 program.",
+      "ka_number": "KA-01664"
+    },
+    {
+      "name": "NYSED Licensed Professional or Business Complaint",
+      "description": "Report a problem with a professional or business licensed by New York State Education Department (NYSED) Office of Professions.",
+      "ka_number": "KA-03625"
+    },
+    {
+      "name": "Obscured License Plate Complaint",
+      "description": "Report a vehicle with a covered license plate.",
+      "ka_number": "KA-03584"
+    },
+    {
+      "name": "Offensive Sexual Material",
+      "description": "Report obscene sexual material displayed at a newsstand or other public location.",
+      "ka_number": "KA-01593"
+    },
+    {
+      "name": "Off-Hour Delivery Program",
+      "description": "Learn about the program that encourages delivery of goods in specific neighborhoods between 7 PM and 6 AM.",
+      "ka_number": "KA-03180"
+    },
+    {
+      "name": "Oil Burning Equipment Installer Complaint",
+      "description": "Report a problem with a licensed oil burning equipment installer.",
+      "ka_number": "KA-01737"
+    },
+    {
+      "name": "Oil Spill",
+      "description": "Report an automotive, heating, or industrial oil spill on a street or in a facility, apartment building, or private home.",
+      "ka_number": "KA-02270"
+    },
+    {
+      "name": "Older Adult Center Complaint",
+      "description": "Report a problem with an older adult center.",
+      "ka_number": "KA-01900"
+    },
+    {
+      "name": "Online or Mail Order Complaint",
+      "description": "Report a problem with an online or mail-order business.",
+      "ka_number": "KA-02167"
+    },
+    {
+      "name": "Open Streets",
+      "description": "Learn about the program that transforms streets into open public space for pedestrians, cyclists, and school activities.",
+      "ka_number": "KA-03327"
+    },
+    {
+      "name": "Organized Crime",
+      "description": "Report organized crime.",
+      "ka_number": "KA-01595"
+    },
+    {
+      "name": "Outdoor Dining Complaint",
+      "description": "Report a problem with an outdoor dining structure or a restaurant or bar offering outdoor dining without authorization.",
+      "ka_number": "KA-03321"
+    },
+    {
+      "name": "Outdoor Learning",
+      "description": "Learn how schools and day care centers can use City streets, play yards, and parks for classes.",
+      "ka_number": "KA-03350"
+    },
+    {
+      "name": "Overcharge",
+      "description": "Report a business charging more than the posted or advertised price.",
+      "ka_number": "KA-02136"
+    },
+    {
+      "name": "Overdose",
+      "description": "Call 911 to report someone in very bad condition who needs immediate medical help.",
+      "ka_number": "KA-02907"
+    },
+    {
+      "name": "Overgrown Grass or Weeds",
+      "description": "Report overgrown grass or weeds on public property.",
+      "ka_number": "KA-02271"
+    },
+    {
+      "name": "Paid Care Worker or Employer Assistance",
+      "description": "Get help for paid care workers and their employers.",
+      "ka_number": "KA-02908"
+    },
+    {
+      "name": "Panhandling",
+      "description": "Report panhandling.",
+      "ka_number": "KA-02272"
+    },
+    {
+      "name": "Paper License Plate Complaint",
+      "description": "Report the use or sale of unauthorized paper license plates, also known as ghost plates.",
+      "ka_number": "KA-03492"
+    },
+    {
+      "name": "Parent Coordinator",
+      "description": "Contact a Parent Coordinator to report issues at your child's school.",
+      "ka_number": "KA-02910"
+    },
+    {
+      "name": "Park Maintenance Complaint",
+      "description": "Report broken equipment, unclean conditions, or another maintenance problem in a City park, pool, recreation center, or greenway.",
+      "ka_number": "KA-01060"
+    },
+    {
+      "name": "Parking Meter Complaint or Request",
+      "description": "Report a problem with a parking meter or request a refund. Request a new parking meter or removal or relocation of an existing parking meter.",
+      "ka_number": "KA-01240"
+    },
+    {
+      "name": "Parking Signs and Rules",
+      "description": "Learn about parking regulations and find out the rules for a specific location.",
+      "ka_number": "KA-01026"
+    },
+    {
+      "name": "ParkNYC Parking Payment",
+      "description": "Pay for street parking using a mobile app or website.",
+      "ka_number": "KA-01238"
+    },
+    {
+      "name": "Parole",
+      "description": "Get parole information, report a parole violation, or make a complaint about a parole officer.",
+      "ka_number": "KA-01661"
+    },
+    {
+      "name": "PATH Trains",
+      "description": "Get information or make a complaint about train service between Manhattan and New Jersey.",
+      "ka_number": "KA-01214"
+    },
+    {
+      "name": "Pavement Marking Complaint or Request",
+      "description": "Report missing or faded pavement markings (also known as street line markings) on a street or highway. Request brand new pavement markings.",
+      "ka_number": "KA-01100"
+    },
+    {
+      "name": "Pawnbroker Complaint",
+      "description": "Make a complaint about a business that sells pawned goods.",
+      "ka_number": "KA-02165"
+    },
+    {
+      "name": "Pay Phone Complaint",
+      "description": "Report a pay phone that is broken, damaged, dirty, or has graffiti.",
+      "ka_number": "KA-01054"
+    },
+    {
+      "name": "Pedestrian Bridges",
+      "description": "Learn about pedestrian bridges in New York City.",
+      "ka_number": "KA-01080"
+    },
+    {
+      "name": "Pedestrian Plazas",
+      "description": "Report a public pedestrian plaza that needs maintenance.",
+      "ka_number": "KA-03623"
+    },
+    {
+      "name": "Pedestrian Ramp Complaint",
+      "description": "Report a damaged pedestrian ramp.",
+      "ka_number": "KA-02276"
+    },
+    {
+      "name": "Pedestrian Ramp Request",
+      "description": "Request the installation of a new pedestrian ramp.",
+      "ka_number": "KA-02277"
+    },
+    {
+      "name": "Pedestrian Signal Complaint or Request",
+      "description": "Report a problem with an existing pedestrian (Walk/Don't Walk) signal. Request a new Accessible Pedestrian Signal.",
+      "ka_number": "KA-01047"
+    },
+    {
+      "name": "Pedicab Business or Driver Complaint",
+      "description": "Make a complaint about a business or driver operating pedicabs.",
+      "ka_number": "KA-02164"
+    },
+    {
+      "name": "Pesticide Application Without Notice",
+      "description": "Report someone using a pesticide without warning occupants or neighbors in advance.",
+      "ka_number": "KA-01597"
+    },
+    {
+      "name": "Pet Sale Complaint",
+      "description": "Report the sale of pets.",
+      "ka_number": "KA-02279"
+    },
+    {
+      "name": "Pharmacist Complaint",
+      "description": "Report professional misconduct by a pharmacist.",
+      "ka_number": "KA-03189"
+    },
+    {
+      "name": "Pharmacy Without Naloxone",
+      "description": "Give feedback about a pharmacy you visited to get naloxone or general comments about access to naloxone.",
+      "ka_number": "KA-02922"
+    },
+    {
+      "name": "Phone Card Complaint",
+      "description": "Report a problem with a pre-paid phone card.",
+      "ka_number": "KA-01738"
+    },
+    {
+      "name": "Phone Complaint",
+      "description": "Report a problem with phone service, billing, or provider.",
+      "ka_number": "KA-02923"
+    },
+    {
+      "name": "Pigeon Droppings or Odor",
+      "description": "Report unsanitary conditions caused by pigeons.",
+      "ka_number": "KA-02280"
+    },
+    {
+      "name": "Pigeon Trapping or Netting",
+      "description": "Report someone trapping pigeons without a permit.",
+      "ka_number": "KA-01601"
+    },
+    {
+      "name": "Place of Assembly Without Permit Complaint",
+      "description": "Report an establishment that does not have a Place of Assembly permit posted.",
+      "ka_number": "KA-01914"
+    },
+    {
+      "name": "Plastic Bag Ban and Paper Bag Fee",
+      "description": "Learn about the ban on plastic carryout bags and fee for paper bags.",
+      "ka_number": "KA-02484"
+    },
+    {
+      "name": "Plastic Bag Recycling",
+      "description": "Learn about or report a violation of the Plastic Bag Recycling Law.",
+      "ka_number": "KA-02080"
+    },
+    {
+      "name": "Plastic Straw Rules",
+      "description": "Learn about rules for plastic straws, splash sticks, or stirrers at food establishments. Report a food establishment violating the rules.",
+      "ka_number": "KA-03462"
+    },
+    {
+      "name": "Plumbing Complaint in a Commercial Building",
+      "description": "Report broken or leaking plumbing in a commercial building.",
+      "ka_number": "KA-01915"
+    },
+    {
+      "name": "Plumbing Work Without Permit",
+      "description": "Report plumbing work done without a permit.",
+      "ka_number": "KA-01988"
+    },
+    {
+      "name": "Poison Control Center",
+      "description": "Get help for poison-related issues.",
+      "ka_number": "KA-01888"
+    },
+    {
+      "name": "Poison Ivy",
+      "description": "Report poison ivy in a park or tree, on school property, or on private property.",
+      "ka_number": "KA-02281"
+    },
+    {
+      "name": "Police Officer Complaint",
+      "description": "Report unnecessary use of force, abuse of authority, discourtesy, or offensive language by a police officer. Report NYPD criminal activity or misconduct.",
+      "ka_number": "KA-02420"
+    },
+    {
+      "name": "Police Officer Impersonation",
+      "description": "Call 911 to report someone impersonating a police officer.",
+      "ka_number": "KA-01603"
+    },
+    {
+      "name": "Poll Site Complaint",
+      "description": "Report a problem with a poll site, voting machine, ballot, or poll worker.",
+      "ka_number": "KA-02926"
+    },
+    {
+      "name": "Poll Worker Assistance",
+      "description": "Get help with pay checks, work assignments, and other issues.",
+      "ka_number": "KA-01406"
+    },
+    {
+      "name": "Pool or Billiard Room Complaint",
+      "description": "Make a complaint about a business with pool, billiards, or pocket billiards.",
+      "ka_number": "KA-02162"
+    },
+    {
+      "name": "Pool or Sauna Complaint",
+      "description": "Make a complaint about pool or sauna maintenance, water quality, safety equipment, or unpermitted pool use.",
+      "ka_number": "KA-02282"
+    },
+    {
+      "name": "Poster or Sticker Complaint",
+      "description": "Report signs, stickers, or decals posted on public property.",
+      "ka_number": "KA-02140"
+    },
+    {
+      "name": "Pothole or Cave-In on Highway",
+      "description": "Report a pothole or cave-in on a highway.",
+      "ka_number": "KA-01106"
+    },
+    {
+      "name": "Pothole or Cave-In on Street",
+      "description": "Report a pothole or cave-in on a street.",
+      "ka_number": "KA-01093"
+    },
+    {
+      "name": "Power Outage",
+      "description": "Report a power outage or blackout to a utility company. File a ConEd claim for food or medicine spoiled during a power outage.",
+      "ka_number": "KA-02283"
+    },
+    {
+      "name": "Pregnancy Services Center Complaint",
+      "description": "Report a pregnancy services center that does not disclose required information about the services it offers.",
+      "ka_number": "KA-01924"
+    },
+    {
+      "name": "Prevailing Wage Complaint",
+      "description": "Make a complaint to recover money if you were not paid the correct wages.",
+      "ka_number": "KA-01741"
+    },
+    {
+      "name": "Price Not Posted or Inaccurate",
+      "description": "Report a business that doesn't post prices or posts inaccurate prices.",
+      "ka_number": "KA-02209"
+    },
+    {
+      "name": "Private Carter Complaint",
+      "description": "Report a problem with a commercial waste disposal company.",
+      "ka_number": "KA-02135"
+    },
+    {
+      "name": "Private Elevator or Escalator Inspector Complaint",
+      "description": "Report a problem with a licensed private elevator or escalator inspector.",
+      "ka_number": "KA-01438"
+    },
+    {
+      "name": "Private Garage or Parking Lot Complaint",
+      "description": "Make a complaint about a privately-owned parking facility.",
+      "ka_number": "KA-02177"
+    },
+    {
+      "name": "Privately Owned Public Space (POPS) Complaint",
+      "description": "Report a privately owned public space (POPS) that is poorly maintained or not open to the public during posted hours.",
+      "ka_number": "KA-01061"
+    },
+    {
+      "name": "Process Server Complaint",
+      "description": "Make a complaint about a person or business that issues summonses or other court papers.",
+      "ka_number": "KA-02161"
+    },
+    {
+      "name": "Property Deed or Record Fraud",
+      "description": "Report deed fraud or learn how to prevent it.",
+      "ka_number": "KA-02936"
+    },
+    {
+      "name": "Property Grade Change Complaint",
+      "description": "Report improper or unapproved changes to a property's grade, slope, or ground level.",
+      "ka_number": "KA-01907"
+    },
+    {
+      "name": "Prostitution",
+      "description": "Call 911 to report prostitution.",
+      "ka_number": "KA-01609"
+    },
+    {
+      "name": "Protected Time Off",
+      "description": "Learn about the Protected Time Off Law. Report an employer violating the law.",
+      "ka_number": "KA-02909"
+    },
+    {
+      "name": "Public Advocate",
+      "description": "Learn about and contact the elected official who reviews and investigates complaints about City services.",
+      "ka_number": "KA-01204"
+    },
+    {
+      "name": "Public Auction Complaint",
+      "description": "Make a complaint about a business or person selling merchandise by public auction.",
+      "ka_number": "KA-02160"
+    },
+    {
+      "name": "Public Event Seating Complaint",
+      "description": "Report a ticket seller that does not provide seating information for an event.",
+      "ka_number": "KA-02210"
+    },
+    {
+      "name": "Public Garages and Parking Lots",
+      "description": "Find a City-owned parking facility. Report problems with maintenance, cleanliness, lighting, or other conditions in City-owned parking facilities.",
+      "ka_number": "KA-02380"
+    },
+    {
+      "name": "Public Official Threat",
+      "description": "Call 911 to report someone threatening a public official, building, facility, or government employee.",
+      "ka_number": "KA-01613"
+    },
+    {
+      "name": "Public Recycling Bin Complaint",
+      "description": "Report an overflowing or misused public recycling bin.",
+      "ka_number": "KA-02483"
+    },
+    {
+      "name": "Public Urination or Defecation",
+      "description": "Report a person defecating or urinating in public.",
+      "ka_number": "KA-01958"
+    },
+    {
+      "name": "Rabid Animal",
+      "description": "Report an animal that may have rabies, dead or alive.",
+      "ka_number": "KA-02349"
+    },
+    {
+      "name": "Radioactive Materials Complaint",
+      "description": "Report radioactive material that is stored improperly or creating a risk of contamination.",
+      "ka_number": "KA-01943"
+    },
+    {
+      "name": "Rain Garden",
+      "description": "Learn about rain gardens that manage stormwater runoff from streets and sidewalks. Report a drainage or maintenance issue with a Rain Garden.",
+      "ka_number": "KA-02948"
+    },
+    {
+      "name": "Rat or Mouse Complaint",
+      "description": "Report rats, mice, and conditions that might attract them.",
+      "ka_number": "KA-01107"
+    },
+    {
+      "name": "Receipt Complaint",
+      "description": "Report a business that gives an incorrect or illegal receipt.",
+      "ka_number": "KA-02211"
+    },
+    {
+      "name": "Reckless Driving",
+      "description": "Call 911 to report reckless or dangerous driving in progress.",
+      "ka_number": "KA-01615"
+    },
+    {
+      "name": "Recycling Theft",
+      "description": "Report theft of recyclable materials.",
+      "ka_number": "KA-02479"
+    },
+    {
+      "name": "Red Light Camera Complaint",
+      "description": "Report a damaged or defective red light camera.",
+      "ka_number": "KA-02343"
+    },
+    {
+      "name": "Rent Stabilization Notice Not Posted",
+      "description": "Report a residential rental building owner for not posting a Rent Stabilization Notice.",
+      "ka_number": "KA-03707"
+    },
+    {
+      "name": "Residential Pest Complaint",
+      "description": "Report mice, bed bugs, fleas, flies, or roaches in an apartment or in a public area of a residential building.",
+      "ka_number": "KA-02278"
+    },
+    {
+      "name": "Residential Rental Agency Complaint",
+      "description": "Report a problem with a residential rental agency.",
+      "ka_number": "KA-01926"
+    },
+    {
+      "name": "Restaurant Allergy Poster Complaint",
+      "description": "Report a missing, incorrect, or improperly displayed food establishment allergy poster.",
+      "ka_number": "KA-01942"
+    },
+    {
+      "name": "Restaurant and Mobile Food Letter Grading",
+      "description": "Learn about letter grading for restaurants, food trucks and food carts. Report a missing, fake, or incorrect letter grade.",
+      "ka_number": "KA-01057"
+    },
+    {
+      "name": "Restaurant Bathroom Rules",
+      "description": "Learn about public bathroom requirements for restaurants. Report no toilets for customers in a restaurant required to provide toilet facilities.",
+      "ka_number": "KA-01351"
+    },
+    {
+      "name": "Restaurant Complaint",
+      "description": "Report a problem with a restaurant.",
+      "ka_number": "KA-03516"
+    },
+    {
+      "name": "Restaurant Odor",
+      "description": "Report a smell coming from a restaurant or street food vendor.",
+      "ka_number": "KA-01930"
+    },
+    {
+      "name": "Rigger Complaint",
+      "description": "Make a complaint about a licensed rigger.",
+      "ka_number": "KA-02958"
+    },
+    {
+      "name": "Roof Tank Leak or Overflow",
+      "description": "Report a leaking or overflowing roof tank.",
+      "ka_number": "KA-01938"
+    },
+    {
+      "name": "Roosevelt Island Tramway",
+      "description": "Learn about or report a problem with the Roosevelt Island Tramway.",
+      "ka_number": "KA-01618"
+    },
+    {
+      "name": "Runaway or Homeless Youth Shelter and Support",
+      "description": "Learn how young people can get shelter and services through Department of Youth and Community Development (DYCD). Submit a complaint or comment to DYCD.",
+      "ka_number": "KA-01619"
+    },
+    {
+      "name": "Safe Construction for Tenants",
+      "description": "Report that safe construction or Tenant Protection Plan (TPP) information is not posted or distributed to tenants.",
+      "ka_number": "KA-02960"
+    },
+    {
+      "name": "Salary Transparency Law",
+      "description": "Learn about the Salary Transparency Law.",
+      "ka_number": "KA-03530"
+    },
+    {
+      "name": "Sale to Minor Complaint",
+      "description": "Report a store selling box cutters, etching acid, laser pointers, spray paint, tobacco products or electronic cigarettes to minors.",
+      "ka_number": "KA-01989"
+    },
+    {
+      "name": "Sales Tax Complaint",
+      "description": "Report a merchant charging the wrong amount of sales tax.",
+      "ka_number": "KA-01478"
+    },
+    {
+      "name": "Satellite Provider Complaint",
+      "description": "Make a complaint about a satellite television provider.",
+      "ka_number": "KA-01479"
+    },
+    {
+      "name": "Scaffold or Sidewalk Shed Complaint",
+      "description": "Report a problem with a pipe scaffold, suspended or hanging scaffold, or sidewalk shed.",
+      "ka_number": "KA-02291"
+    },
+    {
+      "name": "Scale Complaint",
+      "description": "Make a complaint about a scale used by a business.",
+      "ka_number": "KA-01925"
+    },
+    {
+      "name": "Scale Dealer or Repairer Complaint",
+      "description": "Make a complaint about a business that trades, sells, or repairs weighing or measuring devices.",
+      "ka_number": "KA-02158"
+    },
+    {
+      "name": "School Bullying",
+      "description": "Report school bullying or get anti-bullying assistance.",
+      "ka_number": "KA-02966"
+    },
+    {
+      "name": "School Bus Complaint",
+      "description": "Report a problem with a yellow school bus or bus driver.",
+      "ka_number": "KA-01491"
+    },
+    {
+      "name": "School Calendar and Closures",
+      "description": "Get information about public school holidays, key dates, and unplanned closures.",
+      "ka_number": "KA-02522"
+    },
+    {
+      "name": "School Construction",
+      "description": "Get information or make a complaint about public school renovation or new construction projects.",
+      "ka_number": "KA-02968"
+    },
+    {
+      "name": "School Discipline or Suspension Complaint",
+      "description": "Report a problem with how public school staff handled discipline or suspension.",
+      "ka_number": "KA-02971"
+    },
+    {
+      "name": "School Food Complaint",
+      "description": "Report a problem with public school meals.",
+      "ka_number": "KA-01482"
+    },
+    {
+      "name": "School Health Complaint",
+      "description": "Report a problem with health instruction, medical care, or an unhealthy condition.",
+      "ka_number": "KA-01483"
+    },
+    {
+      "name": "School Maintenance Complaint",
+      "description": "Report a public school that needs repair or maintenance.",
+      "ka_number": "KA-01067"
+    },
+    {
+      "name": "School Parent Leadership Complaint",
+      "description": "Report a problem with a parent association or a specific member.",
+      "ka_number": "KA-01484"
+    },
+    {
+      "name": "School Registration Complaint",
+      "description": "Report a problem with getting a child enrolled or back into school.",
+      "ka_number": "KA-01485"
+    },
+    {
+      "name": "School Safety Complaint",
+      "description": "Report a fight or other safety issue at a public school.",
+      "ka_number": "KA-02985"
+    },
+    {
+      "name": "School Sexual Misconduct",
+      "description": "Report sexual misconduct in a New York City public school.",
+      "ka_number": "KA-01486"
+    },
+    {
+      "name": "School Special Education Complaint",
+      "description": "Report a problem with public school services for students with disabilities.",
+      "ka_number": "KA-01487"
+    },
+    {
+      "name": "School Teaching and Learning Complaint",
+      "description": "Report a problem with classroom learning, tutoring, or a specific educational program.",
+      "ka_number": "KA-01489"
+    },
+    {
+      "name": "School Transfer Complaint",
+      "description": "Report a problem with the school transfer process.",
+      "ka_number": "KA-01490"
+    },
+    {
+      "name": "School Transportation",
+      "description": "Learn about school transportation or report if a child missed a school bus.",
+      "ka_number": "KA-02521"
+    },
+    {
+      "name": "Scrap Metal Processor Complaint",
+      "description": "Make a complaint about a business that processes, buys, or ships scrap metal.",
+      "ka_number": "KA-02157"
+    },
+    {
+      "name": "Seastreak Ferry",
+      "description": "Learn about or report a problem with Seastreak Ferry.",
+      "ka_number": "KA-02992"
+    },
+    {
+      "name": "Second Avenue Subway Construction",
+      "description": "Learn about Second Avenue Subway construction. You can also make a complaint.",
+      "ka_number": "KA-01492"
+    },
+    {
+      "name": "Septic or Cesspool Complaint",
+      "description": "Report a problem with a private, on-site sewage disposal system (septic or cesspool).",
+      "ka_number": "KA-01916"
+    },
+    {
+      "name": "Sewage Leak or Odor Indoors",
+      "description": "Report a sewage leak or odor in a residential or commercial building.",
+      "ka_number": "KA-01068"
+    },
+    {
+      "name": "Sewer Backup",
+      "description": "Property owners can report sewage water coming out of a toilet, sink drain, or bathtub drain.",
+      "ka_number": "KA-01510"
+    },
+    {
+      "name": "Sexual Assault",
+      "description": "Call 911 to report sexual assault.",
+      "ka_number": "KA-02049"
+    },
+    {
+      "name": "Shared E-Scooter Program",
+      "description": "Learn about the shared electric scooter program in the East Bronx and Eastern Queens.",
+      "ka_number": "KA-03442"
+    },
+    {
+      "name": "Sidewalk Cellar Door Complaint",
+      "description": "Report sidewalk cellar door that is open and unprotected, damaged, bent, broken, or wobbly.",
+      "ka_number": "KA-02292"
+    },
+    {
+      "name": "Sidewalk Collapsed",
+      "description": "Report a sidewalk that collapsed, caved in, or fallen into a hole.",
+      "ka_number": "KA-01955"
+    },
+    {
+      "name": "Sidewalk Grating Complaint",
+      "description": "Report a missing or defective metal sidewalk grating.",
+      "ka_number": "KA-02293"
+    },
+    {
+      "name": "Sidewalk Repair Protest",
+      "description": "Report a problem with a sidewalk that the City repaired.",
+      "ka_number": "KA-03004"
+    },
+    {
+      "name": "Sidewalk Seating",
+      "description": "Find sidewalk seating locations. Report a city-owned bench or leaning bar needing repair. Request a new bench or leaning bar location.",
+      "ka_number": "KA-02572"
+    },
+    {
+      "name": "Sidewalk Staircase Complaint",
+      "description": "Report a problem on a sidewalk stairway that connects two different street levels.",
+      "ka_number": "KA-02294"
+    },
+    {
+      "name": "Sidewalk Utility Hardware Complaint",
+      "description": "Report a damaged, sunken, or noisy utility access cover on a sidewalk.",
+      "ka_number": "KA-01956"
+    },
+    {
+      "name": "Sidewalk Valve Cover Complaint",
+      "description": "The City does not accept reports of missing or damaged sidewalk valve covers.",
+      "ka_number": "KA-01365"
+    },
+    {
+      "name": "Sidewalk Washing Complaint",
+      "description": "Report someone washing a sidewalk outside of permitted hours.",
+      "ka_number": "KA-01937"
+    },
+    {
+      "name": "Sign Hanger Complaint",
+      "description": "Make a complaint about a licensed sign hanger.",
+      "ka_number": "KA-03005"
+    },
+    {
+      "name": "Single Occupancy Bathroom Complaint",
+      "description": "Report a missing sign saying a single-occupancy bathroom is for people of any gender.",
+      "ka_number": "KA-01891"
+    },
+    {
+      "name": "Site Safety Manager Complaint",
+      "description": "Report a problem with a licensed construction site safety manager.",
+      "ka_number": "KA-01754"
+    },
+    {
+      "name": "Skip the Stuff",
+      "description": "Learn about the restrictions on providing utensils, condiments, napkins, and extra containers for take-out or delivery.",
+      "ka_number": "KA-03588"
+    },
+    {
+      "name": "Smoke Free Air Act Complaint",
+      "description": "Report violations of the Smoke Free Air Act.",
+      "ka_number": "KA-03662"
+    },
+    {
+      "name": "Smoke or Fumes",
+      "description": "Call 911 to report smoke or fumes.",
+      "ka_number": "KA-02220"
+    },
+    {
+      "name": "Smoking or Vaping Complaint",
+      "description": "Report illegal tobacco or marijuana smoking or vaping.",
+      "ka_number": "KA-02295"
+    },
+    {
+      "name": "SNAP (Food Stamps)",
+      "description": "Learn about, apply for, or report a problem with Supplemental Nutrition Assistance Program (SNAP), also known as Food Stamps.",
+      "ka_number": "KA-01018"
+    },
+    {
+      "name": "Snow or Ice on Building",
+      "description": "Report snow or ice on a building or construction site.",
+      "ka_number": "KA-03706"
+    },
+    {
+      "name": "Snow or Ice on Sidewalk",
+      "description": "Report snow or ice on a sidewalk. Learn about snow shoveling rules for property owners.",
+      "ka_number": "KA-01397"
+    },
+    {
+      "name": "Snow or Ice on Street or Highway",
+      "description": "Report an icy or snowy roadway and learn about snow clearing operations.",
+      "ka_number": "KA-02296"
+    },
+    {
+      "name": "Social Club Safety Complaint",
+      "description": "Report a problem with an obstructed or locked exit, overcrowding, lack of exits, or lack of alarms or sprinklers.",
+      "ka_number": "KA-01624"
+    },
+    {
+      "name": "Social Security",
+      "description": "Apply for or report changes to a Social Security, Disability, or SSI benefit. Apply for, renew, replace, or update a Social Security card or number.",
+      "ka_number": "KA-03117"
+    },
+    {
+      "name": "Social Security Fraud",
+      "description": "Report Social Security fraud.",
+      "ka_number": "KA-01626"
+    },
+    {
+      "name": "Sodium Warning Complaint",
+      "description": "Report a chain restaurant that does not post warnings about sodium content.",
+      "ka_number": "KA-02297"
+    },
+    {
+      "name": "Solar or Green Roof Non-Compliance",
+      "description": "Report roof construction that does not comply with Local Law 92 or 94 of 2019.",
+      "ka_number": "KA-03610"
+    },
+    {
+      "name": "Solid Waste Transfer Station Complaint",
+      "description": "Report a condition at a private solid waste transfer station.",
+      "ka_number": "KA-02336"
+    },
+    {
+      "name": "Special Natural Area District (SNAD) Complaint",
+      "description": "Report a tree removal or natural feature change in a Special Natural Area District (SNAD).",
+      "ka_number": "KA-01917"
+    },
+    {
+      "name": "Speed Camera Complaint",
+      "description": "Report a damaged or defective speed camera.",
+      "ka_number": "KA-02341"
+    },
+    {
+      "name": "Speed Reducer Request",
+      "description": "Request speed reducer installation, repair, or removal.",
+      "ka_number": "KA-02514"
+    },
+    {
+      "name": "Sprinkler System Complaint",
+      "description": "Report a problem with a broken sprinkler system in a 1 or 2 family home or commercial building.",
+      "ka_number": "KA-01904"
+    },
+    {
+      "name": "Squeegee Complaint",
+      "description": "Report someone requesting money for unwanted car window washing.",
+      "ka_number": "KA-02062"
+    },
+    {
+      "name": "Standing Water",
+      "description": "Report standing water outdoors during Mosquito Season.",
+      "ka_number": "KA-02298"
+    },
+    {
+      "name": "State Court",
+      "description": "Get information or make a complaint about State Court.",
+      "ka_number": "KA-03018"
+    },
+    {
+      "name": "State Parking Permit for People with Disabilities",
+      "description": "Apply for, renew, or report a problem with a New York State Parking Permit for People with Disabilities.",
+      "ka_number": "KA-01242"
+    },
+    {
+      "name": "Staten Island Ferry",
+      "description": "Get information or make a complaint about the Staten Island Ferry.",
+      "ka_number": "KA-02299"
+    },
+    {
+      "name": "Staten Island Ferry Lost and Found",
+      "description": "Report an item lost or found on the Staten Island Ferry.",
+      "ka_number": "KA-01053"
+    },
+    {
+      "name": "Staten Island Railway",
+      "description": "Get information or make a complaint about the Staten Island Railway.",
+      "ka_number": "KA-01218"
+    },
+    {
+      "name": "Stolen Property",
+      "description": "Call 911 to report stolen property.",
+      "ka_number": "KA-01219"
+    },
+    {
+      "name": "Stolen Vehicle",
+      "description": "Call 911 to report a stolen vehicle. You must be the owner of the vehicle to report it as stolen.",
+      "ka_number": "KA-01632"
+    },
+    {
+      "name": "Stop Work Order",
+      "description": "Learn about a Stop Work Order. Report work being done while an order is in effect.",
+      "ka_number": "KA-01911"
+    },
+    {
+      "name": "Storage Warehouse Complaint",
+      "description": "Make a complaint about a business that stores goods for a fee.",
+      "ka_number": "KA-02154"
+    },
+    {
+      "name": "Store Air Conditioning Complaint",
+      "description": "Report a store that leaves its doors or windows open when cooling systems are on.",
+      "ka_number": "KA-01893"
+    },
+    {
+      "name": "Store Complaint",
+      "description": "Report a store that uses deceptive practices or commits fraud or other consumer protection violations.",
+      "ka_number": "KA-02153"
+    },
+    {
+      "name": "Stray or Abandoned Animal",
+      "description": "Report a stray or abandoned animal.",
+      "ka_number": "KA-02300"
+    },
+    {
+      "name": "Street Con Game",
+      "description": "Report a street con game, such as three card Monte.",
+      "ka_number": "KA-02060"
+    },
+    {
+      "name": "Street Flooding",
+      "description": "Report street flooding or ponding.",
+      "ka_number": "KA-02198"
+    },
+    {
+      "name": "Street Light Complaint",
+      "description": "Report a problem with a street light.",
+      "ka_number": "KA-02463"
+    },
+    {
+      "name": "Street Plate Complaint",
+      "description": "Report a steel street plate that is shifted, noisy, missing anti-skid material, or missing during excavation of a City street.",
+      "ka_number": "KA-01511"
+    },
+    {
+      "name": "Street Repair Complaint",
+      "description": "Report damage to a street caused by street work.",
+      "ka_number": "KA-01095"
+    },
+    {
+      "name": "Street Resurfacing Request",
+      "description": "Report a street in need of paving.",
+      "ka_number": "KA-01099"
+    },
+    {
+      "name": "Street Sign Complaint",
+      "description": "Report a problem with a street sign.",
+      "ka_number": "KA-01063"
+    },
+    {
+      "name": "Street Sweeping Complaint",
+      "description": "Report missed or inadequate street cleaning.",
+      "ka_number": "KA-02332"
+    },
+    {
+      "name": "Street Utility Hardware Complaint",
+      "description": "Report a damaged, sunken, or noisy utility access cover on a street.",
+      "ka_number": "KA-01670"
+    },
+    {
+      "name": "Street Vendor Complaint",
+      "description": "Make a complaint about a vendor operating on City streets, sidewalks, or bridges.",
+      "ka_number": "KA-02152"
+    },
+    {
+      "name": "Student Attendance and Absence",
+      "description": "Learn about student attendance requirements or report an absence.",
+      "ka_number": "KA-03028"
+    },
+    {
+      "name": "Suicide",
+      "description": "Call 911 to report that someone is considering suicide or endangering themselves.",
+      "ka_number": "KA-01635"
+    },
+    {
+      "name": "Summer Meals for Children",
+      "description": "Learn about free breakfast and lunch for New York City children ages 18 and under.",
+      "ka_number": "KA-01374"
+    },
+    {
+      "name": "Suspicious Package",
+      "description": "Call 911 to report a suspicious looking package.",
+      "ka_number": "KA-01636"
+    },
+    {
+      "name": "Suspicious Vehicle",
+      "description": "Call 911 to report a suspicious looking vehicle.",
+      "ka_number": "KA-01637"
+    },
+    {
+      "name": "Sweepstakes Complaint",
+      "description": "Report a problem with a sweepstakes.",
+      "ka_number": "KA-01762"
+    },
+    {
+      "name": "Sweet Odor from Unknown Source",
+      "description": "Report a sweet smell coming from an unknown source.",
+      "ka_number": "KA-01931"
+    },
+    {
+      "name": "Tanning Establishment Complaint",
+      "description": "Make a complaint about a business that provides tanning machines for use.",
+      "ka_number": "KA-02302"
+    },
+    {
+      "name": "Tattoo Parlor Complaint",
+      "description": "Report a tattoo parlor or artist is unsanitary or unlicensed.",
+      "ka_number": "KA-01944"
+    },
+    {
+      "name": "Tax Fraud",
+      "description": "Report tax evasion or fraud involving sales, payroll, cigarette, or personal income sales tax.",
+      "ka_number": "KA-01676"
+    },
+    {
+      "name": "Tax Preparation Services Complaint",
+      "description": "Make a complaint about someone offering tax preparation services.",
+      "ka_number": "KA-02151"
+    },
+    {
+      "name": "Taxi Complaint",
+      "description": "Report a problem with a taxi driver or vehicle, including rudeness, unsafe driving, refusing a request, maintenance issues, or route complaints.",
+      "ka_number": "KA-01241"
+    },
+    {
+      "name": "Taxi Lost and Found",
+      "description": "Report an item lost or found in a yellow or green taxi.",
+      "ka_number": "KA-01045"
+    },
+    {
+      "name": "Taxpayer Advocate",
+      "description": "Get help if you've been unable to resolve a tax or rent freeze issue with the Department of Finance through the normal process.",
+      "ka_number": "KA-01663"
+    },
+    {
+      "name": "Telemarketing Fraud",
+      "description": "Report telemarketing fraud.",
+      "ka_number": "KA-01641"
+    },
+    {
+      "name": "Telemarketing Texting Complaint",
+      "description": "Report telemarketers soliciting through text messages.",
+      "ka_number": "KA-01378"
+    },
+    {
+      "name": "Telephone Pole or Wire Complaint",
+      "description": "Report a problem with a telephone pole or wires.",
+      "ka_number": "KA-03076"
+    },
+    {
+      "name": "Terrorism",
+      "description": "Report suspected terrorist activity.",
+      "ka_number": "KA-01642"
+    },
+    {
+      "name": "Theft of Service",
+      "description": "Call 911 to report someone using a service without paying for it.",
+      "ka_number": "KA-01643"
+    },
+    {
+      "name": "Ticket Scalping",
+      "description": "Report an illegal ticket sale.",
+      "ka_number": "KA-02304"
+    },
+    {
+      "name": "Ticket Seller Complaint",
+      "description": "Report a problem with a ticket price or seller.",
+      "ka_number": "KA-01927"
+    },
+    {
+      "name": "Tobacco Product Sale Complaint",
+      "description": "Report a problem with a store that sells tobacco products, including cigarettes.",
+      "ka_number": "KA-01922"
+    },
+    {
+      "name": "Tour Bus Complaint",
+      "description": "Make a complaint about a tour bus.",
+      "ka_number": "KA-02150"
+    },
+    {
+      "name": "Tour Guide Complaint",
+      "description": "Make a complaint about a tour guide.",
+      "ka_number": "KA-03533"
+    },
+    {
+      "name": "Tow Truck Complaint",
+      "description": "Make a complaint about a tow truck driver or company.",
+      "ka_number": "KA-02149"
+    },
+    {
+      "name": "Toy Gun Sale",
+      "description": "Report a business that sells toy or fake guns that are not brightly colored.",
+      "ka_number": "KA-02214"
+    },
+    {
+      "name": "Traffic Condition",
+      "description": "Learn about traffic and travel conditions in the NY metro area. Report a non-emergency traffic condition, such as congestion or chronic speeding.",
+      "ka_number": "KA-02305"
+    },
+    {
+      "name": "Traffic Median Pedestrian Fence Complaint",
+      "description": "Report a problem with a pedestrian fence at a traffic median.",
+      "ka_number": "KA-01383"
+    },
+    {
+      "name": "Traffic Signal Complaint or Request",
+      "description": "Report a problem with an existing traffic signal. Request a new traffic signal.",
+      "ka_number": "KA-01404"
+    },
+    {
+      "name": "Traffic Trends",
+      "description": "Learn about or report traffic patterns or trends.",
+      "ka_number": "KA-01384"
+    },
+    {
+      "name": "Transportation for Older Adults",
+      "description": "Learn about transportation options for people age 60 and older. Make a complaint about a senior transportation provider.",
+      "ka_number": "KA-02307"
+    },
+    {
+      "name": "Trash or Debris in Street",
+      "description": "Report a stray trash bag or loose debris in the driving or biking lane of a City street.",
+      "ka_number": "KA-02356"
+    },
+    {
+      "name": "Trash, Recycling, or Compost Disposal Complaint",
+      "description": "Report a building that doesn't follow trash, recycling, or compost disposal rules.",
+      "ka_number": "KA-01504"
+    },
+    {
+      "name": "Trash, Recycling, or Compost Storage Complaint",
+      "description": "Report trash, recycling, or compost stored incorrectly on private property.",
+      "ka_number": "KA-02250"
+    },
+    {
+      "name": "Travel Agency Complaint",
+      "description": "Make a complaint about a travel agency.",
+      "ka_number": "KA-02148"
+    },
+    {
+      "name": "Tree Destruction",
+      "description": "Report someone damaging or destroying City trees on a street or in a park.",
+      "ka_number": "KA-01990"
+    },
+    {
+      "name": "Tree Planting",
+      "description": "Learn about the Neighborhood Tree Planting Program. Report a problem with the location or condition of a newly planted tree.",
+      "ka_number": "KA-01895"
+    },
+    {
+      "name": "Tree Pruning",
+      "description": "Learn about tree pruning, request pruning of a City tree, or become a volunteer Citizen Pruner.",
+      "ka_number": "KA-01794"
+    },
+    {
+      "name": "Tree Stump",
+      "description": "Learn about City tree stump removals.",
+      "ka_number": "KA-01386"
+    },
+    {
+      "name": "Trees and Sidewalks Repair",
+      "description": "Learn about free repair for qualifying City sidewalks that are severely damaged by curbside tree roots.",
+      "ka_number": "KA-01505"
+    },
+    {
+      "name": "Trespassing",
+      "description": "Report trespassing, which is entering someone's property without permission.",
+      "ka_number": "KA-02308"
+    },
+    {
+      "name": "Truck Route Complaint",
+      "description": "Report a truck on a roadway where truck traffic is not allowed.",
+      "ka_number": "KA-01957"
+    },
+    {
+      "name": "Tunnels",
+      "description": "Get information or make a complaint about a tunnel.",
+      "ka_number": "KA-01230"
+    },
+    {
+      "name": "Unemployment Insurance",
+      "description": "Learn about filing an unemployment insurance claim.",
+      "ka_number": "KA-01767"
+    },
+    {
+      "name": "Unleashed Dog",
+      "description": "Report a dog that is not leashed in a park or other public place.",
+      "ka_number": "KA-01051"
+    },
+    {
+      "name": "Unlicensed Business",
+      "description": "Report a business operating without a license.",
+      "ka_number": "KA-02206"
+    },
+    {
+      "name": "Unlicensed Contractor",
+      "description": "Report work done by an unlicensed plumber, electrician, or contractor.",
+      "ka_number": "KA-02309"
+    },
+    {
+      "name": "Unlocked Park or Playground",
+      "description": "Report an unlocked park, playground, or park building.",
+      "ka_number": "KA-01950"
+    },
+    {
+      "name": "Unsafe Construction Material Storage",
+      "description": "Report unsafe storage of flammable or explosive material at a construction site or in a building.",
+      "ka_number": "KA-01905"
+    },
+    {
+      "name": "Unsafe Highway Construction",
+      "description": "Report a dangerous condition at a highway construction site.",
+      "ka_number": "KA-01952"
+    },
+    {
+      "name": "Unsafe New Building Structure",
+      "description": "Report a new building under construction that is unsafe.",
+      "ka_number": "KA-01906"
+    },
+    {
+      "name": "Unsafe Product",
+      "description": "Learn about or report the sale of pesticides or other unsafe products.",
+      "ka_number": "KA-03068"
+    },
+    {
+      "name": "Unstable Building",
+      "description": "Report a building that is shaking, vibrating, leaning, unstable, or has a defective or cracked building exterior facade.",
+      "ka_number": "KA-01918"
+    },
+    {
+      "name": "Unwanted Ad or Menu",
+      "description": "Report an individual distributing flyers or posting signs on public or private property, including vehicles and construction sites.",
+      "ka_number": "KA-02311"
+    },
+    {
+      "name": "Used Goods Dealer Complaint",
+      "description": "Make a complaint about a business that buys or sells used items, including catalytic converters.",
+      "ka_number": "KA-02147"
+    },
+    {
+      "name": "Used Gun Dealer Complaint",
+      "description": "Make a complaint about a business that buys or sells secondhand firearms.",
+      "ka_number": "KA-02146"
+    },
+    {
+      "name": "Vacant Building Complaint",
+      "description": "Report an open vacant building.",
+      "ka_number": "KA-01901"
+    },
+    {
+      "name": "Vacant Lot Complaint",
+      "description": "Report a vacant lot that is dirty or not fenced.",
+      "ka_number": "KA-01210"
+    },
+    {
+      "name": "Vacate Order",
+      "description": "Get information about vacate orders. Report people in a building with a vacate order.",
+      "ka_number": "KA-02312"
+    },
+    {
+      "name": "Vandalism in a Park",
+      "description": "Report vandalism taking place in a park.",
+      "ka_number": "KA-01019"
+    },
+    {
+      "name": "Vehicle Accident",
+      "description": "Report a car accident.",
+      "ka_number": "KA-01220"
+    },
+    {
+      "name": "Vehicle Exhaust",
+      "description": "Report visible exhaust from a vehicle.",
+      "ka_number": "KA-01932"
+    },
+    {
+      "name": "Vehicle Registration or License Plate",
+      "description": "Learn about vehicle registrations, titles, license plates, and inspections.",
+      "ka_number": "KA-02319"
+    },
+    {
+      "name": "Vehicle Stored on Residential Property or Vacant Lot",
+      "description": "Report a vehicle stored on residential property or in a vacant lot.",
+      "ka_number": "KA-01991"
+    },
+    {
+      "name": "Ventilation or Exhaust System Complaint",
+      "description": "Report inadequate ventilation inside a building or a ventilation or exhaust system that is illegal, installed improperly, or has an odor.",
+      "ka_number": "KA-02313"
+    },
+    {
+      "name": "Verizon Telephone, Internet, and Cable Service",
+      "description": "Learn about or get help with Verizon telephone, internet, and cable service.",
+      "ka_number": "KA-03077"
+    },
+    {
+      "name": "Wall Complaint",
+      "description": "Report a stand-alone or retaining wall that is bulging, cracked, defective, or inadequate.",
+      "ka_number": "KA-02314"
+    },
+    {
+      "name": "Wastewater Treatment Plant Complaint",
+      "description": "Report noise or a bad smell from a wastewater treatment plant, sewage treatment plant, or pumping station.",
+      "ka_number": "KA-02126"
+    },
+    {
+      "name": "Wasting Water",
+      "description": "Report the use of too much water or water waste in any facility.",
+      "ka_number": "KA-02129"
+    },
+    {
+      "name": "Water Drainage Complaint",
+      "description": "Report a problem with building or property drainpipe or drainage.",
+      "ka_number": "KA-01992"
+    },
+    {
+      "name": "Water Leak in a Building",
+      "description": "Report water leaking into an apartment, public area of a residential building, or basement. Learn how to prevent leaks.",
+      "ka_number": "KA-01509"
+    },
+    {
+      "name": "Water Leak on Street or Sidewalk",
+      "description": "Report water leaking on a street or sidewalk.",
+      "ka_number": "KA-01234"
+    },
+    {
+      "name": "Water Main Break",
+      "description": "Report a possible water main break.",
+      "ka_number": "KA-01233"
+    },
+    {
+      "name": "Water Meter Complaint",
+      "description": "Report a water meter that is broken, leaking, frozen, missing, or stolen.",
+      "ka_number": "KA-02137"
+    },
+    {
+      "name": "Water Sampling Station Complaint",
+      "description": "Report a defective water sampling station.",
+      "ka_number": "KA-01939"
+    },
+    {
+      "name": "Waterway Complaint",
+      "description": "Report floating debris, oil, gasoline, sewage, or unusual color in a waterway.",
+      "ka_number": "KA-01784"
+    },
+    {
+      "name": "Welder Complaint",
+      "description": "Report a problem with a licensed welder.",
+      "ka_number": "KA-01777"
+    },
+    {
+      "name": "Wellness Check",
+      "description": "Call 911 to request a wellness check for someone you haven't been able to contact.",
+      "ka_number": "KA-03357"
+    },
+    {
+      "name": "Wild Animal",
+      "description": "Get information about wildlife, including how to report wild animals or the removal of wildlife from a park.",
+      "ka_number": "KA-01790"
+    },
+    {
+      "name": "Window Guard Complaint",
+      "description": "Report missing window guards or a landlord or tenant who refuses installation.",
+      "ka_number": "KA-02132"
+    },
+    {
+      "name": "Worker Safety",
+      "description": "Learn about worker safety or report worker health hazards.",
+      "ka_number": "KA-01407"
+    },
+    {
+      "name": "Workers' Compensation Fraud",
+      "description": "Report workers' compensation fraud.",
+      "ka_number": "KA-01780"
+    },
+    {
+      "name": "X-Ray Machine Complaint",
+      "description": "Report a problem with an X-ray machine.",
+      "ka_number": "KA-01946"
+    },
+    {
+      "name": "Zombie Homes Initiative",
+      "description": "Learn about HPD's Zombie Homes Initiative that works to address problems of neglected or deteriorated vacant and abandoned small homes.",
+      "ka_number": "KA-03365"
+    }
+  ]
+}

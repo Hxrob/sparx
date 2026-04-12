@@ -1,0 +1,6 @@
+# Paired CUDA 13.0 wheels — install BEFORE requirements.txt.
+#   pip install -r requirements-torch-cu130.txt
+
+--extra-index-url https://download.pytorch.org/whl/cu130
+torch
+torchaudio

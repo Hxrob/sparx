@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voice Node</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
+        
+        :root {
+            --bg-color: #070707;
+            --surface: rgba(255, 255, 255, 0.04);
+            --surface-border: rgba(255, 255, 255, 0.08);
+            --text-primary: #ededed;
+            --text-secondary: #777777;
+            --accent: #ededed;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 380px;
+            background: var(--surface);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid var(--surface-border);
+            border-radius: 24px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.6);
+            transition: transform 0.3s ease;
+        }
+
+        h1 {
+            font-weight: 600;
+            font-size: 1.4rem;
+            margin-bottom: 6px;
+            letter-spacing: -0.5px;
+        }
+
+        p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 45px;
+            font-weight: 300;
+        }
+
+        .mic-button {
+            width: 76px;
+            height: 76px;
+            border-radius: 50%;
+            background: transparent;
+            border: 1px solid var(--surface-border);
+            cursor: pointer;
+            position: relative;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            outline: none;
+            box-shadow: inset 0 2px 4px rgba(255,255,255,0.05);
+        }
+
+        .mic-button::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: var(--accent);
+            opacity: 0.03;
+            transform: scale(1);
+            transition: all 0.3s ease;
+        }
+
+        .mic-button:hover {
+            transform: scale(1.03);
+            border-color: rgba(255,255,255,0.2);
+        }
+
+        .mic-button:hover::before {
+            transform: scale(1.15);
+            opacity: 0.06;
+        }
+
+        .mic-button.recording {
+            border-color: #ff3366;
+            animation: pulse 1.8s infinite;
+        }
+
+        .mic-button.recording::before {
+            background: #ff3366;
+            opacity: 0.15;
+        }
+
+        .mic-icon {
+            width: 22px;
+            height: 22px;
+            fill: var(--accent);
+            z-index: 1;
+            transition: fill 0.3s ease;
+        }
+
+        .mic-button.recording .mic-icon {
+            fill: #ff3366;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(255, 51, 102, 0.3); }
+            70% { box-shadow: 0 0 0 15px rgba(255, 51, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 51, 102, 0); }
+        }
+
+        .status {
+            margin-top: 30px;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            height: 20px;
+            letter-spacing: 0.2px;
+        }
+
+        .transcript-box {
+            margin-top: 25px;
+            background: rgba(0,0,0,0.4);
+            border: 1px solid var(--surface-border);
+            border-radius: 12px;
+            padding: 20px;
+            min-height: 80px;
+            text-align: left;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: var(--text-primary);
+            opacity: 0;
+            transform: translateY(8px);
+            transition: all 0.4s ease;
+            box-shadow: inset 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .transcript-box.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Loading Dots */
+        .loading { display: none; margin-top: 25px; margin-bottom: 25px; }
+        .loading.active { display: flex; justify-content: center; gap: 5px; }
+        .dot {
+            width: 5px; height: 5px;
+            background: var(--text-secondary);
+            border-radius: 50%;
+            animation: bounce 1.4s infinite ease-in-out both;
+        }
+        .dot:nth-child(1) { animation-delay: -0.32s; }
+        .dot:nth-child(2) { animation-delay: -0.16s; }
+        @keyframes bounce {
+            0%, 80%, 100% { transform: scale(0); }
+            40% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Voice Node</h1>
+        <p>Spanglish Intelligence Bridge</p>
+
+        <button class="mic-button" id="recordBtn" aria-label="Record">
+            <svg class="mic-icon" viewBox="0 0 24 24">
+                <path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z"/>
+                <path d="M17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"/>
+            </svg>
+        </button>
+
+        <div class="status" id="statusText">Ready to capture</div>
+
+        <div class="loading" id="loadingIndicator">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
+
+        <div class="transcript-box" id="transcriptBox"></div>
+    </div>
+
+    <script>
+        let mediaRecorder;
+        let audioChunks = [];
+        const recordBtn = document.getElementById('recordBtn');
+        const statusText = document.getElementById('statusText');
+        const transcriptBox = document.getElementById('transcriptBox');
+        const loadingIndicator = document.getElementById('loadingIndicator');
+
+        let isRecording = false;
+
+        // One session ID for the lifetime of this page load — ties all clips together
+        const sessionId = crypto.randomUUID();
+
+        recordBtn.addEventListener('click', async () => {
+            if (!isRecording) {
+                try {
+                    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+                    mediaRecorder = new MediaRecorder(stream, { mimeType: 'audio/webm' });
+                    audioChunks = [];
+
+                    mediaRecorder.ondataavailable = e => {
+                        if (e.data.size > 0) audioChunks.push(e.data);
+                    };
+
+                    mediaRecorder.onstop = async () => {
+                        const audioBlob = new Blob(audioChunks, { type: 'audio/webm' });
+                        await uploadAudio(audioBlob);
+                        stream.getTracks().forEach(track => track.stop()); // kill mic
+                    };
+
+                    mediaRecorder.start();
+                    isRecording = true;
+                    recordBtn.classList.add('recording');
+                    statusText.textContent = "Listening...";
+                    transcriptBox.classList.remove('visible');
+                } catch (err) {
+                    alert("Microphone access denied. Did you accept the HTTPS security warning?");
+                    console.error(err);
+                }
+            } else {
+                mediaRecorder.stop();
+                isRecording = false;
+                recordBtn.classList.remove('recording');
+                statusText.textContent = "Transcribing via Parakeet...";
+                loadingIndicator.classList.add('active');
+            }
+        });
+
+        async function uploadAudio(blob) {
+            const formData = new FormData();
+            formData.append('file', blob, 'recording.webm');
+            formData.append('session_id', sessionId);
+
+            try {
+                const response = await fetch('/transcribe', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const data = await response.json();
+                const dir = data.direction || {};
+
+                loadingIndicator.classList.remove('active');
+                statusText.textContent = "Transcription Complete";
+
+                // Show what the user said + what the engine replied
+                const reply = dir.response || "";
+                const decision = dir.decision || "";
+                const label = decision === "categorized"   ? "Routed"
+                            : decision === "uncategorized" ? "Forwarded"
+                            : decision === "needs_more_info" ? "Needs info"
+                            : "";
+                transcriptBox.innerHTML =
+                    `<div style="color:var(--text-secondary);font-size:0.78rem;margin-bottom:8px;">${label}</div>` +
+                    `<div>${data.transcription || "No speech detected."}</div>` +
+                    (reply ? `<div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--surface-border);color:var(--text-secondary);">${reply}</div>` : "");
+                transcriptBox.classList.add('visible');
+            } catch (err) {
+                loadingIndicator.classList.remove('active');
+                statusText.textContent = "Error during server processing";
+                console.error(err);
+            }
+        }
+    </script>
+</body>
+</html>
