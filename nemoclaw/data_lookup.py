@@ -206,10 +206,51 @@ def _extract_borough(query: str) -> str | None:
 
 def _extract_address(query: str) -> str | None:
     """Try to extract a street address from the query."""
-    # Match patterns like "123 Main St" or "45-67 Broadway"
     m = re.search(r'\b(\d{1,5}(?:-\d{1,5})?\s+[A-Za-z][\w\s]{2,30}(?:st|street|ave|avenue|blvd|boulevard|rd|road|pl|place|dr|drive|way|ln|lane|ct|court))\b', query, re.IGNORECASE)
     if m:
         return m.group(1).upper()
+    return None
+
+
+def _extract_zip(query: str) -> str | None:
+    """Extract a 5-digit NYC zip code from the query."""
+    m = re.search(r'\b(1[0-4]\d{3})\b', query)
+    if m:
+        return m.group(1)
+    return None
+
+
+def _extract_neighborhood(query: str) -> str | None:
+    """Extract a known NYC neighborhood name for street-level filtering."""
+    _NEIGHBORHOODS = {
+        "harlem": "HARLEM", "east harlem": "EAST HARLEM",
+        "washington heights": "WASHINGTON HEIGHTS", "inwood": "INWOOD",
+        "chelsea": "CHELSEA", "midtown": "MIDTOWN",
+        "soho": "SOHO", "tribeca": "TRIBECA", "chinatown": "CHINATOWN",
+        "lower east side": "LOWER EAST SIDE", "east village": "EAST VILLAGE",
+        "west village": "WEST VILLAGE", "greenwich village": "GREENWICH VILLAGE",
+        "williamsburg": "WILLIAMSBURG", "bushwick": "BUSHWICK",
+        "bed stuy": "BEDFORD STUYVESANT", "bedford stuyvesant": "BEDFORD STUYVESANT",
+        "crown heights": "CROWN HEIGHTS", "flatbush": "FLATBUSH",
+        "east flatbush": "EAST FLATBUSH", "sunset park": "SUNSET PARK",
+        "bay ridge": "BAY RIDGE", "bensonhurst": "BENSONHURST",
+        "park slope": "PARK SLOPE", "brownsville": "BROWNSVILLE",
+        "astoria": "ASTORIA", "jackson heights": "JACKSON HEIGHTS",
+        "flushing": "FLUSHING", "jamaica": "JAMAICA",
+        "long island city": "LONG ISLAND CITY", "ridgewood": "RIDGEWOOD",
+        "south bronx": "SOUTH BRONX", "mott haven": "MOTT HAVEN",
+        "hunts point": "HUNTS POINT", "fordham": "FORDHAM",
+        "morrisania": "MORRISANIA", "tremont": "TREMONT",
+        "university heights": "UNIVERSITY HEIGHTS",
+        "east new york": "EAST NEW YORK", "canarsie": "CANARSIE",
+        "coney island": "CONEY ISLAND", "brighton beach": "BRIGHTON BEACH",
+        "st george": "ST. GEORGE", "stapleton": "STAPLETON",
+    }
+    q = query.lower()
+    # Check longer names first to avoid partial matches
+    for phrase in sorted(_NEIGHBORHOODS, key=len, reverse=True):
+        if phrase in q:
+            return _NEIGHBORHOODS[phrase]
     return None
 
 
@@ -219,6 +260,7 @@ def _build_311_where(query: str) -> tuple[str, str]:
     """Build a $where clause and description for querying 311 data.
 
     Returns (where_clause, description_of_filter).
+    Prioritizes the most recent data from the user's specific area.
     """
     clauses: list[str] = []
     desc_parts: list[str] = []
@@ -235,49 +277,105 @@ def _build_311_where(query: str) -> tuple[str, str]:
         clauses.append(f"borough='{boro}'")
         desc_parts.append(f"in {boro}")
 
+    # Zip code — narrows to a specific area
+    zipcode = _extract_zip(query)
+    if zipcode:
+        clauses.append(f"incident_zip='{zipcode}'")
+        desc_parts.append(f"zip {zipcode}")
+
     # Address (partial match via LIKE)
     addr = _extract_address(query)
     if addr:
-        # Use upper() for SODA case-insensitive match
         clauses.append(f"upper(incident_address) LIKE '%{addr}%'")
         desc_parts.append(f"near {addr}")
 
-    # Always limit to recent complaints (last 12 months)
-    clauses.append("created_date > '2025-04-01T00:00:00'")
+    # Neighborhood — match against community board / city_council_district
+    # or use street_name partial match
+    neighborhood = _extract_neighborhood(query)
+    if neighborhood and not addr:
+        clauses.append(f"upper(street_name) LIKE '%{neighborhood}%' OR upper(incident_address) LIKE '%{neighborhood}%'")
+        desc_parts.append(f"in {neighborhood}")
+
+    # Most recent 90 days only — ensures fresh, relevant data
+    clauses.append("created_date > '2026-01-12T00:00:00'")
 
     where = " AND ".join(clauses)
-    desc = ", ".join(desc_parts) if desc_parts else "general complaints"
+    desc = ", ".join(desc_parts) if desc_parts else "recent complaints"
 
     return where, desc
+
+
+def _soda_url_with_select(dataset_id: str, where: str = "", q: str = "",
+                          order: str = "", limit: int = 10,
+                          select: str = "") -> str:
+    """Build a SODA API URL with $select to only pull useful columns."""
+    params: dict[str, str] = {"$limit": str(limit)}
+    if where:
+        params["$where"] = where
+    if q:
+        params["$q"] = q
+    if order:
+        params["$order"] = order
+    if select:
+        params["$select"] = select
+    qs = urllib.parse.urlencode(params)
+    return f"{_DATA_SITE}/resource/{dataset_id}.json?{qs}"
+
+
+# Columns we care about from 311 — skip the 40+ other columns
+_311_SELECT = (
+    "unique_key,created_date,closed_date,agency_name,complaint_type,"
+    "descriptor,location_type,incident_zip,incident_address,street_name,"
+    "city,borough,status,resolution_description,community_board"
+)
 
 
 def _query_311(query: str) -> tuple[list[dict], str]:
     """Query the 311 Service Requests dataset with targeted filters.
 
+    Prioritizes the most recent complaints from the user's area.
     Returns (rows, filter_description).
     """
     where, desc = _build_311_where(query)
 
-    # Primary query: specific $where filters, ordered by most recent
-    df = _query_pandas(
+    # Primary query: specific $where filters, most recent first
+    url = _soda_url_with_select(
         _311_DATASET,
         where=where,
         order="created_date DESC",
-        limit=15,
+        limit=20,
+        select=_311_SELECT,
     )
+    token = os.environ.get("NYC_OPEN_DATA_APP_TOKEN", "").strip()
+    storage_options = {"User-Agent": "SparX-NemoClaw/1.0"}
+    if token:
+        storage_options["X-App-Token"] = token
 
-    rows = _df_to_rows(df)
+    try:
+        df = pd.read_json(url, storage_options=storage_options)
+    except Exception as exc:
+        LOGGER.warning("311 primary query failed: %s", exc)
+        df = pd.DataFrame()
+
+    rows = _df_to_rows(df, max_rows=15)
 
     # If specific filters returned nothing, try full-text search as fallback
     if not rows:
         short_q = _short_keywords(query)
         if short_q:
-            df2 = _query_pandas(
+            url2 = _soda_url_with_select(
                 _311_DATASET,
                 q=short_q,
+                where="created_date > '2026-01-12T00:00:00'",
                 order="created_date DESC",
-                limit=10,
+                limit=15,
+                select=_311_SELECT,
             )
+            try:
+                df2 = pd.read_json(url2, storage_options=storage_options)
+            except Exception as exc:
+                LOGGER.warning("311 fallback query failed: %s", exc)
+                df2 = pd.DataFrame()
             rows = _df_to_rows(df2)
             desc = f"full-text search for '{short_q}'"
 
@@ -325,6 +423,73 @@ def _query_priority_dataset(dataset_id: str, query: str) -> tuple[list[dict], st
 
     df = _query_pandas(dataset_id, q=short_q, limit=10)
     return _df_to_rows(df), title
+
+
+# ── Dynamic dataset query (called by NemoClaw when 311 doesn't fit) ──
+
+_CATALOG = "https://api.us.socrata.com/api/catalog/v1"
+
+
+def discover_datasets(search_text: str, limit: int = 5) -> list[dict]:
+    """Search the NYC Open Data catalog for datasets matching a query.
+
+    Returns a list of {dataset_id, title, description, columns} dicts.
+    Fetches one sample row from each to learn the column names.
+    """
+    params = urllib.parse.urlencode({
+        "domains": _NYC_DOMAIN,
+        "only": "dataset",
+        "limit": str(limit),
+        "q": search_text[:300],
+    })
+    url = f"{_CATALOG}?{params}"
+    req = urllib.request.Request(url, headers=_headers())
+    try:
+        with urllib.request.urlopen(req, timeout=15.0) as resp:
+            data = json.loads(resp.read().decode())
+    except Exception as exc:
+        LOGGER.warning("Catalog search failed: %s", exc)
+        return []
+
+    if not isinstance(data, dict):
+        return []
+
+    results: list[dict] = []
+    for item in data.get("results") or []:
+        res = item.get("resource") or {}
+        rid = (res.get("id") or "").strip()
+        if not rid or rid == _311_DATASET:
+            continue
+        name = (res.get("name") or "").strip() or "Untitled"
+        desc = (res.get("description") or "").strip()
+        if len(desc) > 200:
+            desc = desc[:197] + "..."
+
+        # Get column names from the resource metadata
+        col_fields = res.get("columns_field_name") or []
+        columns = [c for c in col_fields if isinstance(c, str) and c and not c.startswith(":")]
+
+        # If no field names, try display names
+        if not columns:
+            col_names = res.get("columns_name") or []
+            columns = [c for c in col_names if isinstance(c, str) and c and not c.startswith(":")]
+
+        results.append({
+            "dataset_id": rid,
+            "title": name,
+            "description": desc,
+            "columns": columns[:30],  # cap to avoid huge prompts
+        })
+
+    return results
+
+
+def query_dynamic(dataset_id: str, where: str = "", q: str = "",
+                  order: str = "", limit: int = 15) -> list[dict]:
+    """Query any dataset by ID with a $where clause. Returns cleaned rows."""
+    df = _query_pandas(dataset_id, where=where, q=q, order=order, limit=limit)
+    rows = _df_to_rows(df, max_rows=limit)
+    return rows
 
 
 # ── Main search entry point ──

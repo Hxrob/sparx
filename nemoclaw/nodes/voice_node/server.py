@@ -21,7 +21,7 @@ import sys
 import tempfile
 from contextlib import asynccontextmanager
 
-from fastapi import FastAPI, Form, UploadFile, File, HTTPException, Request
+from fastapi import FastAPI, Form, UploadFile, File, HTTPException
 from typing import Optional
 from fastapi.responses import HTMLResponse, FileResponse
 from fastapi.staticfiles import StaticFiles
@@ -45,14 +45,6 @@ if _NEMOCLAW_DIR not in sys.path:
     sys.path.insert(0, _NEMOCLAW_DIR)
 from nemoclaw import NemoClaw
 
-# Add formbuddy to path for proxy + session imports
-_FORMBUDDY_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "..", "formbuddy"))
-if _FORMBUDDY_DIR not in sys.path:
-    sys.path.insert(0, _FORMBUDDY_DIR)
-from session_store import create_session as fb_create_session, get_session as fb_get_session
-from proxy import proxy_request as fb_proxy_request
-from models import SuggestRequest as FBSuggestRequest, SuggestDebugResponse as FBSuggestDebugResponse
-from llm_client import chat_completion as fb_chat_completion
 
 voice_node: VoiceNode = None
 nemoclaw: NemoClaw = None
@@ -159,11 +151,6 @@ app = FastAPI(lifespan=lifespan)
 static_dir = os.path.join(os.path.dirname(__file__), "static")
 os.makedirs(static_dir, exist_ok=True)
 app.mount("/static", StaticFiles(directory=static_dir), name="static")
-
-# FormBuddy static files (buddy.html, buddy.js, styles.css)
-_fb_static = os.path.join(_FORMBUDDY_DIR, "static")
-if os.path.isdir(_fb_static):
-    app.mount("/fb-static", StaticFiles(directory=_fb_static), name="fb-static")
 
 
 @app.get("/", response_class=HTMLResponse)
@@ -278,16 +265,6 @@ async def transcribe_audio(
 
         translated = True
 
-    # If NemoClaw found a 311 form, auto-create a FormBuddy session
-    buddy_url = None
-    if resolution.form_finder and resolution.form_finder.get("form_url"):
-        try:
-            fb_session = fb_create_session(transcript, resolution.form_finder["form_url"])
-            buddy_url = f"/buddy/{fb_session.id}"
-            LOGGER.info("FormBuddy session created: %s -> %s", fb_session.id, resolution.form_finder["form_url"])
-        except Exception as exc:
-            LOGGER.error("FormBuddy session creation failed: %s", exc)
-
     response_payload = {
         "transcription": transcript,
         "direction": direction,
@@ -296,7 +273,6 @@ async def transcribe_audio(
             "response":     resolution.response,
             "open_data":    resolution.open_data,
             "form_finder":  resolution.form_finder,
-            "buddy_url":    buddy_url,
         },
         "language": {
             "detected":   detected_name,
@@ -386,15 +362,6 @@ async def upload_document(
     resolution   = await resolution_task
     displacement = await displacement_task
 
-    # Auto-create FormBuddy session for document uploads too
-    doc_buddy_url = None
-    if resolution.form_finder and resolution.form_finder.get("form_url"):
-        try:
-            fb_sess = fb_create_session(situation_text, resolution.form_finder["form_url"])
-            doc_buddy_url = f"/buddy/{fb_sess.id}"
-        except Exception as exc:
-            LOGGER.error("FormBuddy session creation failed (upload): %s", exc)
-
     response_payload = {
         "document": {
             "document_type":    doc.document_type,
@@ -415,7 +382,6 @@ async def upload_document(
             "response":    resolution.response,
             "open_data":   resolution.open_data,
             "form_finder": resolution.form_finder,
-            "buddy_url":   doc_buddy_url,
         },
         "displacement": {
             "address":    displacement.address,
@@ -455,113 +421,6 @@ async def get_stats():
 @app.get("/crises")
 async def get_recent_crises(hours: int = 24):
     return {"hours": hours, "crises": db.recent_crises(hours)}
-
-
-# ---------------------------------------------------------------------------
-# FormBuddy integration — serve buddy page, proxy, and suggest API
-# ---------------------------------------------------------------------------
-
-
-@app.get("/buddy/{session_id}", response_class=HTMLResponse)
-async def buddy_page(session_id: str):
-    session = fb_get_session(session_id)
-    if not session:
-        raise HTTPException(404, "Session not found")
-    # Serve buddy.html with paths rewritten to /fb-static/
-    with open(os.path.join(_fb_static, "buddy.html"), "r") as f:
-        html = f.read()
-    html = html.replace('"/static/', '"/fb-static/')
-    html = html.replace("'/static/", "'/fb-static/")
-    return HTMLResponse(html)
-
-
-@app.get("/api/sessions/{session_id}")
-async def fb_session_info(session_id: str):
-    from proxy import proxy_prefix
-    session = fb_get_session(session_id)
-    if not session:
-        raise HTTPException(404, "Session not found")
-    return {
-        "session_id": session.id,
-        "proxy_url": f"{proxy_prefix(session.id)}{session.proxy_path()}",
-        "has_last_suggestion": session.last_suggestion is not None,
-        "known_facts": session.known_facts,
-    }
-
-
-@app.post("/api/sessions/{session_id}/suggest")
-async def fb_suggest(session_id: str, req: FBSuggestRequest):
-    session = fb_get_session(session_id)
-    if not session:
-        raise HTTPException(404, "Session not found")
-
-    fields_desc = []
-    for f in req.fields:
-        desc = f"- {f.field_id} (label: {f.label!r}, type: {f.type}"
-        if f.required:
-            desc += ", required"
-        if f.options:
-            desc += f", options: {f.options}"
-        if f.current_value:
-            desc += f", current: {f.current_value!r}"
-        if f.placeholder:
-            desc += f", placeholder: {f.placeholder!r}"
-        desc += ")"
-        fields_desc.append(desc)
-
-    user_content = f"""Page: {req.page_context.title or 'Unknown'}
-URL: {req.page_context.url or 'Unknown'}
-
-Transcript:
-{session.transcript}
-
-Known facts from previous steps:
-{session.known_facts or 'None yet'}
-
-Currently visible form fields:
-{chr(10).join(fields_desc) or 'No fields found'}
-
-Fill in the fields based on the transcript and known facts. Return JSON only."""
-
-    session.messages.append({"role": "user", "content": user_content})
-    result, debug = await fb_chat_completion(session.messages)
-
-    session.messages.append(
-        {"role": "assistant", "content": result.model_dump_json()}
-    )
-    session.known_facts.update(result.known_facts)
-    session.last_suggestion = result.model_dump()
-
-    return FBSuggestDebugResponse(**result.model_dump(), debug=debug)
-
-
-@app.api_route(
-    "/s/{session_id}/proxy/{path:path}",
-    methods=["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS", "HEAD"],
-)
-async def fb_proxy(session_id: str, path: str, request: Request):
-    session = fb_get_session(session_id)
-    if not session:
-        raise HTTPException(404, "Session not found")
-    return await fb_proxy_request(request, session, path)
-
-
-import re as _re
-
-@app.api_route(
-    "/_portal/{path:path}",
-    methods=["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS", "HEAD"],
-)
-async def fb_portal_catchall(path: str, request: Request):
-    referer = request.headers.get("referer", "")
-    m = _re.search(r"/s/([^/]+)/proxy/", referer)
-    if not m:
-        raise HTTPException(404, "Session not found")
-    session_id = m.group(1)
-    session = fb_get_session(session_id)
-    if not session:
-        raise HTTPException(404, "Session not found")
-    return await fb_proxy_request(request, session, f"_portal/{path}")
 
 
 if __name__ == "__main__":

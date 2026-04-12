@@ -25,3 +25,12 @@
 [2026-04-12 07:44:36] DECISION: uncategorized | CATEGORIES: none | CONFIDENCE: 95% | Looking for a library but has crutches
 [2026-04-12 11:18:53] DECISION: categorized | CATEGORIES: Housing | CONFIDENCE: 95% | My landlord has not been providing me a seat for three months.
 [2026-04-12 11:34:12] DECISION: categorized | CATEGORIES: Housing, Utilities | CONFIDENCE: 95% | My landlord has not been providing heat for the past three months in Bedford.
+[2026-04-12 11:46:16] DECISION: uncategorized | CATEGORIES: none | CONFIDENCE: 95% | complaint about trash not being picked up in Brooklyn
+[2026-04-12 11:55:50] DECISION: uncategorized | CATEGORIES: none | CONFIDENCE: 95% | I'm currently in Harlem looking for a public computer near me.
+[2026-04-12 12:02:57] DECISION: uncategorized | CATEGORIES: none | CONFIDENCE: 95% | I am currently looking for a Snap Center Near Me in Manhattan.
+[2026-04-12 12:05:17] DECISION: uncategorized | CATEGORIES: none | CONFIDENCE: 95% | Looking for a Snap Center location in Manhattan.
+[2026-04-12 12:06:03] DECISION: categorized | CATEGORIES: Immigrants and Refugees, Legal Services | CONFIDENCE: 95% | I am a legal immigrant and I am scared that I will be taken away. How can I be located to the correct people?
+[2026-04-12 12:06:58] DECISION: categorized | CATEGORIES: Immigrants and Refugees, Criminal Justice | CONFIDENCE: 95% | I am a legal immigrant and I am scared that I will be taken away. How can I be located to the correct people?
+[2026-04-12 12:07:31] DECISION: categorized | CATEGORIES: Immigrants and Refugees, Legal Services | CONFIDENCE: 95% | The user is an immigrant concerned about being taken away and wants to be connected to the correct people. They also mention being categorized as immigrants when speaking Spanish and ask if that means anything.
+[2026-04-12 12:10:56] DECISION: categorized | CATEGORIES: Housing | CONFIDENCE: 96% | My landlord has been planning to evict me despite me paying three years and not missing a day of rent.
+[2026-04-12 12:17:21] DECISION: categorized | CATEGORIES: Housing, Criminal Justice | CONFIDENCE: 95% | My landlord is planning to evict me despite paying rent on time for three years. Is this legal?

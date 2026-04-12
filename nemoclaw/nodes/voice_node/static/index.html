@@ -319,25 +319,6 @@
             background: rgba(0, 0, 0, 0.03);
         }
 
-        /* FormBuddy button styling */
-        .buddy-link {
-            display: inline-block;
-            margin-top: 14px;
-            padding: 11px 22px;
-            background: var(--accent);
-            color: var(--bg);
-            border-radius: 10px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.85rem;
-            transition: opacity 0.2s, transform 0.2s;
-            box-shadow: 0 3px 12px rgba(0,0,0,0.15);
-        }
-
-        .buddy-link:hover {
-            opacity: 0.88;
-            transform: translateY(-1px);
-        }
     </style>
 </head>
 <body>
@@ -468,7 +449,6 @@
 
                 if (res.form_finder) {
                     const ff = res.form_finder;
-                    const buddyUrl = res.buddy_url;
                     html += `<div style="margin-top:12px;padding-top:12px;border-top:1px solid rgba(0,0,0,0.1);">`;
                     html += `<div style="color:var(--text-secondary);font-size:0.78rem;margin-bottom:6px;">311 Form</div>`;
                     if (ff.form_name) html += `<div style="font-weight:600;">${ff.form_name}</div>`;
@@ -476,8 +456,8 @@
                         const steps = Array.isArray(ff.next_steps) ? ff.next_steps : [ff.next_steps];
                         html += `<div style="margin-top:6px;color:var(--text-secondary);font-size:0.85rem;">${steps.map(s => `<div style="padding-left:8px;">&#8226; ${s}</div>`).join("")}</div>`;
                     }
-                    if (buddyUrl) {
-                        html += `<a href="${buddyUrl}" target="_blank" class="buddy-link">Fill this form</a>`;
+                    if (ff.form_url) {
+                        html += `<a href="${ff.form_url}" target="_blank" style="display:inline-block;margin-top:14px;padding:11px 22px;background:var(--accent);color:var(--bg);border-radius:10px;text-decoration:none;font-weight:600;font-size:0.85rem;transition:opacity 0.2s,transform 0.2s;box-shadow:0 3px 12px rgba(0,0,0,0.15);" onmouseover="this.style.opacity='0.88';this.style.transform='translateY(-1px)'" onmouseout="this.style.opacity='1';this.style.transform='none'">Open 311 Form</a>`;
                     }
                     html += `</div>`;
                 }

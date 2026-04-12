@@ -135,24 +135,96 @@ class FormFinder:
     # Internals
     # ------------------------------------------------------------------
 
+    # Common synonyms the LLM might use instead of the exact catalog name
+    _SYNONYMS = {
+        "rodent": "rat or mouse",
+        "pest": "rat or mouse",
+        "vermin": "rat or mouse",
+        "cockroach": "residential pest",
+        "roach": "residential pest",
+        "insect": "residential pest",
+        "garbage": "dirty condition",
+        "trash": "dirty condition",
+        "litter": "dirty condition",
+        "pothole": "pothole or cave-in",
+        "double parking": "illegal parking",
+        "street light": "street light complaint",
+        "lamp post": "street light complaint",
+        "sidewalk": "sidewalk condition",
+        "elevator": "elevator complaint",
+        "mold": "mold complaint",
+        "asbestos": "asbestos complaint",
+        "lead paint": "lead complaint",
+    }
+
+    def _expand_synonyms(self, text: str) -> str:
+        """Replace common synonym words so they match catalog names."""
+        lower = text.lower()
+        for syn, replacement in self._SYNONYMS.items():
+            if syn in lower:
+                lower = lower.replace(syn, replacement)
+        return lower
+
     def _resolve(self, form_name: str) -> tuple[str, str]:
-        """Map an LLM-produced form name to its canonical name and verified URL."""
+        """Map an LLM-produced form name to its canonical name and verified URL.
+
+        Uses multiple matching strategies to ensure we almost always resolve
+        to a real KA entry instead of falling back to the generic URL.
+        """
+        # 1. Exact match
         item = self._by_name.get(form_name)
         if item:
             return item["name"], _ka_url(item["ka_number"])
 
+        # 2. Case-insensitive exact match
         lower = form_name.lower()
         for name, it in self._by_name.items():
             if name.lower() == lower:
                 return it["name"], _ka_url(it["ka_number"])
 
-        best, best_score = None, 0
+        # 3. Substring match — LLM name contained in a catalog entry or vice versa
         for name, it in self._by_name.items():
-            overlap = len(set(name.lower().split()) & set(lower.split()))
-            if overlap > best_score:
-                best, best_score = it, overlap
-        if best and best_score >= 2:
+            nl = name.lower()
+            if lower in nl or nl in lower:
+                return it["name"], _ka_url(it["ka_number"])
+
+        # Expand synonyms so "rodent" matches "rat or mouse", etc.
+        expanded = self._expand_synonyms(lower)
+
+        # Skip generic filler words when scoring
+        _NOISE = {"complaint", "report", "a", "an", "the", "in", "on", "of",
+                   "for", "and", "or", "with", "from", "to", "my", "about",
+                   "general", "311", "nyc", "city", "new", "york"}
+        query_words = set(expanded.split()) - _NOISE
+
+        if not query_words:
+            return form_name, "https://portal.311.nyc.gov/report-problems/"
+
+        # 4. Word overlap scoring — ignore filler, rank by meaningful overlap
+        best, best_score = None, 0.0
+        for name, it in self._by_name.items():
+            name_words = set(name.lower().split()) - _NOISE
+            if not name_words:
+                continue
+            overlap = query_words & name_words
+            if not overlap:
+                continue
+            # Score: fraction of query words matched + fraction of name words matched
+            score = (len(overlap) / len(query_words) + len(overlap) / len(name_words)) / 2
+            if score > best_score:
+                best, best_score = it, score
+        if best and best_score >= 0.3:
             return best["name"], _ka_url(best["ka_number"])
+
+        # 5. Description keyword match — check if meaningful words appear in descriptions
+        best_desc, best_desc_score = None, 0.0
+        for name, it in self._by_name.items():
+            desc = it.get("description", "").lower()
+            hits = sum(1 for w in query_words if w in desc)
+            if hits > best_desc_score:
+                best_desc, best_desc_score = it, hits
+        if best_desc and best_desc_score >= 2:
+            return best_desc["name"], _ka_url(best_desc["ka_number"])
 
         return form_name, "https://portal.311.nyc.gov/report-problems/"
 
