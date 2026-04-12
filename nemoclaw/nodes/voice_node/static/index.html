@@ -3,318 +3,582 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Voice Node</title>
+    <title>SparX</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
-        
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
         :root {
-            --bg-color: #070707;
-            --surface: rgba(255, 255, 255, 0.04);
-            --surface-border: rgba(255, 255, 255, 0.08);
-            --text-primary: #ededed;
-            --text-secondary: #777777;
-            --accent: #ededed;
+            --bg:        #0a0a0a;
+            --surface:   #111111;
+            --border:    #1e1e1e;
+            --yellow:    #f5c842;
+            --yellow-dim:#f5c84220;
+            --yellow-mid:#f5c84240;
+            --text:      #f0f0f0;
+            --muted:     #555555;
+            --danger:    #ff4444;
+            --danger-dim:#ff444420;
         }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
-            background-color: var(--bg-color);
-            color: var(--text-primary);
+            background: var(--bg);
+            color: var(--text);
             font-family: 'Inter', sans-serif;
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
             min-height: 100vh;
             min-height: 100dvh;
-            padding: 24px 0;
-            box-sizing: border-box;
-            overflow-x: hidden;
-            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 32px 20px 48px;
         }
 
-        .container {
-            width: 90%;
-            max-width: 380px;
-            background: var(--surface);
-            backdrop-filter: blur(24px);
-            -webkit-backdrop-filter: blur(24px);
-            border: 1px solid var(--surface-border);
-            border-radius: 24px;
-            padding: 40px 30px;
-            text-align: center;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.6);
-            transition: transform 0.3s ease;
+        /* ── Header ── */
+        header {
+            width: 100%;
+            max-width: 480px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 40px;
         }
 
-        h1 {
-            font-weight: 600;
-            font-size: 1.4rem;
-            margin-bottom: 6px;
+        .logo {
+            font-size: 1.1rem;
+            font-weight: 700;
             letter-spacing: -0.5px;
+            color: var(--yellow);
         }
 
-        p {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            margin-bottom: 45px;
+        .logo span {
+            color: var(--text);
             font-weight: 300;
         }
 
-        .mic-button {
-            width: 76px;
-            height: 76px;
-            border-radius: 50%;
-            background: transparent;
-            border: 1px solid var(--surface-border);
-            cursor: pointer;
-            position: relative;
-            display: inline-flex;
-            justify-content: center;
-            align-items: center;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            outline: none;
-            box-shadow: inset 0 2px 4px rgba(255,255,255,0.05);
+        .badge {
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--muted);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 4px 10px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
         }
 
-        .mic-button::before {
+        /* ── Main card ── */
+        .card {
+            width: 100%;
+            max-width: 480px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 36px 28px;
+        }
+
+        /* ── Mic area ── */
+        .mic-wrap {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 32px;
+        }
+
+        .mic-ring {
+            position: relative;
+            width: 96px;
+            height: 96px;
+        }
+
+        .mic-ring::before {
             content: '';
             position: absolute;
-            width: 100%;
-            height: 100%;
+            inset: -8px;
             border-radius: 50%;
-            background: var(--accent);
-            opacity: 0.03;
-            transform: scale(1);
-            transition: all 0.3s ease;
+            border: 1px solid var(--border);
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .mic-button:hover {
-            transform: scale(1.03);
-            border-color: rgba(255,255,255,0.2);
+        .mic-ring.recording::before {
+            border-color: var(--yellow);
+            box-shadow: 0 0 0 4px var(--yellow-dim), 0 0 24px var(--yellow-dim);
+            animation: ring-pulse 2s infinite;
         }
 
-        .mic-button:hover::before {
-            transform: scale(1.15);
-            opacity: 0.06;
+        @keyframes ring-pulse {
+            0%, 100% { box-shadow: 0 0 0 4px var(--yellow-dim), 0 0 24px var(--yellow-dim); }
+            50%       { box-shadow: 0 0 0 10px transparent, 0 0 40px var(--yellow-mid); }
         }
 
-        .mic-button.recording {
-            border-color: #ff3366;
-            animation: pulse 1.8s infinite;
+        .mic-btn {
+            width: 96px;
+            height: 96px;
+            border-radius: 50%;
+            background: var(--yellow-dim);
+            border: 1.5px solid var(--yellow-mid);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s, border-color 0.2s, transform 0.15s;
+            outline: none;
         }
 
-        .mic-button.recording::before {
-            background: #ff3366;
-            opacity: 0.15;
+        .mic-btn:hover {
+            background: var(--yellow-mid);
+            border-color: var(--yellow);
+            transform: scale(1.04);
         }
 
-        .mic-icon {
-            width: 22px;
-            height: 22px;
-            fill: var(--accent);
-            z-index: 1;
-            transition: fill 0.3s ease;
+        .mic-btn.recording {
+            background: var(--yellow-mid);
+            border-color: var(--yellow);
         }
 
-        .mic-button.recording .mic-icon {
-            fill: #ff3366;
-        }
-
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(255, 51, 102, 0.3); }
-            70% { box-shadow: 0 0 0 15px rgba(255, 51, 102, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(255, 51, 102, 0); }
+        .mic-btn svg {
+            width: 26px;
+            height: 26px;
+            fill: var(--yellow);
+            transition: fill 0.2s;
         }
 
         .status {
-            margin-top: 30px;
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-            height: 20px;
-            letter-spacing: 0.2px;
+            font-size: 0.82rem;
+            color: var(--muted);
+            letter-spacing: 0.3px;
+            transition: color 0.3s;
         }
 
-        .transcript-box {
-            margin-top: 25px;
-            background: rgba(0,0,0,0.4);
-            border: 1px solid var(--surface-border);
-            border-radius: 12px;
-            padding: 20px;
-            min-height: 80px;
-            text-align: left;
-            font-size: 0.9rem;
-            line-height: 1.6;
-            color: var(--text-primary);
-            opacity: 0;
-            transform: translateY(8px);
-            transition: all 0.4s ease;
-            box-shadow: inset 0 2px 10px rgba(0,0,0,0.2);
+        .status.live { color: var(--yellow); }
+
+        /* ── Upload row ── */
+        .upload-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 28px;
+            padding-bottom: 28px;
+            border-bottom: 1px solid var(--border);
         }
 
-        .transcript-box.visible {
-            opacity: 1;
-            transform: translateY(0);
+        .upload-label {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: transparent;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 10px 14px;
+            font-size: 0.8rem;
+            color: var(--muted);
+            cursor: pointer;
+            transition: border-color 0.2s, color 0.2s;
         }
 
-        /* Loading Dots */
-        .loading { display: none; margin-top: 25px; margin-bottom: 25px; }
-        .loading.active { display: flex; justify-content: center; gap: 5px; }
+        .upload-label:hover { border-color: var(--yellow); color: var(--text); }
+
+        .upload-label svg {
+            width: 15px; height: 15px;
+            fill: currentColor;
+            flex-shrink: 0;
+        }
+
+        #fileInput { display: none; }
+
+        #fileName {
+            font-size: 0.75rem;
+            color: var(--muted);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 140px;
+        }
+
+        .upload-btn {
+            background: var(--yellow-dim);
+            border: 1px solid var(--yellow-mid);
+            border-radius: 10px;
+            color: var(--yellow);
+            font-size: 0.8rem;
+            font-weight: 500;
+            padding: 10px 16px;
+            cursor: pointer;
+            transition: background 0.2s;
+            white-space: nowrap;
+        }
+
+        .upload-btn:hover { background: var(--yellow-mid); }
+
+        /* ── Loading dots ── */
+        .dots {
+            display: none;
+            justify-content: center;
+            gap: 6px;
+            padding: 16px 0;
+        }
+
+        .dots.active { display: flex; }
+
         .dot {
             width: 5px; height: 5px;
-            background: var(--text-secondary);
             border-radius: 50%;
-            animation: bounce 1.4s infinite ease-in-out both;
+            background: var(--yellow);
+            animation: bounce 1.2s infinite ease-in-out both;
         }
-        .dot:nth-child(1) { animation-delay: -0.32s; }
-        .dot:nth-child(2) { animation-delay: -0.16s; }
+
+        .dot:nth-child(1) { animation-delay: -0.24s; }
+        .dot:nth-child(2) { animation-delay: -0.12s; }
+
         @keyframes bounce {
-            0%, 80%, 100% { transform: scale(0); }
-            40% { transform: scale(1); }
+            0%, 80%, 100% { transform: scale(0); opacity: 0.3; }
+            40%            { transform: scale(1); opacity: 1; }
         }
+
+        /* ── Result blocks ── */
+        .result { display: flex; flex-direction: column; gap: 12px; }
+
+        .block {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 16px;
+            font-size: 0.85rem;
+            line-height: 1.6;
+            animation: fadeUp 0.35s ease forwards;
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(6px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .block-label {
+            font-size: 0.68rem;
+            font-weight: 600;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 8px;
+        }
+
+        .block.yellow-accent  { border-color: var(--yellow-mid); }
+        .block.danger-accent  { border-color: var(--danger); background: var(--danger-dim); }
+
+        .pill {
+            display: inline-block;
+            font-size: 0.68rem;
+            font-weight: 600;
+            padding: 2px 8px;
+            border-radius: 20px;
+            background: var(--yellow-dim);
+            color: var(--yellow);
+            border: 1px solid var(--yellow-mid);
+            margin-bottom: 8px;
+        }
+
+        .pill.danger {
+            background: var(--danger-dim);
+            color: var(--danger);
+            border-color: var(--danger);
+        }
+
+        a { color: var(--yellow); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        .emotion-bar-wrap {
+            height: 3px;
+            background: var(--border);
+            border-radius: 2px;
+            margin-top: 8px;
+            overflow: hidden;
+        }
+
+        .emotion-bar {
+            height: 100%;
+            border-radius: 2px;
+            background: var(--yellow);
+            transition: width 0.6s ease;
+        }
+
+        .emotion-bar.danger { background: var(--danger); }
+
+        .steps { padding-left: 0; list-style: none; }
+        .steps li::before { content: "→ "; color: var(--yellow); }
+        .steps li + li { margin-top: 4px; }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <h1>Voice Node</h1>
-        <p>Spanglish Intelligence Bridge</p>
+    <header>
+        <div class="logo">Spar<span>X</span></div>
+        <div class="badge">NYC Social AI</div>
+    </header>
 
-        <button class="mic-button" id="recordBtn" aria-label="Record">
-            <svg class="mic-icon" viewBox="0 0 24 24">
-                <path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z"/>
-                <path d="M17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"/>
-            </svg>
-        </button>
+    <div class="card">
 
-        <div class="status" id="statusText">Ready to capture</div>
+        <!-- Mic -->
+        <div class="mic-wrap">
+            <div class="mic-ring" id="micRing">
+                <button class="mic-btn" id="recordBtn" aria-label="Record">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z"/>
+                        <path d="M17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="status" id="statusText">Ready to capture</div>
+        </div>
 
-        <div class="loading" id="loadingIndicator">
+        <!-- Document upload -->
+        <div class="upload-row">
+            <label class="upload-label" for="fileInput">
+                <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm4 18H6V4h7v5h5v11z"/></svg>
+                <span id="fileName">Upload document or photo</span>
+            </label>
+            <input type="file" id="fileInput" accept="image/*,.pdf">
+            <button class="upload-btn" id="uploadBtn">Analyze</button>
+        </div>
+
+        <!-- Loading -->
+        <div class="dots" id="dots">
             <div class="dot"></div>
             <div class="dot"></div>
             <div class="dot"></div>
         </div>
 
-        <div class="transcript-box" id="transcriptBox"></div>
+        <!-- Results -->
+        <div class="result" id="result"></div>
+
     </div>
 
     <script>
-        let mediaRecorder;
-        let audioChunks = [];
-        const recordBtn = document.getElementById('recordBtn');
+        const recordBtn  = document.getElementById('recordBtn');
+        const micRing    = document.getElementById('micRing');
         const statusText = document.getElementById('statusText');
-        const transcriptBox = document.getElementById('transcriptBox');
-        const loadingIndicator = document.getElementById('loadingIndicator');
+        const dots       = document.getElementById('dots');
+        const result     = document.getElementById('result');
+        const fileInput  = document.getElementById('fileInput');
+        const uploadBtn  = document.getElementById('uploadBtn');
+        const fileName   = document.getElementById('fileName');
 
-        let isRecording = false;
-
-        // One session ID for the lifetime of this page load — ties all clips together
         const sessionId = crypto.randomUUID();
+        let mediaRecorder, audioChunks = [], isRecording = false;
 
+        // ── File picker label ──
+        fileInput.addEventListener('change', () => {
+            fileName.textContent = fileInput.files[0]?.name || 'Upload document or photo';
+        });
+
+        // ── Upload button ──
+        uploadBtn.addEventListener('click', async () => {
+            if (!fileInput.files[0]) { alert('Choose a file first.'); return; }
+            const form = new FormData();
+            form.append('file', fileInput.files[0]);
+            form.append('session_id', sessionId);
+            setLoading('Analyzing document...');
+            try {
+                const data = await (await fetch('/upload', { method: 'POST', body: form })).json();
+                renderDocument(data);
+            } catch (e) {
+                setStatus('Error analyzing document', false);
+            }
+        });
+
+        // ── Mic record ──
         recordBtn.addEventListener('click', async () => {
             if (!isRecording) {
                 try {
                     const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
                     mediaRecorder = new MediaRecorder(stream, { mimeType: 'audio/webm' });
                     audioChunks = [];
-
-                    mediaRecorder.ondataavailable = e => {
-                        if (e.data.size > 0) audioChunks.push(e.data);
-                    };
-
+                    mediaRecorder.ondataavailable = e => { if (e.data.size > 0) audioChunks.push(e.data); };
                     mediaRecorder.onstop = async () => {
-                        const audioBlob = new Blob(audioChunks, { type: 'audio/webm' });
-                        await uploadAudio(audioBlob);
-                        stream.getTracks().forEach(track => track.stop()); // kill mic
+                        const blob = new Blob(audioChunks, { type: 'audio/webm' });
+                        stream.getTracks().forEach(t => t.stop());
+                        await sendAudio(blob);
                     };
-
                     mediaRecorder.start();
                     isRecording = true;
+                    micRing.classList.add('recording');
                     recordBtn.classList.add('recording');
-                    statusText.textContent = "Listening...";
-                    transcriptBox.classList.remove('visible');
-                } catch (err) {
-                    alert("Microphone access denied. Did you accept the HTTPS security warning?");
-                    console.error(err);
+                    statusText.textContent = 'Listening...';
+                    statusText.classList.add('live');
+                    result.innerHTML = '';
+                } catch {
+                    alert('Microphone access denied. Did you accept the HTTPS certificate warning?');
                 }
             } else {
                 mediaRecorder.stop();
                 isRecording = false;
+                micRing.classList.remove('recording');
                 recordBtn.classList.remove('recording');
-                statusText.textContent = "Transcribing via Parakeet...";
-                loadingIndicator.classList.add('active');
+                statusText.classList.remove('live');
+                setLoading('Transcribing...');
             }
         });
 
-        async function uploadAudio(blob) {
-            const formData = new FormData();
-            formData.append('file', blob, 'recording.webm');
-            formData.append('session_id', sessionId);
-
+        async function sendAudio(blob) {
+            const form = new FormData();
+            form.append('file', blob, 'recording.webm');
+            form.append('session_id', sessionId);
             try {
-                const response = await fetch('/transcribe', {
-                    method: 'POST',
-                    body: formData
-                });
-
-                const data = await response.json();
-                const dir = data.direction || {};
-                const res = data.resolution || {};
-
-                loadingIndicator.classList.remove('active');
-                statusText.textContent = "Transcription Complete";
-
-                // Show what the user said + NemoClaw's resolved response
-                const reply = res.response || dir.response || "";
-                const decision = dir.decision || "";
-                const label = decision === "categorized"   ? "Routed"
-                            : decision === "uncategorized" ? "Forwarded"
-                            : decision === "needs_more_info" ? "Needs info"
-                            : "";
-
-                const lang = data.language || {};
-                const langTag = lang.translated
-                    ? `<span style="margin-left:8px;font-size:0.72rem;color:#6ea8fe;">${lang.detected} (${Math.round(lang.ratio * 100)}%)</span>`
-                    : "";
-
-                let html =
-                    `<div style="color:var(--text-secondary);font-size:0.78rem;margin-bottom:8px;">${label}${langTag}</div>` +
-                    `<div>${data.transcription || "No speech detected."}</div>`;
-
-                if (reply) {
-                    html += `<div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--surface-border);color:var(--text-secondary);">${reply}</div>`;
-                }
-
-                // Show open data results if available
-                if (res.open_data) {
-                    const od = res.open_data;
-                    html += `<div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--surface-border);">`;
-                    html += `<div style="color:var(--text-secondary);font-size:0.78rem;margin-bottom:6px;">NYC Open Data</div>`;
-                    if (od.answer) html += `<div style="font-size:0.85rem;">${od.answer}</div>`;
-                    if (od.source) html += `<div style="margin-top:4px;color:var(--text-secondary);font-size:0.78rem;">Source: ${od.source}</div>`;
-                    html += `</div>`;
-                }
-
-                // Show form finder details if NemoClaw found a 311 form
-                if (res.form_finder) {
-                    const ff = res.form_finder;
-                    html += `<div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--surface-border);">`;
-                    html += `<div style="color:var(--text-secondary);font-size:0.78rem;margin-bottom:6px;">311 Form</div>`;
-                    if (ff.form_name) html += `<div style="font-weight:600;">${ff.form_name}</div>`;
-                    if (ff.form_url) html += `<div style="margin-top:4px;"><a href="${ff.form_url}" target="_blank" style="color:#6ea8fe;text-decoration:none;">${ff.form_url}</a></div>`;
-                    if (ff.next_steps) {
-                        const steps = Array.isArray(ff.next_steps) ? ff.next_steps : [ff.next_steps];
-                        html += `<div style="margin-top:6px;color:var(--text-secondary);font-size:0.85rem;">${steps.map(s => `<div>• ${s}</div>`).join("")}</div>`;
-                    }
-                    html += `</div>`;
-                }
-
-                transcriptBox.innerHTML = html;
-                transcriptBox.classList.add('visible');
-            } catch (err) {
-                loadingIndicator.classList.remove('active');
-                statusText.textContent = "Error during server processing";
-                console.error(err);
+                const data = await (await fetch('/transcribe', { method: 'POST', body: form })).json();
+                renderVoice(data);
+            } catch {
+                setStatus('Server error', false);
             }
+        }
+
+        // ── Helpers ──
+        function setLoading(msg) {
+            statusText.textContent = msg;
+            dots.classList.add('active');
+            result.innerHTML = '';
+        }
+
+        function setStatus(msg, live = false) {
+            dots.classList.remove('active');
+            statusText.textContent = msg;
+            statusText.classList.toggle('live', live);
+        }
+
+        function block(label, content, cls = '') {
+            return `<div class="block ${cls}">
+                        <div class="block-label">${label}</div>
+                        ${content}
+                    </div>`;
+        }
+
+        // ── Voice result renderer ──
+        function renderVoice(data) {
+            setStatus('Done');
+            const dir  = data.direction  || {};
+            const res  = data.resolution || {};
+            const lang = data.language   || {};
+            const emo  = data.emotion    || {};
+            const disp = data.displacement || {};
+            let html   = '';
+
+            // Transcript
+            const langTag = lang.translated
+                ? ` <span style="color:var(--yellow);font-size:0.75rem;">${lang.detected}</span>` : '';
+            html += block('You said' + langTag,
+                `<div>${data.transcription || 'No speech detected.'}</div>`);
+
+            // Emotion — only show if distressed
+            if (emo.distress_score >= 0.35) {
+                const pct   = Math.round(emo.distress_score * 100);
+                const crit  = emo.is_crisis;
+                const label = crit ? 'Crisis detected' : 'Emotional distress detected';
+                const tags  = (emo.markers || []).map(m =>
+                    `<span style="font-size:0.72rem;color:var(--muted);margin-right:6px;">${m}</span>`).join('');
+                html += block('Voice analysis',
+                    `<div class="pill ${crit ? 'danger' : ''}">${label}</div>
+                     <div>${tags}</div>
+                     <div class="emotion-bar-wrap">
+                       <div class="emotion-bar ${crit ? 'danger' : ''}" style="width:${pct}%"></div>
+                     </div>`,
+                    crit ? 'danger-accent' : 'yellow-accent');
+            }
+
+            // Displacement alert
+            if (disp.risk_level === 'high' || disp.risk_level === 'critical') {
+                html += block('Displacement risk',
+                    `<div class="pill danger">${disp.risk_level.toUpperCase()}</div>
+                     <div style="margin-top:6px;">${disp.alert}</div>`,
+                    'danger-accent');
+            }
+
+            // Response
+            const reply = res.response || dir.response || '';
+            if (reply) html += block('Response', `<div>${reply}</div>`, 'yellow-accent');
+
+            // 311 Form
+            if (res.form_finder) {
+                const ff = res.form_finder;
+                const steps = Array.isArray(ff.next_steps) ? ff.next_steps : [ff.next_steps];
+                html += block('311 Form',
+                    `<div style="font-weight:600;margin-bottom:6px;">${ff.form_name}</div>
+                     ${ff.form_url ? `<div><a href="${ff.form_url}" target="_blank">${ff.form_url}</a></div>` : ''}
+                     ${steps.length ? `<ul class="steps" style="margin-top:10px;">${steps.map(s => `<li>${s}</li>`).join('')}</ul>` : ''}`
+                );
+            }
+
+            // Open Data
+            if (res.open_data?.answer) {
+                html += block('NYC Open Data',
+                    `<div style="font-size:0.83rem;">${res.open_data.answer}</div>`);
+            }
+
+            result.innerHTML = html;
+        }
+
+        // ── Document result renderer ──
+        function renderDocument(data) {
+            setStatus('Done');
+            const doc  = data.document   || {};
+            const res  = data.resolution || {};
+            const disp = data.displacement || {};
+            let html   = '';
+
+            // Urgency pill
+            const urgencyColors = { critical: 'danger', high: 'danger', medium: '', low: '' };
+            const urg = doc.urgency || 'low';
+            html += block('Document',
+                `<div class="pill ${urgencyColors[urg] || ''}">${doc.document_type?.replace(/_/g,' ')} — ${urg} urgency</div>
+                 <div>${doc.summary}</div>
+                 ${doc.deadline_days != null ? `<div style="margin-top:8px;color:var(--yellow);font-size:0.82rem;">⚠ ${doc.deadline_days} days until deadline</div>` : ''}`,
+                urg === 'critical' || urg === 'high' ? 'danger-accent' : 'yellow-accent');
+
+            // Key dates
+            if (doc.key_dates?.length) {
+                const dates = doc.key_dates.map(d =>
+                    `<div style="display:flex;justify-content:space-between;font-size:0.82rem;padding:4px 0;border-bottom:1px solid var(--border);">
+                        <span style="color:var(--muted)">${d.label}</span>
+                        <span>${d.date}</span>
+                    </div>`).join('');
+                html += block('Key dates', dates);
+            }
+
+            // Amounts
+            if (doc.amounts_owed?.length) {
+                const amounts = doc.amounts_owed.map(a =>
+                    `<div style="display:flex;justify-content:space-between;font-size:0.82rem;padding:4px 0;border-bottom:1px solid var(--border);">
+                        <span style="color:var(--muted)">${a.label}</span>
+                        <span style="color:var(--yellow);font-weight:600;">${a.amount}</span>
+                    </div>`).join('');
+                html += block('Amounts', amounts);
+            }
+
+            // Required actions
+            if (doc.required_actions?.length) {
+                html += block('What to do',
+                    `<ul class="steps">${doc.required_actions.map(s => `<li>${s}</li>`).join('')}</ul>`);
+            }
+
+            // Displacement
+            if (disp.risk_level === 'high' || disp.risk_level === 'critical') {
+                html += block('Displacement risk',
+                    `<div class="pill danger">${disp.risk_level.toUpperCase()}</div>
+                     <div style="margin-top:6px;">${disp.alert}</div>`,
+                    'danger-accent');
+            }
+
+            // Resolution
+            if (res.response) html += block('Resources', `<div>${res.response}</div>`, 'yellow-accent');
+
+            if (res.form_finder) {
+                const ff = res.form_finder;
+                html += block('311 Form',
+                    `<div style="font-weight:600;">${ff.form_name}</div>
+                     ${ff.form_url ? `<div style="margin-top:4px;"><a href="${ff.form_url}" target="_blank">${ff.form_url}</a></div>` : ''}`
+                );
+            }
+
+            result.innerHTML = html;
         }
     </script>
 </body>
