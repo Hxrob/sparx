@@ -1,10 +1,25 @@
 import json
+import re
 import time
 
 import httpx
 
 from config import LLM_BASE_URL, LLM_MODEL, LLM_OPTIONS
 from models import LLMDebugInfo, SuggestResponse
+
+# Regex to strip <think>...</think> blocks (Gemma 4 thinking mode)
+_THINK_RE = re.compile(r"<think>.*?</think>", re.DOTALL)
+
+
+def _strip_thinking(content: str) -> str:
+    """Remove <think>...</think> blocks from model output."""
+    # Also handle unclosed <think> (model truncated mid-thought)
+    content = _THINK_RE.sub("", content)
+    # Remove a trailing unclosed <think>... block
+    idx = content.find("<think>")
+    if idx != -1:
+        content = content[:idx]
+    return content.strip()
 
 
 def _strip_fences(content: str) -> str:
@@ -52,6 +67,7 @@ async def chat_completion(
     debug.completion_tokens = tokens["completion_tokens"]
     debug.total_tokens = tokens["total_tokens"]
 
+    content = _strip_thinking(content)
     content = _strip_fences(content)
 
     try:
@@ -85,6 +101,7 @@ async def chat_completion(
         debug.completion_tokens += retry_tokens["completion_tokens"]
         debug.total_tokens += retry_tokens["total_tokens"]
 
+        content2 = _strip_thinking(content2)
         content2 = _strip_fences(content2)
         parsed2 = json.loads(content2)
         debug.duration_ms = (time.monotonic() - t0) * 1000

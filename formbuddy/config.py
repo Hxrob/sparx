@@ -1,8 +1,10 @@
 LLM_BASE_URL = "http://localhost:8080"
-LLM_MODEL = "Qwen/Qwen3-30B-A3B-Base"
+LLM_MODEL = "unsloth/gemma-4-26B-A4B-it-GGUF"
 LLM_OPTIONS = {
-    "temperature": 0.1,
-    "max_tokens": 1024,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "max_tokens": 4096,
 }
 
 ALLOWED_PROXY_HOST = "portal.311.nyc.gov"

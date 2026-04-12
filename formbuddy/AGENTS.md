@@ -44,3 +44,16 @@ uv run fastapi dev main.py
 ## LLM endpoint
 
 Expects an OpenAI-compatible `/v1/chat/completions` endpoint (e.g. llama.cpp). Configure in `config.py`.
+Currently using Gemma 4 26B (`unsloth/gemma-4-26B-A4B-it-GGUF`) via llama.cpp.
+
+## LLM response parsing (`llm_client.py`)
+
+`llm_client.py` handles several model output quirks before JSON parsing:
+1. **Thinking tags** — strips `<think>...</think>` blocks (and unclosed `<think>` from truncation). Models with reasoning (Gemma 4-it, QwQ, DeepSeek-R1) emit these.
+2. **Markdown fences** — strips `` ```json ... ``` `` wrappers.
+3. **Retry** — if JSON parse fails after stripping, appends a correction prompt and retries once.
+
+When swapping models, the main things to adjust in `config.py`:
+- `LLM_MODEL` — model identifier
+- `max_tokens` — thinking models need headroom (currently 4096); increase if the debug panel shows parse failures from truncated output
+- Sampling params (`temperature`, `top_p`, `top_k`) — tuned per model family
