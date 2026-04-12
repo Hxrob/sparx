@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FormBuddy</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <div class="buddy-app">
+        <div class="iframe-wrap">
+            <iframe id="report-frame" sandbox="allow-same-origin allow-scripts allow-forms allow-popups"></iframe>
+        </div>
+        <aside class="buddy-panel" id="buddy-panel">
+            <div class="buddy-header" id="buddy-header">
+                <span class="buddy-avatar">📎</span>
+                <span class="buddy-title">FormBuddy</span>
+                <button class="buddy-toggle" id="buddy-toggle" aria-label="Toggle panel">▼</button>
+            </div>
+            <div id="buddy-status">Loading session…</div>
+            <div class="buddy-buttons">
+                <button id="send-context" disabled>Send Context</button>
+                <button id="autofill-form" disabled>Autofill Form</button>
+            </div>
+            <div class="buddy-preview" id="buddy-preview"></div>
+        </aside>
+    </div>
+    <script src="/static/buddy.js"></script>
+</body>
+</html>
