@@ -25,7 +25,11 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            overflow: hidden;
+            min-height: 100dvh;
+            padding: 24px 0;
+            box-sizing: border-box;
+            overflow-x: hidden;
+            overflow-y: auto;
         }
 
         .container {
@@ -254,21 +258,57 @@
 
                 const data = await response.json();
                 const dir = data.direction || {};
+                const res = data.resolution || {};
 
                 loadingIndicator.classList.remove('active');
                 statusText.textContent = "Transcription Complete";
 
-                // Show what the user said + what the engine replied
-                const reply = dir.response || "";
+                // Show what the user said + NemoClaw's resolved response
+                const reply = res.response || dir.response || "";
                 const decision = dir.decision || "";
                 const label = decision === "categorized"   ? "Routed"
                             : decision === "uncategorized" ? "Forwarded"
                             : decision === "needs_more_info" ? "Needs info"
                             : "";
-                transcriptBox.innerHTML =
-                    `<div style="color:var(--text-secondary);font-size:0.78rem;margin-bottom:8px;">${label}</div>` +
-                    `<div>${data.transcription || "No speech detected."}</div>` +
-                    (reply ? `<div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--surface-border);color:var(--text-secondary);">${reply}</div>` : "");
+
+                const lang = data.language || {};
+                const langTag = lang.translated
+                    ? `<span style="margin-left:8px;font-size:0.72rem;color:#6ea8fe;">${lang.detected} (${Math.round(lang.ratio * 100)}%)</span>`
+                    : "";
+
+                let html =
+                    `<div style="color:var(--text-secondary);font-size:0.78rem;margin-bottom:8px;">${label}${langTag}</div>` +
+                    `<div>${data.transcription || "No speech detected."}</div>`;
+
+                if (reply) {
+                    html += `<div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--surface-border);color:var(--text-secondary);">${reply}</div>`;
+                }
+
+                // Show open data results if available
+                if (res.open_data) {
+                    const od = res.open_data;
+                    html += `<div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--surface-border);">`;
+                    html += `<div style="color:var(--text-secondary);font-size:0.78rem;margin-bottom:6px;">NYC Open Data</div>`;
+                    if (od.answer) html += `<div style="font-size:0.85rem;">${od.answer}</div>`;
+                    if (od.source) html += `<div style="margin-top:4px;color:var(--text-secondary);font-size:0.78rem;">Source: ${od.source}</div>`;
+                    html += `</div>`;
+                }
+
+                // Show form finder details if NemoClaw found a 311 form
+                if (res.form_finder) {
+                    const ff = res.form_finder;
+                    html += `<div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--surface-border);">`;
+                    html += `<div style="color:var(--text-secondary);font-size:0.78rem;margin-bottom:6px;">311 Form</div>`;
+                    if (ff.form_name) html += `<div style="font-weight:600;">${ff.form_name}</div>`;
+                    if (ff.form_url) html += `<div style="margin-top:4px;"><a href="${ff.form_url}" target="_blank" style="color:#6ea8fe;text-decoration:none;">${ff.form_url}</a></div>`;
+                    if (ff.next_steps) {
+                        const steps = Array.isArray(ff.next_steps) ? ff.next_steps : [ff.next_steps];
+                        html += `<div style="margin-top:6px;color:var(--text-secondary);font-size:0.85rem;">${steps.map(s => `<div>• ${s}</div>`).join("")}</div>`;
+                    }
+                    html += `</div>`;
+                }
+
+                transcriptBox.innerHTML = html;
                 transcriptBox.classList.add('visible');
             } catch (err) {
                 loadingIndicator.classList.remove('active');

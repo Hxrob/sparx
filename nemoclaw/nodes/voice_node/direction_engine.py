@@ -69,9 +69,9 @@ you must:
 
 Routing decisions: {_DECISIONS}
   - categorized:     one or more clear category matches — send to OpenClaw
-  - uncategorized:   genuine complaint or question but NO matching category — still send to OpenClaw
+  - uncategorized:   genuine question, complaint, or request about NYC services/resources that does NOT match any of the categories below — still send to OpenClaw
   - needs_more_info: unclear intent, specify what is missing
-  - irrelevant:      small talk, greetings, test phrases, off-topic — do NOT send to OpenClaw
+  - irrelevant:      ONLY small talk, greetings, test phrases, or topics completely unrelated to NYC life or city services — do NOT send to OpenClaw
 
 NYC Benefits and Programs categories (use EXACT strings, only for "categorized"):
   {_CATEGORIES}
@@ -79,8 +79,10 @@ NYC Benefits and Programs categories (use EXACT strings, only for "categorized")
 RULES:
 - A single transcript can match MULTIPLE categories — list all that apply.
 - Only populate "categories" when decision is "categorized".
-- "uncategorized" means you are confident it is a real complaint but it does not fit
-  any of the 19 categories above. Do NOT use "uncategorized" just because you are unsure.
+- "uncategorized" means the person has a real question, complaint, or request about NYC
+  services, resources, or city life, but it does not fit any of the 19 categories above.
+  Examples: looking for a library, asking about parks, trash pickup schedules, city offices.
+  When in doubt between "uncategorized" and "irrelevant", prefer "uncategorized".
 - missing_info must be non-empty when decision is "needs_more_info".
 - Be honest with confidence. Uncertainty is better than a wrong category.
 - "response" is always required — it is what gets spoken back to the user:

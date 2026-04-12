@@ -106,7 +106,10 @@ class FormFinder:
         except requests.RequestException as exc:
             raise FormFinderError(f"LLM request failed: {exc}") from exc
 
-        data = resp.json()
+        try:
+            data = resp.json()
+        except ValueError as exc:
+            raise FormFinderError(f"LLM response is not valid JSON: {exc}") from exc
         choices = data.get("choices", [])
         if not choices or "message" not in choices[0]:
             raise FormFinderError(f"Unexpected LLM response: {data}")

@@ -8,3 +8,18 @@
 [2026-04-12 05:37:49] DECISION: uncategorized | CATEGORIES: none | CONFIDENCE: 80% | What is your landlord explaining to you?
 [2026-04-12 05:45:44] DECISION: categorized | CATEGORIES: Housing | CONFIDENCE: 95% | My landlord wants to evict me and I'm very worried.
 [2026-04-12 05:57:00] DECISION: categorized | CATEGORIES: Housing, Utilities | CONFIDENCE: 95% | My landlord has not been turning on the heat for the past three months.
+[2026-04-12 06:40:55] DECISION: categorized | CATEGORIES: Housing | CONFIDENCE: 98% | My landlord has not provided heat for three months.
+[2026-04-12 06:46:42] DECISION: categorized | CATEGORIES: Housing, Utilities | CONFIDENCE: 95% | My landlord has not been giving me heat for three months.
+[2026-04-12 06:53:55] DECISION: categorized | CATEGORIES: Housing, Utilities | CONFIDENCE: 95% | My landlord has not been heating for three months.
+[2026-04-12 06:57:43] DECISION: categorized | CATEGORIES: Housing, Utilities | CONFIDENCE: 95% | My landlord has not been heating my room for months.
+[2026-04-12 06:59:22] DECISION: categorized | CATEGORIES: Housing, Utilities | CONFIDENCE: 95% | My landlord has not been heating my room for months. I'm really concerned.
+[2026-04-12 06:59:27] DECISION: categorized | CATEGORIES: Housing, Emergency and Crisis Assistance | CONFIDENCE: 95% | My landlord has not been heating my room for months and I'm concerned about the lack of heat.
+[2026-04-12 06:59:36] DECISION: categorized | CATEGORIES: Housing, Emergency and Crisis Assistance | CONFIDENCE: 95% | My landlord has not been heating my room for months and I am feeling scared and worried.
+[2026-04-12 07:01:31] DECISION: categorized | CATEGORIES: Housing, Emergency and Crisis Assistance | CONFIDENCE: 95% | My landlord is refusing to heat my building and I am very cold.
+[2026-04-12 07:03:22] DECISION: categorized | CATEGORIES: Housing, Utilities, Food and Nutrition | CONFIDENCE: 95% | Is the landlord refusing to heat the building and is there trash on the sidewalk?
+[2026-04-12 07:05:38] DECISION: categorized | CATEGORIES: Housing, Civil Rights Protections | CONFIDENCE: 95% | My landlord is excluding me from the property.
+[2026-04-12 07:19:54] DECISION: categorized | CATEGORIES: Housing | CONFIDENCE: 95% | My trash has not been taken out for two weeks.
+[2026-04-12 07:30:04] DECISION: categorized | CATEGORIES: Housing, Food and Nutrition | CONFIDENCE: 95% | Is trash being removed from my home? I'm concerned about hygiene and want it to be done quickly.
+[2026-04-12 07:32:35] DECISION: uncategorized | CATEGORIES: none | CONFIDENCE: 95% | I'm worried about a scary person and want to protect my family and the community.
+[2026-04-12 07:42:18] DECISION: uncategorized | CATEGORIES: none | CONFIDENCE: 95% | I'm looking for a library that is accessible for people with crutches.
+[2026-04-12 07:44:36] DECISION: uncategorized | CATEGORIES: none | CONFIDENCE: 95% | Looking for a library but has crutches
