@@ -43,3 +43,6 @@ soundfile>=0.12.0
 
 # --- form_finder/nyc311_ka.py ---
 beautifulsoup4>=4.12.0
+
+# --- TTS ---
+TTS>=0.22.0

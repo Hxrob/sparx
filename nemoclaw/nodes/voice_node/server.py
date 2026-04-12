@@ -19,10 +19,12 @@ import re
 import sys
 import tempfile
 from contextlib import asynccontextmanager
+import base64
 
 from fastapi import FastAPI, Form, UploadFile, File
 from typing import Optional
 from fastapi.responses import HTMLResponse
+from TTS.api import TTS
 from fastapi.staticfiles import StaticFiles
 from pydub import AudioSegment
 import uvicorn
@@ -40,6 +42,7 @@ from nemoclaw import NemoClaw
 
 voice_node: VoiceNode = None
 nemoclaw: NemoClaw = None
+tts_node: TTS = None
 
 NON_ENGLISH_THRESHOLD = 0.25  # 25% non-English words triggers translation
 
@@ -125,10 +128,13 @@ async def _translate_text(text: str, language_name: str) -> str:
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    global voice_node, nemoclaw
+    global voice_node, nemoclaw, tts_node
     print("Loading Parakeet model onto GPU...")
     voice_node = VoiceNode()
     print("Parakeet ready.")
+    print("Loading Coqui XTTS v2 onto GPU...")
+    tts_node = TTS("tts_models/multilingual/multi-dataset/xtts_v2").to("cuda")
+    print("XTTS ready.")
     nemoclaw = NemoClaw()
     print(f"NemoClaw ready ({nemoclaw._finder.entry_count} KA entries loaded).")
     yield
@@ -170,7 +176,7 @@ async def transcribe_audio(
         transcript = voice_node.transcribe_wav(out_path)
     finally:
         if os.path.exists(in_path):  os.remove(in_path)
-        if os.path.exists(out_path): os.remove(out_path)
+        # Ensure we keep out_path so Coqui can use it to clone the speaker's voice!
 
     print(f"Transcript: {transcript}")
 
@@ -234,6 +240,41 @@ async def transcribe_audio(
 
         translated = True
 
+    # ---- XTTS ZERO-SHOT CLONING ----
+    audio_b64 = ""
+    reply_text = resolution.response
+    
+    xtts_lang = detected_lang
+    if xtts_lang == "zh":
+        xtts_lang = "zh-cn"
+    supported_xtts = ["en", "es", "fr", "de", "it", "pt", "pl", "tr", "ru", "nl", "cs", "ar", "zh-cn", "hu", "ko", "ja", "hi"]
+    if xtts_lang not in supported_xtts:
+        xtts_lang = "en"
+
+    if reply_text and os.path.exists(out_path):
+        try:
+            print(f"Synthesizing XTTS audio in '{xtts_lang}' using {out_path} as speaker reference...")
+            with tempfile.NamedTemporaryFile(suffix=".wav", delete=False) as tmp_tts:
+                tmp_tts_path = tmp_tts.name
+            
+            # Make the bot speak back in the user's cloned voice!
+            tts_node.tts_to_file(
+                text=reply_text, 
+                speaker_wav=out_path, 
+                language=xtts_lang, 
+                file_path=tmp_tts_path
+            )
+            
+            with open(tmp_tts_path, "rb") as audio_file:
+                audio_b64 = base64.b64encode(audio_file.read()).decode("utf-8")
+                
+            os.remove(tmp_tts_path)
+        except Exception as e:
+            print(f"XTTS synthesis failed: {e}")
+
+    # Finally cleanup the original user wav file that we passed to XTTS
+    if os.path.exists(out_path): os.remove(out_path)
+
     return {
         "transcription": transcript,
         "direction": direction,
@@ -249,6 +290,7 @@ async def transcribe_audio(
             "ratio":      round(ratio, 2),
             "translated": translated,
         },
+        "audio_base64": audio_b64,
     }
 
 

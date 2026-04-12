@@ -310,6 +310,29 @@
 
                 transcriptBox.innerHTML = html;
                 transcriptBox.classList.add('visible');
+
+                // Play synthesized XTTS audio
+                if (data.audio_base64) {
+                    statusText.textContent = "Speaking...";
+                    const audio = new Audio("data:audio/wav;base64," + data.audio_base64);
+                    
+                    // Add visual effect while speaking (pulse blue instead of red)
+                    recordBtn.classList.add('recording');
+                    recordBtn.style.borderColor = "#6ea8fe";
+                    
+                    audio.onended = () => {
+                        recordBtn.classList.remove('recording');
+                        recordBtn.style.borderColor = ""; 
+                        statusText.textContent = "Ready to capture";
+                    };
+                    
+                    audio.play().catch(e => {
+                        console.error("Audio playback blocked by browser", e);
+                        recordBtn.classList.remove('recording');
+                        recordBtn.style.borderColor = "";
+                        statusText.textContent = "Transcription Complete (Audio blocked)";
+                    });
+                }
             } catch (err) {
                 loadingIndicator.classList.remove('active');
                 statusText.textContent = "Error during server processing";
