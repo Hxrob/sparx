@@ -1,3 +1,4 @@
+import re
 from pathlib import Path
 from urllib.parse import urlparse
 
@@ -121,3 +122,22 @@ async def proxy(session_id: str, path: str, request: Request):
     if not session:
         raise HTTPException(404, "Session not found")
     return await proxy_request(request, session, path)
+
+
+# Catch-all for portal paths that bypass the intercept script (e.g. /_portal/
+# modal-form-template-path used by the map/address component).  We extract the
+# session ID from the Referer header and redirect through the proxy route.
+@app.api_route(
+    "/_portal/{path:path}",
+    methods=["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS", "HEAD"],
+)
+async def portal_catchall(path: str, request: Request):
+    referer = request.headers.get("referer", "")
+    m = re.search(r"/s/([^/]+)/proxy/", referer)
+    if not m:
+        raise HTTPException(404, "Session not found")
+    session_id = m.group(1)
+    session = get_session(session_id)
+    if not session:
+        raise HTTPException(404, "Session not found")
+    return await proxy_request(request, session, f"_portal/{path}")
