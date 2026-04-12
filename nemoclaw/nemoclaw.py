@@ -41,16 +41,20 @@ LLM_CHAT_URL = os.environ.get(
 )
 
 _SYNTHESIZE_SYSTEM = """\
-You are a NYC civic assistant. You have been given REAL DATA ROWS from \
-NYC Open Data datasets that are relevant to a resident's question.
+You are a NYC civic assistant. You have been given REAL 311 COMPLAINT DATA \
+and service records that are relevant to a resident's question.
 
-Your job: write a clear, helpful, conversational answer that uses SPECIFIC \
-facts from the data rows. Reference actual numbers, dates, locations, names, \
-or statuses from the rows when relevant. Keep it concise (3-5 sentences).
+Your job: write a clear, helpful, conversational answer that cites SPECIFIC \
+facts from the data — complaint types, addresses, dates, statuses, boroughs, \
+agencies, and resolution descriptions. Keep it concise (3-5 sentences).
 
-If the rows don't contain enough info to fully answer the question, say what \
-you CAN tell from the data and mention which dataset(s) the user can explore \
-for more (include the dataset title).
+RULES:
+- NEVER output URLs or dataset links. The user is on a phone — links are useless.
+- NEVER say "check this dataset" or "explore this link".
+- DO cite specific addresses, dates, complaint counts, and statuses from the rows.
+- If the data shows patterns (e.g. many noise complaints in an area), mention that.
+- If data is insufficient, say what you found and suggest calling 311 for more help.
+- Follow the response template: What I found / Best next step / If this does not work.
 
 Do NOT make up data. Only cite what appears in the rows below.
 """
@@ -58,13 +62,12 @@ Do NOT make up data. Only cite what appears in the rows below.
 _SYNTHESIZE_USER = """\
 USER'S QUESTION: {question}
 
-DATASETS FOUND:
-{datasets}
+DATA SOURCE: {source}
 
-DATA ROWS (from those datasets):
+DATA ROWS:
 {rows_json}
 
-Write a helpful answer grounded in the data above.
+Write a helpful answer grounded in the data above. No URLs or links.
 """
 
 
@@ -107,18 +110,13 @@ class NemoClaw:
     ) -> str | None:
         """Use the LLM to produce a tailored answer from actual Open Data rows."""
         rows = od_result.get("rows") or []
-        records = od_result.get("records") or []
         if not rows:
             return None
 
-        # Build dataset summary for the prompt
-        datasets_text = "\n".join(
-            f"- {r['title']}: {r.get('description', '')[:200]} ({r['url']})"
-            for r in records[:4]
-        )
+        source = od_result.get("source", "NYC Open Data")
 
-        # Trim rows to avoid blowing up context — keep first 10 rows, truncate
-        rows_for_prompt = rows[:10]
+        # Trim rows to avoid blowing up context — keep first 12 rows, truncate
+        rows_for_prompt = rows[:12]
         rows_json = json.dumps(rows_for_prompt, indent=1, default=str)
         # Cap total size to ~6k chars
         if len(rows_json) > 6000:
@@ -126,7 +124,7 @@ class NemoClaw:
 
         user_msg = _SYNTHESIZE_USER.format(
             question=question,
-            datasets=datasets_text,
+            source=source,
             rows_json=rows_json,
         )
 
@@ -228,7 +226,7 @@ class NemoClaw:
             resp = (
                 f"I found a matching NYC 311 form: {ff_result['form_name']}. "
                 f"{ff_result['summary']} "
-                f"Additionally, from NYC Open Data: {od_answer}"
+                f"Based on recent 311 data: {od_answer}"
             )
         elif ff_result:
             source = "form_finder"

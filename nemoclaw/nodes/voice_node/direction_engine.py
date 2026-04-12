@@ -363,7 +363,7 @@ def _log_complaint(result: DirectionResult) -> None:
 # ---------------------------------------------------------------------------
 
 
-async def process(transcript: str, session_id: str | None = None) -> DirectionResult:
+async def process(transcript: str, session_id: str | None = None, emotion=None) -> DirectionResult:
     """
     Main entry point.
     Takes a transcript string from Parakeet and an optional session_id.
@@ -382,8 +382,21 @@ async def process(transcript: str, session_id: str | None = None) -> DirectionRe
 
     full_transcript = _accumulate(session_id, transcript.strip())
 
+    # Prepend vocal distress context so the LLM adjusts its tone
+    llm_input = full_transcript
+    if emotion is not None and getattr(emotion, "is_distressed", False):
+        markers_str = ", ".join(emotion.markers) if emotion.markers else "elevated distress"
+        distress_note = (
+            f"[VOCAL ANALYSIS: The speaker's voice shows signs of emotional distress "
+            f"(score={emotion.distress_score:.2f}, detected: {markers_str}). "
+            f"Respond with extra warmth, patience, and care. "
+            f"{'CRISIS LEVEL DETECTED — prioritize emotional support before resources.' if emotion.is_crisis else ''}"
+            f"]\n\n"
+        )
+        llm_input = distress_note + full_transcript
+
     try:
-        raw = await _call_llm(full_transcript)
+        raw = await _call_llm(llm_input)
     except Exception as exc:
         LOGGER.error("Direction LLM error: %s", exc)
         return DirectionResult(

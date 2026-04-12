@@ -3,165 +3,244 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Voice Node</title>
+    <title>SparkCity</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
-        
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap');
+
         :root {
-            --bg-color: #070707;
-            --surface: rgba(255, 255, 255, 0.04);
-            --surface-border: rgba(255, 255, 255, 0.08);
-            --text-primary: #ededed;
-            --text-secondary: #777777;
-            --accent: #ededed;
+            --bg: #f5c518;
+            --surface: rgba(0, 0, 0, 0.06);
+            --surface-border: rgba(0, 0, 0, 0.12);
+            --text-primary: #111111;
+            --text-secondary: #444444;
+            --accent: #111111;
         }
 
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
         body {
-            background-color: var(--bg-color);
+            background-color: var(--bg);
             color: var(--text-primary);
             font-family: 'Inter', sans-serif;
-            margin: 0;
+            min-height: 100vh;
+            min-height: 100dvh;
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
-            min-height: 100dvh;
             padding: 24px 0;
-            box-sizing: border-box;
             overflow-x: hidden;
             overflow-y: auto;
+            position: relative;
+        }
+
+        /* Transparent geometric pattern overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background: url('/static/pattern.png') repeat;
+            background-size: 200px 200px;
+            opacity: 0.06;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Subtle radial glow behind the card */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(255,255,255,0.35) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
         }
 
         .container {
-            width: 90%;
-            max-width: 380px;
-            background: var(--surface);
-            backdrop-filter: blur(24px);
-            -webkit-backdrop-filter: blur(24px);
-            border: 1px solid var(--surface-border);
-            border-radius: 24px;
-            padding: 40px 30px;
+            position: relative;
+            z-index: 1;
+            width: 92%;
+            max-width: 400px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 28px;
+            padding: 44px 32px 36px;
             text-align: center;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.6);
-            transition: transform 0.3s ease;
+            box-shadow:
+                0 20px 60px rgba(0, 0, 0, 0.12),
+                0 1px 0 rgba(255, 255, 255, 0.4) inset;
+        }
+
+        /* Top decorative bar */
+        .top-bar {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 28px;
+        }
+
+        .top-bar .spark {
+            width: 10px;
+            height: 10px;
+            background: var(--accent);
+            border-radius: 50%;
+            opacity: 0.7;
+        }
+
+        .top-bar .line {
+            width: 40px;
+            height: 2px;
+            background: var(--accent);
+            opacity: 0.2;
+            border-radius: 1px;
         }
 
         h1 {
-            font-weight: 600;
-            font-size: 1.4rem;
-            margin-bottom: 6px;
-            letter-spacing: -0.5px;
+            font-weight: 800;
+            font-size: 1.8rem;
+            letter-spacing: -1px;
+            margin-bottom: 4px;
+            color: var(--accent);
         }
 
-        p {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            margin-bottom: 45px;
+        h1 span {
             font-weight: 300;
+            opacity: 0.6;
         }
 
-        .mic-button {
-            width: 76px;
-            height: 76px;
+        .subtitle {
+            color: var(--text-secondary);
+            font-size: 0.82rem;
+            font-weight: 400;
+            margin-bottom: 36px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* Sound wave button — replaces mic entirely */
+        .wave-button {
+            width: 88px;
+            height: 88px;
             border-radius: 50%;
-            background: transparent;
-            border: 1px solid var(--surface-border);
+            background: var(--accent);
+            border: none;
             cursor: pointer;
             position: relative;
-            display: inline-flex;
+            display: flex;
             justify-content: center;
             align-items: center;
+            margin: 0 auto;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             outline: none;
-            box-shadow: inset 0 2px 4px rgba(255,255,255,0.05);
+            box-shadow:
+                0 6px 24px rgba(0, 0, 0, 0.25),
+                0 2px 6px rgba(0, 0, 0, 0.15);
         }
 
-        .mic-button::before {
+        .wave-button:hover {
+            transform: scale(1.06);
+            box-shadow:
+                0 10px 36px rgba(0, 0, 0, 0.3),
+                0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .wave-button:active {
+            transform: scale(0.97);
+        }
+
+        /* Pulse rings when recording */
+        .wave-button::before,
+        .wave-button::after {
             content: '';
             position: absolute;
             width: 100%;
             height: 100%;
             border-radius: 50%;
-            background: var(--accent);
-            opacity: 0.03;
+            border: 2px solid var(--accent);
+            opacity: 0;
             transform: scale(1);
-            transition: all 0.3s ease;
+            pointer-events: none;
+            transition: opacity 0.3s;
         }
 
-        .mic-button:hover {
-            transform: scale(1.03);
-            border-color: rgba(255,255,255,0.2);
+        .wave-button.recording::before {
+            opacity: 0.4;
+            animation: ring-pulse 1.6s infinite ease-out;
         }
 
-        .mic-button:hover::before {
-            transform: scale(1.15);
-            opacity: 0.06;
+        .wave-button.recording::after {
+            opacity: 0.2;
+            animation: ring-pulse 1.6s 0.4s infinite ease-out;
         }
 
-        .mic-button.recording {
-            border-color: #ff3366;
-            animation: pulse 1.8s infinite;
+        @keyframes ring-pulse {
+            0%   { transform: scale(1);   opacity: 0.4; }
+            100% { transform: scale(1.8); opacity: 0; }
         }
 
-        .mic-button.recording::before {
-            background: #ff3366;
-            opacity: 0.15;
+        /* Sound wave bars inside the button */
+        .wave-bars {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 3.5px;
+            height: 32px;
         }
 
-        .mic-icon {
-            width: 22px;
-            height: 22px;
-            fill: var(--accent);
-            z-index: 1;
-            transition: fill 0.3s ease;
+        .wave-bar {
+            width: 3.5px;
+            background: var(--bg);
+            border-radius: 2px;
+            transition: height 0.15s ease;
         }
 
-        .mic-button.recording .mic-icon {
-            fill: #ff3366;
-        }
+        /* Static heights when idle */
+        .wave-bar:nth-child(1) { height: 10px; }
+        .wave-bar:nth-child(2) { height: 18px; }
+        .wave-bar:nth-child(3) { height: 26px; }
+        .wave-bar:nth-child(4) { height: 32px; }
+        .wave-bar:nth-child(5) { height: 26px; }
+        .wave-bar:nth-child(6) { height: 18px; }
+        .wave-bar:nth-child(7) { height: 10px; }
 
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(255, 51, 102, 0.3); }
-            70% { box-shadow: 0 0 0 15px rgba(255, 51, 102, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(255, 51, 102, 0); }
+        /* Animated when recording */
+        .wave-button.recording .wave-bar {
+            animation: wave-dance 0.8s ease-in-out infinite alternate;
+        }
+        .wave-button.recording .wave-bar:nth-child(1) { animation-delay: 0s; }
+        .wave-button.recording .wave-bar:nth-child(2) { animation-delay: 0.1s; }
+        .wave-button.recording .wave-bar:nth-child(3) { animation-delay: 0.2s; }
+        .wave-button.recording .wave-bar:nth-child(4) { animation-delay: 0.3s; }
+        .wave-button.recording .wave-bar:nth-child(5) { animation-delay: 0.2s; }
+        .wave-button.recording .wave-bar:nth-child(6) { animation-delay: 0.1s; }
+        .wave-button.recording .wave-bar:nth-child(7) { animation-delay: 0s; }
+
+        @keyframes wave-dance {
+            0%   { height: 6px; }
+            100% { height: 32px; }
         }
 
         .status {
-            margin-top: 30px;
-            font-size: 0.85rem;
+            margin-top: 24px;
+            font-size: 0.82rem;
             color: var(--text-secondary);
             height: 20px;
-            letter-spacing: 0.2px;
+            letter-spacing: 0.3px;
+            font-weight: 400;
         }
 
-        .transcript-box {
-            margin-top: 25px;
-            background: rgba(0,0,0,0.4);
-            border: 1px solid var(--surface-border);
-            border-radius: 12px;
-            padding: 20px;
-            min-height: 80px;
-            text-align: left;
-            font-size: 0.9rem;
-            line-height: 1.6;
-            color: var(--text-primary);
-            opacity: 0;
-            transform: translateY(8px);
-            transition: all 0.4s ease;
-            box-shadow: inset 0 2px 10px rgba(0,0,0,0.2);
-        }
-
-        .transcript-box.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Loading Dots */
-        .loading { display: none; margin-top: 25px; margin-bottom: 25px; }
-        .loading.active { display: flex; justify-content: center; gap: 5px; }
+        /* Loading dots */
+        .loading { display: none; margin-top: 20px; margin-bottom: 20px; }
+        .loading.active { display: flex; justify-content: center; gap: 6px; }
         .dot {
-            width: 5px; height: 5px;
-            background: var(--text-secondary);
+            width: 6px; height: 6px;
+            background: var(--accent);
             border-radius: 50%;
             animation: bounce 1.4s infinite ease-in-out both;
         }
@@ -171,22 +250,124 @@
             0%, 80%, 100% { transform: scale(0); }
             40% { transform: scale(1); }
         }
+
+        /* Transcript result box */
+        .transcript-box {
+            margin-top: 24px;
+            background: rgba(0, 0, 0, 0.07);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 16px;
+            padding: 20px;
+            min-height: 70px;
+            text-align: left;
+            font-size: 0.88rem;
+            line-height: 1.65;
+            color: var(--text-primary);
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.4s ease;
+        }
+
+        .transcript-box.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Bottom decorative dots */
+        .bottom-dots {
+            display: flex;
+            justify-content: center;
+            gap: 6px;
+            margin-top: 28px;
+        }
+
+        .bottom-dots span {
+            width: 5px;
+            height: 5px;
+            background: var(--accent);
+            border-radius: 50%;
+            opacity: 0.15;
+        }
+
+        .bottom-dots span:nth-child(2) { opacity: 0.3; }
+        .bottom-dots span:nth-child(3) { opacity: 0.5; }
+        .bottom-dots span:nth-child(4) { opacity: 0.3; }
+        .bottom-dots span:nth-child(5) { opacity: 0.15; }
+
+        /* Corner accent shapes */
+        .corner-accent {
+            position: fixed;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .corner-accent.top-left {
+            top: -60px;
+            left: -60px;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, 0.04);
+        }
+
+        .corner-accent.bottom-right {
+            bottom: -80px;
+            right: -80px;
+            width: 260px;
+            height: 260px;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, 0.03);
+        }
+
+        /* FormBuddy button styling */
+        .buddy-link {
+            display: inline-block;
+            margin-top: 14px;
+            padding: 11px 22px;
+            background: var(--accent);
+            color: var(--bg);
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: opacity 0.2s, transform 0.2s;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.15);
+        }
+
+        .buddy-link:hover {
+            opacity: 0.88;
+            transform: translateY(-1px);
+        }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <h1>Voice Node</h1>
-        <p>Spanglish Intelligence Bridge</p>
+    <div class="corner-accent top-left"></div>
+    <div class="corner-accent bottom-right"></div>
 
-        <button class="mic-button" id="recordBtn" aria-label="Record">
-            <svg class="mic-icon" viewBox="0 0 24 24">
-                <path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z"/>
-                <path d="M17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"/>
-            </svg>
+    <div class="container">
+        <div class="top-bar">
+            <div class="line"></div>
+            <div class="spark"></div>
+            <div class="line"></div>
+        </div>
+
+        <h1>Spark<span>City</span></h1>
+        <div class="subtitle">NYC Civic Voice Assistant</div>
+
+        <button class="wave-button" id="recordBtn" aria-label="Record audio">
+            <div class="wave-bars">
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+            </div>
         </button>
 
-        <div class="status" id="statusText">Ready to capture</div>
+        <div class="status" id="statusText">Tap to speak</div>
 
         <div class="loading" id="loadingIndicator">
             <div class="dot"></div>
@@ -195,6 +376,10 @@
         </div>
 
         <div class="transcript-box" id="transcriptBox"></div>
+
+        <div class="bottom-dots">
+            <span></span><span></span><span></span><span></span><span></span>
+        </div>
     </div>
 
     <script>
@@ -206,8 +391,6 @@
         const loadingIndicator = document.getElementById('loadingIndicator');
 
         let isRecording = false;
-
-        // One session ID for the lifetime of this page load — ties all clips together
         const sessionId = crypto.randomUUID();
 
         recordBtn.addEventListener('click', async () => {
@@ -224,7 +407,7 @@
                     mediaRecorder.onstop = async () => {
                         const audioBlob = new Blob(audioChunks, { type: 'audio/webm' });
                         await uploadAudio(audioBlob);
-                        stream.getTracks().forEach(track => track.stop()); // kill mic
+                        stream.getTracks().forEach(track => track.stop());
                     };
 
                     mediaRecorder.start();
@@ -240,7 +423,7 @@
                 mediaRecorder.stop();
                 isRecording = false;
                 recordBtn.classList.remove('recording');
-                statusText.textContent = "Transcribing via Parakeet...";
+                statusText.textContent = "Processing...";
                 loadingIndicator.classList.add('active');
             }
         });
@@ -261,9 +444,8 @@
                 const res = data.resolution || {};
 
                 loadingIndicator.classList.remove('active');
-                statusText.textContent = "Transcription Complete";
+                statusText.textContent = "Done";
 
-                // Show what the user said + NemoClaw's resolved response
                 const reply = res.response || dir.response || "";
                 const decision = dir.decision || "";
                 const label = decision === "categorized"   ? "Routed"
@@ -273,7 +455,7 @@
 
                 const lang = data.language || {};
                 const langTag = lang.translated
-                    ? `<span style="margin-left:8px;font-size:0.72rem;color:#6ea8fe;">${lang.detected} (${Math.round(lang.ratio * 100)}%)</span>`
+                    ? `<span style="margin-left:8px;font-size:0.72rem;color:#1a6b3c;">${lang.detected} (${Math.round(lang.ratio * 100)}%)</span>`
                     : "";
 
                 let html =
@@ -284,26 +466,18 @@
                     html += `<div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--surface-border);color:var(--text-secondary);">${reply}</div>`;
                 }
 
-                // Show open data results if available
-                if (res.open_data) {
-                    const od = res.open_data;
-                    html += `<div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--surface-border);">`;
-                    html += `<div style="color:var(--text-secondary);font-size:0.78rem;margin-bottom:6px;">NYC Open Data</div>`;
-                    if (od.answer) html += `<div style="font-size:0.85rem;">${od.answer}</div>`;
-                    if (od.source) html += `<div style="margin-top:4px;color:var(--text-secondary);font-size:0.78rem;">Source: ${od.source}</div>`;
-                    html += `</div>`;
-                }
-
-                // Show form finder details if NemoClaw found a 311 form
                 if (res.form_finder) {
                     const ff = res.form_finder;
-                    html += `<div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--surface-border);">`;
+                    const buddyUrl = res.buddy_url;
+                    html += `<div style="margin-top:12px;padding-top:12px;border-top:1px solid rgba(0,0,0,0.1);">`;
                     html += `<div style="color:var(--text-secondary);font-size:0.78rem;margin-bottom:6px;">311 Form</div>`;
                     if (ff.form_name) html += `<div style="font-weight:600;">${ff.form_name}</div>`;
-                    if (ff.form_url) html += `<div style="margin-top:4px;"><a href="${ff.form_url}" target="_blank" style="color:#6ea8fe;text-decoration:none;">${ff.form_url}</a></div>`;
                     if (ff.next_steps) {
                         const steps = Array.isArray(ff.next_steps) ? ff.next_steps : [ff.next_steps];
-                        html += `<div style="margin-top:6px;color:var(--text-secondary);font-size:0.85rem;">${steps.map(s => `<div>• ${s}</div>`).join("")}</div>`;
+                        html += `<div style="margin-top:6px;color:var(--text-secondary);font-size:0.85rem;">${steps.map(s => `<div style="padding-left:8px;">&#8226; ${s}</div>`).join("")}</div>`;
+                    }
+                    if (buddyUrl) {
+                        html += `<a href="${buddyUrl}" target="_blank" class="buddy-link">Fill this form</a>`;
                     }
                     html += `</div>`;
                 }
@@ -312,7 +486,7 @@
                 transcriptBox.classList.add('visible');
             } catch (err) {
                 loadingIndicator.classList.remove('active');
-                statusText.textContent = "Error during server processing";
+                statusText.textContent = "Error during processing";
                 console.error(err);
             }
         }

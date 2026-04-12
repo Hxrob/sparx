@@ -81,6 +81,21 @@ export SPARX_LLM_MODEL="your-model-id"
 
 Run **llama.cpp** (`llama-server`), **vLLM**, or any compatible server before using voice features that need classification or FormFinder.
 
+### Ollama-pulled Nemotron → `llama-server`
+
+NVIDIA’s public **Nano** line on [Ollama](https://ollama.com/library/nemotron-3-nano) is **`nemotron-3-nano:4b`** and **`nemotron-3-nano:30b`** (about **30B total** MoE weights in the larger tag—not a separate widely advertised “80B Nano”). For **~120B** MoE use **`nemotron-3-super:120b`**. If you have another tag (e.g. a future **`:80b`**), the same steps apply after `ollama pull`.
+
+1. `ollama pull <library>:<tag>`
+2. Resolve the GGUF blob and print a ready-made `llama-server` line:
+
+   ```bash
+   ./scripts/ollama_model_to_llama_server.sh nemotron-3-nano 30b
+   ```
+
+3. Run the printed `llama-server -m /.../blobs/sha256-...` command, then set `SPARX_LLM_CHAT_URL` / `SPARX_LLM_MODEL` as shown.
+
+Use a **recent** `llama-server` build (Nemotron/Minitron support landed in upstream [llama.cpp](https://github.com/ggml-org/llama.cpp)).
+
 ## Run the voice application
 
 The server loads Parakeet on startup and serves **HTTPS** on port **8443** (needed for microphone access from the browser). If `cert.pem` and `key.pem` are missing in `nemoclaw/nodes/voice_node/`, the app generates self-signed certificates with `openssl`.

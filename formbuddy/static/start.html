@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FormBuddy - Start</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <div class="start-container">
+        <h1>📎 FormBuddy</h1>
+        <p>Paste your transcript and the 311 form URL to get started.</p>
+        <form action="/start" method="post">
+            <label for="transcript">Transcript</label>
+            <textarea id="transcript" name="transcript" rows="10" required
+                placeholder="Paste the conversation transcript here..."></textarea>
+
+            <label for="report_url">311 Report URL</label>
+            <input type="url" id="report_url" name="report_url" required
+                placeholder="https://portal.311.nyc.gov/servicerequest-create/?caid=...&kasid=...">
+
+            <button type="submit">Start FormBuddy</button>
+        </form>
+    </div>
+</body>
+</html>
