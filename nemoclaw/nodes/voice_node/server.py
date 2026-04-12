@@ -31,6 +31,7 @@ import uvicorn
 from asr_engine import VoiceNode
 import direction_engine
 import emotion_detector
+import document_intake
 from storage import Storage
 import sys, os
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "displacement_node")))
@@ -303,6 +304,100 @@ async def transcribe_audio(
 
     # Persist — runs in background thread so it doesn't block the response
     asyncio.create_task(asyncio.to_thread(db.save_call, session_id, response_payload))
+
+    return response_payload
+
+
+@app.post("/upload")
+async def upload_document(
+    file: UploadFile = File(...),
+    session_id: Optional[str] = Form(None),
+):
+    """
+    Accept an image (JPG/PNG/WebP) or PDF, extract structured information,
+    route through direction engine + NemoClaw, persist to storage.
+    """
+    print(f"Received document: {file.filename} ({file.content_type}) | session: {session_id}")
+
+    file_bytes = await file.read()
+
+    # Extract structured info from the document
+    doc = await document_intake.analyze(file_bytes, file.filename or "", file.content_type or "")
+
+    if doc.error and not doc.situation:
+        return {
+            "error": doc.error,
+            "document": {
+                "document_type": doc.document_type,
+                "urgency":       doc.urgency,
+                "summary":       doc.summary,
+            },
+        }
+
+    print(f"Document: type={doc.document_type} urgency={doc.urgency} "
+          f"deadline_days={doc.deadline_days}")
+
+    # Use the extracted situation as the transcript into direction engine + NemoClaw
+    situation_text = doc.situation or doc.summary
+
+    result = await direction_engine.process(situation_text, session_id=session_id)
+
+    direction = {
+        "decision":     result.decision.value,
+        "categories":   [c.value for c in result.categories],
+        "question":     result.question,
+        "summary":      result.summary,
+        "response":     result.response,
+        "confidence":   result.confidence,
+        "missing_info": result.missing_info,
+        "transcript":   situation_text,
+    }
+
+    # Run NemoClaw and displacement detector in parallel
+    resolution_task   = asyncio.create_task(nemoclaw.handle(direction))
+    displacement_task = asyncio.create_task(
+        asyncio.to_thread(displacement_detector.score, doc.address or situation_text)
+    )
+    resolution   = await resolution_task
+    displacement = await displacement_task
+
+    response_payload = {
+        "document": {
+            "document_type":    doc.document_type,
+            "urgency":          doc.urgency,
+            "summary":          doc.summary,
+            "situation":        doc.situation,
+            "key_dates":        doc.key_dates,
+            "amounts_owed":     doc.amounts_owed,
+            "address":          doc.address,
+            "case_number":      doc.case_number,
+            "issuing_agency":   doc.issuing_agency,
+            "required_actions": doc.required_actions,
+            "deadline_days":    doc.deadline_days,
+        },
+        "direction": direction,
+        "resolution": {
+            "source":      resolution.source,
+            "response":    resolution.response,
+            "open_data":   resolution.open_data,
+            "form_finder": resolution.form_finder,
+        },
+        "displacement": {
+            "address":    displacement.address,
+            "risk_level": displacement.risk_level,
+            "risk_score": displacement.risk_score,
+            "alert":      displacement.alert_message,
+        },
+    }
+
+    asyncio.create_task(asyncio.to_thread(db.save_call, session_id, {
+        "transcription": situation_text,
+        "direction":     direction,
+        "resolution":    response_payload["resolution"],
+        "language":      {"code": "en", "detected": "English", "ratio": 0.0, "translated": False},
+        "emotion":       {"emotion": "neutral", "distress_score": 0.0, "markers": [], "is_crisis": False},
+        "displacement":  response_payload["displacement"],
+    }))
 
     return response_payload
 
