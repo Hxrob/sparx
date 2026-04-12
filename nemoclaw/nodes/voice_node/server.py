@@ -31,6 +31,7 @@ import uvicorn
 from asr_engine import VoiceNode
 import direction_engine
 import emotion_detector
+from storage import Storage
 import sys, os
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "displacement_node")))
 import displacement_detector
@@ -45,6 +46,7 @@ from nemoclaw import NemoClaw
 
 voice_node: VoiceNode = None
 nemoclaw: NemoClaw = None
+db: Storage = None
 
 NON_ENGLISH_THRESHOLD = 0.25  # 25% non-English words triggers translation
 
@@ -130,12 +132,14 @@ async def _translate_text(text: str, language_name: str) -> str:
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    global voice_node, nemoclaw
+    global voice_node, nemoclaw, db
     print("Loading Parakeet model onto GPU...")
     voice_node = VoiceNode()
     print("Parakeet ready.")
     nemoclaw = NemoClaw()
     print(f"NemoClaw ready ({nemoclaw._finder.entry_count} KA entries loaded).")
+    db = Storage()
+    print("Storage ready.")
     yield
     await direction_engine.close_client()
 
@@ -259,7 +263,7 @@ async def transcribe_audio(
 
         translated = True
 
-    return {
+    response_payload = {
         "transcription": transcript,
         "direction": direction,
         "resolution": {
@@ -296,6 +300,31 @@ async def transcribe_audio(
             },
         },
     }
+
+    # Persist — runs in background thread so it doesn't block the response
+    asyncio.create_task(asyncio.to_thread(db.save_call, session_id, response_payload))
+
+    return response_payload
+
+
+@app.get("/history/{session_id}")
+async def get_session_history(session_id: str):
+    return {"session_id": session_id, "calls": db.session_history(session_id)}
+
+
+@app.get("/address/{address}")
+async def get_address_history(address: str):
+    return {"address": address, "calls": db.address_history(address)}
+
+
+@app.get("/stats")
+async def get_stats():
+    return db.stats()
+
+
+@app.get("/crises")
+async def get_recent_crises(hours: int = 24):
+    return {"hours": hours, "crises": db.recent_crises(hours)}
 
 
 if __name__ == "__main__":
