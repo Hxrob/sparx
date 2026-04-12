@@ -12,6 +12,7 @@ Flow:
 
 One server, port 8443, HTTPS (required for phone mic access).
 """
+import asyncio
 import json
 import logging
 import os
@@ -30,6 +31,9 @@ import uvicorn
 from asr_engine import VoiceNode
 import direction_engine
 import emotion_detector
+import sys, os
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "displacement_node")))
+import displacement_detector
 
 LOGGER = logging.getLogger("server")
 
@@ -204,8 +208,17 @@ async def transcribe_audio(
         "transcript":   transcript,
     }
 
-    # Run NemoClaw — Open Data lookup, then FormFinder fallback
-    resolution = await nemoclaw.handle(direction)
+    # Run NemoClaw and displacement detector in parallel — zero added latency
+    resolution_task    = asyncio.create_task(nemoclaw.handle(direction))
+    displacement_task  = asyncio.create_task(
+        asyncio.to_thread(displacement_detector.score, transcript)
+    )
+    resolution   = await resolution_task
+    displacement = await displacement_task
+
+    if displacement.should_alert:
+        print(f"Displacement alert [{displacement.risk_level}] at '{displacement.address}': "
+              f"score={displacement.risk_score}")
     print(f"NemoClaw: source={resolution.source} | "
           f"open_data={'yes' if resolution.open_data else 'no'} | "
           f"form_finder={'yes' if resolution.form_finder else 'no'}")
@@ -267,6 +280,20 @@ async def transcribe_audio(
             "markers":        emotion_result.markers,
             "arousal":        round(emotion_result.arousal, 2),
             "is_crisis":      emotion_result.is_crisis,
+        },
+        "displacement": {
+            "address":       displacement.address,
+            "risk_level":    displacement.risk_level,
+            "risk_score":    displacement.risk_score,
+            "alert":         displacement.alert_message,
+            "signals": {
+                "violations": displacement.signals.get("violations", {}).get("count", 0),
+                "class_c":    displacement.signals.get("violations", {}).get("class_c", 0),
+                "evictions":  displacement.signals.get("evictions", {}).get("count", 0),
+                "corporate_owner": displacement.signals.get("ownership", {}).get("corporate", False),
+                "recent_sale":     displacement.signals.get("ownership", {}).get("recent_change", False),
+                "owner":           displacement.signals.get("ownership", {}).get("owner", ""),
+            },
         },
     }
 
