@@ -22,7 +22,7 @@
 #   pip install nvidia-cuda-runtime-cu12
 #   source sparx/scripts/source_cuda_libs.sh
 
-# --- Voice server & HTTP ---
+# Voice server & HTTP
 fastapi>=0.100.0
 uvicorn[standard]>=0.22.0
 python-multipart>=0.0.6
@@ -31,18 +31,22 @@ httpx>=0.24.0
 pydantic>=2.0.0
 requests>=2.28.0
 
-# --- Parakeet / NeMo ASR (asr_engine.py) ---
+# Parakeet / NeMo ASR (asr_engine.py)
 # libcudart for GPU wheels when no full system CUDA 12 on LD_LIBRARY_PATH
 nvidia-cuda-runtime-cu12>=12.1.0
 # torch + torchaudio: install from requirements-torch-*.txt first (not plain PyPI).
 nemo_toolkit[asr]>=1.21.0
 
-# --- CLI mic / file ASR helpers in asr_engine.py ---
+# CLI mic / file ASR helpers in asr_engine.py
 sounddevice>=0.4.6
 soundfile>=0.12.0
 
-# --- Document / image intake ---
+# Document / image intake
 pypdf>=4.0.0
 
-# --- form_finder/nyc311_ka.py ---
+# form_finder/nyc311_ka.py
 beautifulsoup4>=4.12.0
+
+# Dev / testing
+pytest>=8.0.0
+pytest-asyncio>=0.23.0
