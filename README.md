@@ -12,7 +12,7 @@
 # SparX
 
 > **[NVIDIA Spark Hack Series: NYC Hackathon](https://luma.com/spark-hack-nyc/)**.  
-> Built by **Yahil, Hirab, Alejandro, and Aditya**    
+> Built by **Yahil Corcino, Hirab Abdourazak, Alejandro Perdomo, and Aditya Dalal**    
 
 ---
 
