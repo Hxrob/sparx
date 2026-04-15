@@ -29,4 +29,4 @@ Thumbs.db
 .vscode/
 .idea/
 *.swp
-*.swo
+*.swo=4.0.0
