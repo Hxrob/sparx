@@ -8,30 +8,24 @@ dist/
 build/
 .eggs/
 
-# Virtual environment
 .venv/
 venv/
 env/
 
-# Secrets & TLS certs
 *.pem
 *.key
 *.crt
 
-# Runtime databases
 *.db
 *.sqlite
 *.sqlite3
 
-# Logs
 *.log
 complaints.log
 
-# OS
 .DS_Store
 Thumbs.db
 
-# Editors
 .vscode/
 .idea/
 *.swp
