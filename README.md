@@ -2,9 +2,16 @@
   <img src="temp_logo.png" alt="SparX Logo" width="100"/>
 </p>
 
+<p align="center">
+  <img src="NVIDIA_logo.png" alt="NVIDIA Logo" width="125"/>
+   <img src="Antler_logo.png" alt="Antler Logo" width="100"/>
+   <img src="Acer_logo.png" alt="Acer Logo" width="100"/>
+</p>
+
+
 # SparX
 
-> **NVIDIA Spark Hack Series: NYC Hackathon**.  
+> **[NVIDIA Spark Hack Series: NYC Hackathon](https://luma.com/spark-hack-nyc/)**.  
 > Built by **Yahil, Hirab, Alejandro, and Aditya**    
 
 ---
@@ -21,15 +28,15 @@ The system runs entirely on local hardware (an **Acer Veriton N100** with **128 
 
 NYC is one of the most linguistically diverse cities in the world. Millions of residents speak English as a second language, or not at all. Navigating city services (311, benefits enrollment, housing forms, emergency resources) is already complex in English. For Spanish, Mandarin, Bengali, Haitian Creole, or Arabic speakers, it can be nearly impossible.
 
-Existing AI assistants (ChatGPT, Google Assistant, Alexa) require an internet connection and build persistent profiles on users. Immigrants, low-income residents, undocumented individuals, and other underserved populations are often the most hesitant to use these tools precisely because of privacy concerns.
+Existing AI assistants (ChatGPT, Google Gemini, Alexa) require an internet connection and build persistent profiles on users. Immigrants, low-income residents, undocumented individuals, and other underserved populations are often the most hesitant to use these tools precisely because of privacy concerns.
 
 ---
 
 ## The Solution
 
-SparX puts the AI **on the edge, not in the cloud.**
+SparX puts the AI **on the edge instead of in the cloud.**
 
-Using NVIDIA's **Parakeet ASR** model for speech transcription, SparX supports **25 European languages** with the ability to seamlessly switch between them mid-sentence — including mixed-language speech like Spanglish. A user doesn't have to choose a language before speaking; the system understands them naturally.
+Using NVIDIA's **Parakeet ASR** model for speech transcription, SparX supports **25 European languages** with the ability to seamlessly switch between them mid-sentence, including mixed-language speech like Spanglish. A user doesn't have to choose a language before speaking; the system understands them naturally.
 
 From there, a direction engine routes the transcribed query to **NemoClaw**, which queries **NYC Open Data** and a 311 **FormFinder** to surface the most relevant city resources and forms; all in real time, all locally.
 
