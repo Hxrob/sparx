@@ -1,11 +1,11 @@
 <p align="center">
-  <img src="temp_logo.png" alt="SparX Logo" width="100"/>
+  <img src="assets/temp_logo.png" alt="SparX Logo" width="100"/>
 </p>
 
 <p align="center">
-  <img src="NVIDIA_logo.png" alt="NVIDIA Logo" width="125"/>
-   <img src="Antler_logo.png" alt="Antler Logo" width="100"/>
-   <img src="Acer_logo.png" alt="Acer Logo" width="100"/>
+  <img src="assets/NVIDIA_logo.png" alt="NVIDIA Logo" width="125"/>
+   <img src="assets/Antler_logo.png" alt="Antler Logo" width="100"/>
+   <img src="assets/Acer_logo.png" alt="Acer Logo" width="100"/>
 </p>
 
 
