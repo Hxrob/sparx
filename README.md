@@ -174,11 +174,19 @@ Open **`https://<host-ip>:8443`** in a browser and accept the certificate warnin
 | `nemoclaw/nodes/voice_node/direction_engine.py` | LLM-based routing; logs to `complaints.log` |
 | `nemoclaw/nemoclaw.py` | NemoClaw orchestrator (Open Data, then FormFinder) |
 | `form_finder/` | 311 form classifier; uses `KA.json` |
+| `formbuddy/` | WIP — see note below |
 | `scripts/source_cuda_libs.sh` | Prepends venv NVIDIA libs to `LD_LIBRARY_PATH` |
 
 ## Git: Nested Repositories
 
 If `git add` fails with **`'some_dir/' does not have a commit checked out`**, that directory likely contains its own `.git/` with no commits yet. Either remove that nested `.git` to track normal files in this repo, or commit inside the subdirectory and use a proper submodule workflow.
+
+## formbuddy (WIP — paused)
+
+`formbuddy/` is a separate companion app started during the hackathon. The idea was to give users a guided, conversational interface for filling out NYC 311 forms — walking them through each field step by step rather than just linking them to a form URL.
+
+We didn't get to continue it during the event. It's kept here for reference but is not integrated into the main SparX pipeline and has its own independent Python environment (`pyproject.toml`, `uv.lock`).
+
 
 </details>
 
